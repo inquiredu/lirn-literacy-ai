@@ -14,6 +14,12 @@ Decided with Sean, step by step, after the review:
 | 2 | A short K–2 beat and a first-grade Case C | Yes: new `early-signposts` slide; Case C on `cases`; `hold-test` takes the case closest to your grades |
 | 2 | Label grade bands (no new secondary content) | Yes: every case and research card names its grades |
 | 2 | Re-time the hour for Zoom | Yes: lens 11, making 16, navigating 10, social 8 (still 60); four-roles timer 5 to 4 minutes |
+| 3 | Bias and perspective | Yes: `moves` gains "Ask whose story it tells" (✦), with Shieh, Vassel, Sugimoto & Monroe-White (AIES) in the notes |
+| 3 | Disability and access | Yes: `t-chart` support card names text-to-speech and speech-to-text; notes separate an IEP/504 accommodation from a design choice |
+| 3 | Multilingual learners and families | Yes: `noticing-b` asks what her EL teacher and family would add; notes treat home language as a resource |
+| 3 | Dakota and Ojibwe | Drafted in `moves` notes only, marked `[ADD]` to vet with district American Indian education staff. Grounded in Minn. R. 3501.0660 (ELA standards) and Minn. Stat. 120B.021 (Indigenous Education for All) |
+| 3 | Graphics: four roles as a quadrant; an annotated AI answer; an evidence map | Yes: `four-roles` and `what-was-in-it` are now drawn figures; new `evidence-map` slide after `noticing-nav` |
+| 3 | The real Gemini summary as an example | Yes: `how-made` notes (16 vs 50 registrations; "upper tiers") |
 
 ## Rating
 
