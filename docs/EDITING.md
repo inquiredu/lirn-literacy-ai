@@ -2,6 +2,12 @@
 
 The quick way to change a talk: describe what you want in plain words, one line per change, and see it as before and after pictures. Nothing merges or deploys until you say so. (This is What We Talk About's edit loop, brought to the kit.)
 
+## Editing the words in PowerPoint or Google Slides
+
+For a pass over the wording, slide by slide: the review page's **Download .pptx to edit** builds a PowerPoint file from `deck.js`. Every word on a slide is its own text box, and the speaker notes are in the notes pane. Edit it in PowerPoint, Keynote or Google Slides (File → Download → Microsoft PowerPoint), then give the file to Claude Code. Claude runs `node scripts/pptx.js import file.pptx --dry-run` to show what would change, then the same without `--dry-run` to write only the changed words into `deck.js`, and `node scripts/check-all.js`. If the edited deck has a problem, `deck.js` is put back and the problem is reported. `node scripts/pptx.js export` writes the same file from a terminal.
+
+Only words travel back. Bold becomes `**strong**` and italic `*emphasis*`. Braces stay as typed. Anything else in the file (fonts, colors, layout, a new slide or box) is left behind with a note, so the site's theme can't change. Structural changes still go through the loop below.
+
 ## The loop
 
 1. **Describe.** One line per change. Point at a slide by its number, its id, or part of its title. `node scripts/preview.js map` lists them all.
