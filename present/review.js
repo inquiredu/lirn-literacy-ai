@@ -53,10 +53,16 @@ function slidePage(i) {
 /** The facing page: where it sits in the session, its title, and what the presenter says. */
 function notesPage(i) {
   const s = slides[i];
+  const season = s.part?.season;
+  // The part's season, taped in at the foot like a field note; the tape and its tilt shift a little from page to page
+  const note = season?.art && h("figure", { class: "field-note", style: { "--tilt": `${[-1.6, 1.1, -0.6, 1.8, -1.2][s.n % 5]}deg`, "--tape": `${[-4, 3, -2, 5, -3][s.n % 5]}deg` } },
+    h("img", { src: season.art, alt: "", decoding: "async" }),
+    season.caption && h("figcaption", {}, rich(season.caption, { model, slide: s })));
   return h("div", { class: "notes-page" },
     h("p", { class: "running-head" }, s.part ? rich(s.part.title, { model }) : "", h("span", {}, String(s.n) + " / " + slides.length)),
     h("h2", { class: "notes-title" }, slideTitle(s, model)),
     h("div", { class: "notes-body" }, notesParagraphs(s)),
+    note || h("span"),
     h("p", { class: "folio-n", "aria-hidden": "true" }, String(s.n)));
 }
 

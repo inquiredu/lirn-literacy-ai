@@ -75,7 +75,7 @@ if (qr < 7) failures.push(`the QR code's ink on its ground is ${qr.toFixed(2)}:1
 const kitCss = ["present/talk.css", "present/theme.css", "present/slides.css", "present/stage.css", "present/notes.css", "present/review.css", "index.css"];
 const defined = new Set([...Object.keys(themes.Night), ...Object.keys(light)]);
 for (const f of kitCss) for (const m of read(f).matchAll(/(--[\w-]+)\s*:/g)) defined.add(m[1].slice(2));
-["i", "n", "elapsed", "clock-room"].forEach((n) => defined.add(n));   // set from the stage's script, or with a fallback
+["i", "n", "elapsed", "clock-room", "tilt", "tape"].forEach((n) => defined.add(n));   // set from the stage's or the review's script, or with a fallback
 for (const f of kitCss) {
   for (const m of read(f).matchAll(/var\(--([\w-]+)/g)) {
     if (!defined.has(m[1])) failures.push(`${f} uses var(--${m[1]}), which nothing defines`);

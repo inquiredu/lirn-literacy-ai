@@ -26,13 +26,21 @@ export default {
   // Set these once the start time is confirmed; until then the clock waits for T.
   // day: "2026-11-19", start: "HH:MM", timeZone: "America/Chicago",
 
+  // Each part is a Minnesota season, so the review reads through a year and comes back round: a line drawing
+  // and a field-note caption at the foot of every notes page in that part (assets/seasons/, drawn for this talk).
   parts: [
-    { id: "open", title: "Opening", minutes: 8 },
-    { id: "lens", title: "1 · A shared lens", minutes: 8 },
-    { id: "making", title: "2 · Making text with AI", minutes: 15 },
-    { id: "navigating", title: "3 · Navigating AI text", minutes: 12 },
-    { id: "social", title: "4 · The social thread", minutes: 10, tone: "accent" },
-    { id: "revisit", title: "Revisit", minutes: 7 }
+    { id: "open", title: "Opening", minutes: 8,
+      season: { art: "assets/seasons/november.svg", caption: "November · birches at the lake's edge" } },
+    { id: "lens", title: "1 · A shared lens", minutes: 8,
+      season: { art: "assets/seasons/january.svg", caption: "January · a fish house on the ice" } },
+    { id: "making", title: "2 · Making text with AI", minutes: 15,
+      season: { art: "assets/seasons/april.svg", caption: "April · ice-out, and the loons come back" } },
+    { id: "navigating", title: "3 · Navigating AI text", minutes: 12,
+      season: { art: "assets/seasons/july.svg", caption: "July · a canoe, and the portage on the map" } },
+    { id: "social", title: "4 · The social thread", minutes: 10, tone: "accent",
+      season: { art: "assets/seasons/october.svg", caption: "October · a fire, and someone to sit with" } },
+    { id: "revisit", title: "Revisit", minutes: 7,
+      season: { art: "assets/seasons/first-snow.svg", caption: "First snow · the year comes round" } }
   ],
 
   slides: [

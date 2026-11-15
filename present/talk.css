@@ -166,3 +166,9 @@
 }
 /* The birches take the top corner on the title slide; the rail already names the part */
 .kind-title .title-top .index-label { display: none; }
+
+/* A hand for field notes and captions: Caveat, self-hosted like the other families (Fontsource 5.3.0, SIL Open
+   Font License, present/fonts/OFL-caveat.txt) */
+@font-face { font-family: "Caveat"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/caveat-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Caveat"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/caveat-latin-700-normal.woff2") format("woff2"); }
+:root { --font-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive; }
