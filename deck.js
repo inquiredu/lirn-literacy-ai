@@ -4,7 +4,7 @@
 // SEAN'S WORKING DRAFT, leadership design revision (2026-11-14), for Andrew to react to. Rebuilt as a working session: the room reads,
 // writes and revises, and the evidence is offered as "what we're noticing," not as findings. Audience: literacy
 // coaches, literacy leaders and media specialists. [ADD] in a note marks a gap only Andrew or Sean can fill.
-// [ADD] Where the room's responses go is undecided (Padlet removed 2026-11-15). Resources and
+// The room's responses go in the Zoom chat (decided 2026-11-15, replacing Padlet). Resources and
 // what the room learns afterward are shared through What We Talk About When We Talk About AI.
 // Authorship: a joint session by Andrew Rummel and Sean Beaverson. Public copy remains a draft for their review.
 
@@ -132,10 +132,10 @@ export default {
       id: "v1", part: "open", kind: "pause",
       kicker: "Version 1 · {mins}",
       heading: "What does it mean to be **literate now**?",
-      body: "Write one sentence. You'll come back to it before you leave.",
+      body: "Write one sentence in the chat. You'll come back to it before you leave.",
       foot: "Use this as a working definition to revisit at the close.",
       timer: 2,
-      notes: "Sean: {Mins:words}. [ADD] where people write their sentence, and how we find it again at the end (to be decided). Don't read answers aloud yet; we come back to them at the end."
+      notes: "Sean: {Mins:words}. Ask for one sentence in the chat, held until the timer ends and then sent all at once (a waterfall). Right after, a co-host saves the chat so version 1 is there at the end. Don't read answers aloud yet; we come back to them at the end."
     },
 
     // ── 1 · A shared lens ─────────────────────────────────────────────────────────────────────────────────
@@ -162,6 +162,7 @@ export default {
       kicker: "At your table · {mins}",
       heading: "When the text came from **AI**, what does each role look like?",
       body: "Each table takes one role. Name one way it changes, and one way it stays the same.",
+      foot: "Post it in the chat, starting with your role.",
       timer: 5,
       notes: "Andrew: count tables off 1 to 4 by role. Spread media specialists across tables; they'll pull toward text analyst, and every table benefits from that lens.\n\nHear one answer per role out loud before moving on. This is the room's lens for the rest of the hour."
     },
@@ -197,6 +198,7 @@ export default {
       kicker: "Pause · {mins}",
       heading: "What must we preserve? What should we **test**?",
       body: "Half the room takes Case A, half takes Case B. Name one value that shouldn't bend, and one thing you'd try and watch.",
+      foot: "Post both in the chat, starting with A or B.",
       timer: 6,
       notes: "Sean: {Mins:words}. Split the room by side. Listen for values (ownership of ideas, every student in the shared text, struggle that builds something) and for tests (what would you look at a month from now?)."
     },
@@ -204,7 +206,7 @@ export default {
       id: "noticing-a", part: "making", kind: "cards",
       heading: "Case A: learning and authorship",
       cards: [
-        { kicker: "Research signal", heading: "Performance and learning", body: "In one high school math experiment, a plain chatbot raised practice scores, and exam scores fell once it was taken away. A version that gave hints instead of answers didn't show that drop." },
+        { kicker: "Research signal", heading: "Performance and learning", body: "In one high school math experiment, a plain chatbot raised practice scores, and exam scores fell once it was taken away. A version that gave hints instead of answers largely avoided that drop." },
         { kicker: "Evidence gap", heading: "Young writers", body: "We found no study of intermediate-grade students drafting with AI, or of what happens to their writing and their sense of ownership." },
         { kicker: "Questions for practice", heading: "Evidence to examine", body: "What would you look for in her next draft, written without AI? What would she say if you asked where the idea came from?", key: true }
       ],
@@ -261,12 +263,12 @@ export default {
       id: "noticing-nav", part: "navigating", kind: "cards",
       heading: "Evaluating AI output: the evidence",
       cards: [
-        { kicker: "Research signal", heading: "Knowing the answer matters", body: "21 children, ages 6 to 11, caught a chatbot's errors on puzzles they could solve themselves. 63 students, ages 14 to 15, couldn't tell good chatbot answers from poor ones on science problems." },
-        { kicker: "Evidence gap", heading: "Grades 4 to 6", body: "Lateral reading has strong support for websites with students in grades 7 to 12. We found nothing testing checking moves on chatbot text with younger students." },
+        { kicker: "Research signal", heading: "Knowing helps, but isn't enough", body: "21 children, ages 6 to 11, caught a chatbot's errors on puzzles they could solve themselves. 63 students, ages 14 to 15, tended to rate poor chatbot answers to science problems highly." },
+        { kicker: "Evidence gap", heading: "Grades 4 to 6", body: "Lateral reading instruction helped 2,278 Canadian middle and high school students check websites. We found nothing testing checking moves on chatbot text with younger students." },
         { kicker: "Questions for practice", heading: "Evidence to examine", body: "Media specialists: what do your students do now when an answer sounds right? What do they do when they don't know the topic?", key: true }
       ],
-      foot: "Dangol et al. (2025), IDC; arXiv 2505.01106 (preprint, France); Brodsky et al. (2023), AERA Open, 2,278 students.",
-      notes: "Sean: two small studies, different ages and tasks, pointing the same way. Treat that as a pattern worth testing, not a finding. If it holds, topic choice and a teacher-supplied reference text matter more than which checking move you teach."
+      foot: "Dangol et al. (2025), IDC, arXiv 2505.16034 (US). Abdelghani et al. (2025), arXiv 2505.01106 (preprint, France). Brodsky et al. (2023), AERA Open (Canada).",
+      notes: "Sean: two small studies, different ages and tasks. The younger children caught errors on puzzles they could solve themselves. The older students relied on the chatbot even on topics they said they knew, and the authors link better judgment to students' awareness of their own understanding. Treat that as a pattern worth testing, not a finding. If it holds, knowing the topic helps but isn't enough: students also need to notice when they don't actually understand.\n\nAccuracy note: the French paper reports 63 students in its abstract and 73 in its methods; its second version is titled The Illusion of Understanding. An earlier draft of this slide credited it to the wrong authors, and our own check caught it."
     },
     {
       id: "moves", part: "navigating", kind: "list",
@@ -303,6 +305,7 @@ export default {
       kicker: "Collaborative analysis · {mins}",
       heading: "Where might AI reduce or **support participation**?",
       body: "Look back at Case A, Case B, and the answer you just checked. Add one to each side.",
+      foot: "Post them in the chat, starting “Loss:” or “Support:”.",
       timer: 4,
       notes: "Andrew: {Mins:words}. Pull two or three from each side out loud, and name where the room's columns differ from our starters."
     },
@@ -324,10 +327,10 @@ export default {
       id: "v2", part: "revisit", kind: "pause",
       kicker: "Version 2 · {mins}",
       heading: "What does it mean to be **literate now**?",
-      body: "Revise your sentence from the start. Put version 2 next to version 1. What changed? What didn't?",
+      body: "Revise your sentence from the start, and post version 2 in the chat. What changed? What didn't?",
       foot: "Notice what stayed the same.",
       timer: 3,
-      notes: "Both: {Mins:words}. Then read three or four pairs aloud, version 1 then version 2. Notice together what stayed the same; that's where the values are."
+      notes: "Both: {Mins:words}. Then read three or four pairs aloud, version 1 from the saved chat, then version 2. Notice together what stayed the same; that's where the values are."
     },
     {
       id: "signpost", part: "revisit", kind: "statement",
@@ -342,7 +345,7 @@ export default {
       heading: "Research and leadership resources",
       body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. Bring back what you notice when you try something.",
       foot: "inquiredu.org/what-we-talk-about",
-      notes: "Sean: this is where the room's learning lives after today. [ADD] how people send observations back (to be decided), and when we'll add the session's resources there. Link for the chat: {links.wwta}"
+      notes: "Sean: this is where the room's learning lives after today. [ADD] how people send observations back after today (the chat closes with the meeting), and when we'll add the session's resources there. Link for the chat: {links.wwta}"
     },
     {
       id: "way-back", part: "revisit", kind: "link",
