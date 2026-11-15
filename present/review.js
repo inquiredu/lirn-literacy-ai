@@ -1,21 +1,16 @@
 // The review: the same slides as a book to read, for anyone who missed a part or comes back after.
 // On a wide screen each spread is the slide on the left page and its speaker notes on the facing page, and a leaf
 // turns around the spine to the next; on a narrow one, single pages lift away. Every slide keeps an address of its
-// own (review.html#parable), and printing still gives one slide to a page: the backup deck, made from the deck.
+// own (review.html#parable), and printing gives one slide to a page with its notes beneath: the backup deck.
 import { lengthLabel, slideTitle } from "./core.js";
-import { browserStorage, h, loadDeck, rich } from "./dom.js";
+import { h, loadDeck, rich } from "./dom.js";
 import { renderSlide } from "./kinds.js";
 
 const { model } = await loadDeck();
 document.title = "Review · " + model.title;
-const NOTES_KEY = `present:${model.id}:review-notes`;
-const storage = browserStorage();
-let withNotes = false;
-try { withNotes = storage?.getItem(NOTES_KEY) === "1"; } catch { /* private window */ }
 
 const ctx = { model, mode: "review", timer: null, embeds: null };
 const slides = model.slides;
-const notesButton = h("button", { type: "button", class: "tool", "aria-pressed": String(withNotes), on: { click: () => setNotes(!withNotes) } }, "Notes in print");
 const contentsButton = h("button", { type: "button", class: "tool", "aria-expanded": "false", "aria-controls": "contents", on: { click: () => toggleContents() } }, "Contents");
 
 const contents = h("nav", { class: "contents", id: "contents", hidden: true, "aria-labelledby": "contents-title" },
@@ -169,23 +164,14 @@ document.body.append(
     h("div", { class: "tools" },
       contentsButton,
       h("a", { class: "tool primary", href: "present.html" }, "Present"),
-      notesButton,
       h("button", { type: "button", class: "tool", on: { click: () => window.print() } }, "Print or save as PDF"))),
   h("main", { class: "review" }, contents, book, h("div", { class: "print-pages" }, pages)));
-setNotes(withNotes);
 show(at);
 
 function toggleContents(open = contents.hidden) {
   contents.hidden = !open;
   contentsButton.setAttribute("aria-expanded", String(open));
   if (open) contents.querySelector("a")?.focus();
-}
-
-function setNotes(on) {
-  withNotes = on;
-  document.body.classList.toggle("with-notes", on);
-  notesButton.setAttribute("aria-pressed", String(on));
-  try { storage?.setItem(NOTES_KEY, on ? "1" : "0"); } catch { /* private window */ }
 }
 
 function notesParagraphs(s) {

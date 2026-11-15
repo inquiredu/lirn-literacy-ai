@@ -84,7 +84,7 @@ async function pdf(withNotes) {
     try {
       const page = await (await b.newContext()).newPage();
       await page.goto(base + "review.html", { waitUntil: "networkidle" });
-      await page.evaluate((on) => document.body.classList.toggle("with-notes", on), withNotes);
+      await page.evaluate((on) => document.querySelectorAll(".page-notes").forEach((n) => { n.style.display = on ? "" : "none"; }), withNotes);
       await page.emulateMedia({ media: "print", reducedMotion: "reduce" });
       await page.pdf({ path: file, preferCSSPageSize: true, printBackground: true });
     } finally { await b.close(); }
