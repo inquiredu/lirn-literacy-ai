@@ -26,43 +26,42 @@ export default {
   // Set these once the start time is confirmed; until then the clock waits for T.
   // day: "2026-11-19", start: "HH:MM", timeZone: "America/Chicago",
 
-  // The front door (index.html, where the QR code leads): why we're doing this, in our own words. DRAFT for
-  // Andrew to read and change; every line here is his to edit as much as Sean's.
+  // The front door (index.html, where the QR code leads). Plain on purpose; "…" marks a place for us to write.
   landing: {
     questions: {
-      heading: "The questions we're carrying",
-      intro: "We don't have conclusions yet. We have questions we'd like to get sharper, and we'd like to work on them with you.",
+      heading: "Questions we're working on",
+      intro: "…",
       items: [
-        "What does it mean to be literate now, with AI in the room?",
-        "What has reading and writing always asked of us, and what is actually new?",
-        "When AI helps make a text (a student's draft, a teacher's easier version), whose thinking is on the page, and what should we hold onto?",
-        "When the text came from a machine, how does a reader check it, especially on a topic they don't know yet?",
-        "What happens to the talk between people that literacy has always grown from?",
-        "Which of our values should hold steady while the tools keep changing?"
+        "What does it mean to be literate now?",
+        "What's stayed the same, and what's new?",
+        "When AI helps write something, whose thinking is it?",
+        "How do you check what a machine wrote?",
+        "What happens to the talk between people?",
+        "What should hold steady while the tools change?"
       ]
     },
     aim: {
       heading: "If it goes well",
-      intro: "You'll leave with a clearer way to ask, and with:",
+      intro: "…",
       items: [
-        "A sentence about literacy now that you wrote, revised, and can stand behind.",
-        "A shared lens, the four roles of the reader, to use on any text AI made.",
-        "One signpost to watch for, and one small thing to try in your building.",
-        "A few more people to keep thinking with."
+        "A sentence about literacy now, in your own words.",
+        "The four roles of the reader, as a lens.",
+        "One thing to watch for, and one thing to try.",
+        "A few more people to think with."
       ],
-      close: "We want more clarity and precision while the words are moving this fast. Whatever we decide is a decision for now, and we'll keep checking it against what we already believe about how kids become readers and writers."
+      close: "…"
     },
     us: {
-      heading: "Why the two of us",
+      heading: "The two of us",
       body: [
-        "We're two Minneapolis boys, deeply Minnesotan. We've been friends since Sean was seventeen, and colleagues for a long time too. We both started as English teachers. Andrew went deep into literacy: intervention, coaching, and K-12 literacy for Minneapolis Public Schools. Sean went toward technology and how schools take it on. We keep meeting in the middle of the same conversation.",
-        "We share what we're working out because saying it out loud, to people who'll push back, is how we get clearer. We don't always agree, and you'll hear that. We also just like doing this together, and we hope that comes through."
+        "Minneapolis boys, both deeply Minnesotan. Longtime friends and colleagues.",
+        "…"
       ],
       signoff: "Andrew & Sean",
       photo: { src: "assets/sean-and-andrew.jpg", alt: "A soft pencil-and-watercolor sketch of Sean, left, and Andrew, right, side by side in a coffee shop", caption: "Sean, left, and Andrew" },
-      season: "social"            // the part whose drawing is tucked behind the photo: October, the fire
+      season: "social"            // the part whose drawing is tucked behind the sketch: October, the fire
     },
-    made: "How this was made: our conversation, Gemini's notes on it, deep-research prompts, and a first draft of the deck by Claude, all revised by us, with the studies on the slides checked against their sources. Telling you that is part of the session."
+    made: "Made with Gemini and Claude, and a lot of talking. …"
   },
 
   // Each part is a Minnesota season, so the review reads through a year and comes back round: a line drawing
