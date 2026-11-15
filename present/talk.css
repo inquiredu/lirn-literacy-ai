@@ -156,3 +156,50 @@
 
 /* A restrained cover and consistent editorial treatment across the deck. */
 :root, [data-theme] { --radius-md: 4px; --radius-lg: 6px; }
+
+/* ---------- Figures drawn for this talk (custom slides in deck.js) ----------
+   Semantic tokens only. Numbers and labels carry the meaning; color only repeats it. */
+
+/* Four roles as a quadrant, with all four meeting at the center: not a ladder */
+.fig-roles { position: relative; width: 100%; }
+.fig-roles-grid { list-style: none; margin: .4em 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.fig-role { padding: 1.1em 5em 1.2em 0; display: grid; gap: .3em; align-content: start; }
+.fig-role:nth-child(2n) { padding: 1.1em 0 1.2em 5em; border-left: 1.5px solid var(--line); }
+.fig-role:nth-child(-n+2) { border-bottom: 1.5px solid var(--line); }
+.fig-role-t { margin: 0; font: 500 1.7em/1.15 var(--heading); letter-spacing: -.025em; }
+.fig-role-q { margin: 0; font: 400 1.15em/1.45 var(--reading); color: var(--soft); }
+.fig-roles-hub { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0;
+  display: grid; place-items: center; width: 7.4em; height: 7.4em; border-radius: 50%; padding: .6em; text-align: center;
+  background: var(--slide-bg, var(--bg)); border: 1.5px solid var(--accent); color: var(--accent);
+  font: 600 .78em/1.25 var(--heading); letter-spacing: .1em; text-transform: uppercase; }
+
+/* An AI answer with its claims marked, and how each one gets checked */
+.fig-answer { margin: .2em 0 0; padding: 0 0 0 1.2em; border-left: 2px solid var(--line); max-width: 60em; }
+.fig-answer p { margin: 0; font: 400 1.22em/1.7 var(--reading); }
+.fig-claim { background: var(--surface-accent-soft); color: var(--fg-1); padding: .05em .2em; border-radius: var(--radius-xs); }
+.fig-n { display: inline-grid; place-items: center; width: 1.45em; height: 1.45em; margin-left: .3em; border-radius: 50%;
+  background: var(--action-primary); color: var(--on-action-primary); font: 600 .72em/1 var(--heading); vertical-align: .2em; }
+.fig-checks { list-style: none; margin: .3em 0 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6em; }
+.fig-check { display: grid; grid-template-columns: auto 1fr; gap: .7em; align-items: start; border-top: 2px solid var(--line); padding-top: .9em; }
+.fig-check.key { border-top-color: var(--accent); }
+.fig-check .fig-n { margin: .15em 0 0; font-size: .95em; vertical-align: 0; }
+.fig-check-k { margin: 0 0 .25em; font: 600 1.05em/1.25 var(--heading); }
+.fig-check-b { margin: 0; font: 400 1.05em/1.45 var(--reading); color: var(--soft); }
+
+/* Evidence map: grade bands against what was studied; the blanks are the point */
+.fig-map { width: 100%; border-collapse: collapse; table-layout: fixed; font-family: var(--heading); }
+.fig-map th, .fig-map td { padding: .55em .7em; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--line); }
+.fig-map thead th { font: 600 1em/1.2 var(--heading); border-bottom: 2px solid var(--line); }
+.fig-map thead td { width: 24%; }
+.fig-map-case { display: block; margin-top: .2em; font: 500 .72em/1.2 var(--heading); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.fig-map tbody th { font: 500 .98em/1.25 var(--heading); }
+.fig-hit { background: var(--surface-water-soft); color: var(--fg-1); font: 400 .9em/1.3 var(--reading); border-left: 3px solid var(--slide-bg, var(--bg)); }
+.fig-none { color: var(--soft); text-align: center !important; font-size: 1.1em; }
+
+@container slide (max-width: 760px) {
+  .fig-roles-grid, .fig-checks { grid-template-columns: minmax(0, 1fr); }
+  .fig-role, .fig-role:nth-child(2n) { padding: .8em 0; border-left: 0; border-bottom: 1.5px solid var(--line); }
+  .fig-roles-hub { position: static; transform: none; width: auto; height: auto; border-radius: var(--radius-xs); margin-top: .8em; justify-self: start; }
+  .fig-map { font-size: .7em; }
+  .fig-map td, .fig-map th { padding: .5em .4em; }
+}

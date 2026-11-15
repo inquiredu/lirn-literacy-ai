@@ -12,14 +12,30 @@ The landing page now includes a linked agenda, explicit intended outcomes, inqui
 
 Seasonal artwork and portrait files remain in the repository but are no longer shown. The shared brand source `present/inquiredu.css` is unchanged. The talk's existing paper-and-spruce palette and self-hosted fonts remain.
 
+## Day-of call: breakout rooms
+
+Made at the call to order by headcount (participants, not presenters), and sent to the co-host in a private chat. The title slide's notes repeat it.
+
+| Participants | Roles pause (`roles-grid`) | Cases pause (`hold-test`) |
+| --- | --- | --- |
+| 12 or more | Four rooms, one per role, assigned automatically | Three rooms (Case A, B, C), participants choose |
+| 9 to 11 | Main room; roles by first name, chat waterfall | Three rooms, participants choose |
+| Under 9 | Main room | Main room; take the case closest to your grades, chat waterfall |
+
+Before the day: turn on breakout rooms and "Allow participants to choose room" on the meeting, and name a co-host to run them. Allow about a minute and a half to open and close each round.
+
 ## Outstanding content decisions
 
-- Replace `links.padlet` with the actual session board. It still points to the Padlet homepage.
+- Padlet removed (November 15, 2026). Responses go in the Zoom chat; a co-host saves the chat after version 1. Still `[ADD]`: how people send observations back after the session.
 - Resolve the five `[ADD]` facilitator notes in `deck.js`: changes to the session description, the framing attribution, the prepared/live checking example, University of Minnesota research, and the follow-up submission process.
 - Confirm any session date and start time before configuring automatic clock start. The clock currently waits for the presenter.
 - The user approved the design and wording direction. Resolve the remaining content placeholders with the presenters.
 
 ## Verification
+
+November 15, 2026, after the content review (`docs/CONTENT-REVIEW.md`): `node scripts/check-all.js` passes (30 slides, 60 minutes, 7 timers; 53 contrast pairs); `node scripts/a11y.js` finds no axe violations on 33 pages and slides at 1280 and 375px in light and dark. The three new figures were checked by screenshot on the stage, on a phone and in the review, and their new color pairs by arithmetic (11.6:1 or better). Not checked: a live Zoom screen share, breakout rooms, and the full text of the cited papers.
+
+Earlier:
 
 Verified in Chrome on November 14, 2026:
 
