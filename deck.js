@@ -59,7 +59,8 @@ export default {
         "We share what we're working out because saying it out loud, to people who'll push back, is how we get clearer. We don't always agree, and you'll hear that. We also just like doing this together, and we hope that comes through."
       ],
       signoff: "Andrew & Sean",
-      season: "social"            // the part whose drawing is taped beside it: October, the fire
+      photo: { src: "assets/sean-and-andrew.jpg", alt: "Sean, left, and Andrew, right, side by side in a coffee shop, both in glasses and caps", caption: "Sean, left, and Andrew" },
+      season: "social"            // the part whose drawing is tucked behind the photo: October, the fire
     },
     made: "How this was made: our conversation, Gemini's notes on it, deep-research prompts, and a first draft of the deck by Claude, all revised by us, with the studies on the slides checked against their sources. Telling you that is part of the session."
   },
@@ -336,10 +337,11 @@ export default {
       notes: "Andrew: leave this up while people scan. Q shows the code large."
     },
     {
-      id: "thanks", part: "revisit", kind: "statement",
+      id: "thanks", part: "revisit", kind: "split",
       kicker: "Thank you",
       heading: "Literacy rarely develops **apart from others**.",
       foot: "{by} · R&B",
+      image: { src: "assets/sean-and-andrew.jpg", alt: "Sean, left, and Andrew, right, side by side in a coffee shop, both in glasses and caps" },
       notes: "Both: thank the room. Point them to What We Talk About for resources, and to this deck for slides, notes and sources."
     }
   ]

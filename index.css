@@ -44,6 +44,12 @@ h2 { font: var(--type-h2); letter-spacing: var(--tracking-heading); }
 /* Why the two of us, signed by hand, with October's fire taped beside it */
 .us.with-note { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: var(--space-6); align-items: center; }
 .us-note { --tilt: -2deg; --tape: 4deg; width: 100%; max-width: 20rem; justify-self: center; align-self: center; margin: 0; }
+/* The photo taped on top, with October's fire tucked behind it at an angle, like a page in a kept journal */
+.us-collage { position: relative; display: grid; justify-items: center; padding: var(--space-5) 0 var(--space-6); }
+.us-photo { --tilt: 2.5deg; --tape: -5deg; position: relative; z-index: 1; width: 100%; max-width: 19rem; margin: 0; padding-bottom: 6px; }
+.us-photo img { aspect-ratio: 1; object-fit: cover; }
+.us-note.tucked { --tilt: -7deg; --tape: 8deg; position: absolute; z-index: 0; left: -6%; bottom: -2%; width: 62%; max-width: 13rem; }
+.us-note.tucked::before { display: none; }
 .us p { margin: var(--space-3) 0 0; font: 400 19px/1.65 var(--font-serif); color: var(--fg-1); max-width: 36em; }
 .us .signoff { margin-top: var(--space-4); font: 700 36px/1 var(--font-hand); color: var(--fg-accent); transform: rotate(-2deg); transform-origin: left center; }
 
@@ -59,4 +65,5 @@ h2 { font: var(--type-h2); letter-spacing: var(--tracking-heading); }
   .asks li { font-size: 19px; padding-left: 2.2rem; }
   .aim { padding-inline: 0; }
   .takeaways, .us.with-note { grid-template-columns: minmax(0, 1fr); }
+  .us-note.tucked { left: 0; width: 55%; }
 }
