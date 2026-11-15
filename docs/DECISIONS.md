@@ -54,3 +54,6 @@ One line each: date · decision · why. The standard's own decisions come first;
 - 2026-11-14 · The user reviewed the local redesign and approved pushing it to main · Explicit approval in the active session.
 
 - 2026-11-14 · Add separate author biographies and professional source links at the user's request · Sean's current role and AI work are documented by MSBA's September–October 2025 Journal, with prior experience in MASA's EdTalks profile. Andrew's role is documented in the New Code Academy directory and the University of Minnesota LEAD program; his literacy background appears in his co-authored eSchool News article.
+
+- 2026-11-15 · Author bios replaced with the presenters' own bios from the November 12 meeting file; Andrew's role reads "Digital Learning Coordinator" (he leads secondary digital learning, the K–12 media program and New Code Academy) · Sean's request. Profile links kept.
+- 2026-11-15 · Padlet removed from the deck; response capture left as `[ADD]` until the presenters choose a Zoom-native method · Sean's request. The session is on Zoom, and the choice is theirs. See `docs/CONTENT-REVIEW.md`.

@@ -14,7 +14,7 @@ Seasonal artwork and portrait files remain in the repository but are no longer s
 
 ## Outstanding content decisions
 
-- Replace `links.padlet` with the actual session board. It still points to the Padlet homepage.
+- Padlet removed (November 15, 2026). Decide how the room's responses are captured on Zoom; the v1 notes and the resources notes carry `[ADD]` for it.
 - Resolve the five `[ADD]` facilitator notes in `deck.js`: changes to the session description, the framing attribution, the prepared/live checking example, University of Minnesota research, and the follow-up submission process.
 - Confirm any session date and start time before configuring automatic clock start. The clock currently waits for the presenter.
 - The user approved the design and wording direction. Resolve the remaining content placeholders with the presenters.

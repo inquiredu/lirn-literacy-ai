@@ -4,7 +4,7 @@
 // SEAN'S WORKING DRAFT, leadership design revision (2026-11-14), for Andrew to react to. Rebuilt as a working session: the room reads,
 // writes and revises, and the evidence is offered as "what we're noticing," not as findings. Audience: literacy
 // coaches, literacy leaders and media specialists. [ADD] in a note marks a gap only Andrew or Sean can fill.
-// The room's thinking goes to a Padlet for now (an Apps Script capture tool is pinned for later). Resources and
+// [ADD] Where the room's responses go is undecided (Padlet removed 2026-11-15). Resources and
 // what the room learns afterward are shared through What We Talk About When We Talk About AI.
 // Authorship: a joint session by Andrew Rummel and Sean Beaverson. Public copy remains a draft for their review.
 
@@ -16,7 +16,6 @@ export default {
   url: "https://inquiredu.org/lirn-literacy-ai/",   // live once the repo is public and Pages is on
   links: {
     site: "./",
-    padlet: "https://padlet.com/",                    // [ADD] the session's Padlet, with five columns (see the notes on slide 4)
     wwta: "https://inquiredu.org/what-we-talk-about/" // where resources and the room's learning are shared afterward
   },
   theme: "light",
@@ -63,9 +62,9 @@ export default {
       people: [
         {
           name: "Andrew Rummel",
-          role: "Digital Learning Coordinator, Secondary",
+          role: "Digital Learning Coordinator",
           organization: "Bloomington Public Schools",
-          bio: "Andrew's background includes work as a language arts teacher, literacy coach, and K–12 literacy coordinator. He supports digital learning and New Code Academy's secondary program, and has co-authored guidance on ethical AI use in K–12 education.",
+          bio: "Andrew Rummel is a Digital Learning Coordinator for the Bloomington Public Schools. In this role, he leads the secondary digital learning team, the K12 media program, and New Code Academy Middle and High School. With over 25 years in education, he has served as English/Language Arts teacher, Reading and Writing interventionist, and literacy coach. His leadership work includes a range of roles, including K-12 Literacy Coordinator for the Minneapolis Public Schools and Coordinator of the Minneapolis Residency Program. Andrew has designed and taught university courses focused on professional learning and coaching, adolescent reading and literacy leadership, and curriculum design. He has a deep interest in digital literacies and their impact on teaching and learning, and his dedication to advancing literacy practices underscores his commitment to preparing students for success in a rapidly evolving world.",
           links: [
             { label: "District profile", url: "https://www.newcodeacademy.org/about/staff?combine=&field_school_level_target_id=All&page=1" },
             { label: "Selected writing", url: "https://www.eschoolnews.com/digital-learning/2024/04/02/crafting-ethical-ai-landscapes-in-k-12-education/" }
@@ -75,7 +74,7 @@ export default {
           name: "Sean Beaverson",
           role: "Director of Technology",
           organization: "Orono Public Schools",
-          bio: "Sean brings more than two decades of experience in instructional design, professional development, and district leadership. His work includes helping school leaders examine AI use and co-authoring an account of Orono's use of AI to develop teacher evaluation rubrics for the Minnesota School Boards Association Journal.",
+          bio: "Sean Beaverson is the Director of Technology for Orono Public Schools. In this role, he leads district-wide technology integration, infrastructure development, and human-centered AI strategy. With over two decades in education, he has served as a high school English and language arts teacher, instructional technology specialist, and personalized learning specialist across Minnesota school districts. His leadership work includes designing district eLearning plans, coordinating emergency distance learning frameworks, and presenting extensively on educational technology and AI integration. Sean has also served as an adjunct professor at St. Catherine University, designing and teaching courses focused on instructional technology. He has a deep interest in the intersection of emerging technologies and critical inquiry, and his dedication to supporting educators underscores his commitment to preparing students for a rapidly evolving world.",
           links: [
             { label: "Professional background", url: "https://www.mnasa.org/edtalks" },
             { label: "Selected writing", url: "https://search.mnmsba.org/api/download/file-1756959159342-download-AI-Harnessing-Trust-Technology-September-October-2025.pdf" }
@@ -133,10 +132,10 @@ export default {
       id: "v1", part: "open", kind: "pause",
       kicker: "Version 1 · {mins}",
       heading: "What does it mean to be **literate now**?",
-      body: "One sentence, on the Padlet. You'll come back to it before you leave.",
+      body: "Write one sentence. You'll come back to it before you leave.",
       foot: "Use this as a working definition to revisit at the close.",
       timer: 2,
-      notes: "Sean: {Mins:words}. Put the Padlet link in the chat or on table cards: {links.padlet}\n\nSet the Padlet up beforehand with five columns: Literate now (v1 and v2), The four roles, Making text, Navigating text, The social thread. Don't read answers aloud yet; we come back to them at the end."
+      notes: "Sean: {Mins:words}. [ADD] where people write their sentence, and how we find it again at the end (to be decided). Don't read answers aloud yet; we come back to them at the end."
     },
 
     // ── 1 · A shared lens ─────────────────────────────────────────────────────────────────────────────────
@@ -163,7 +162,6 @@ export default {
       kicker: "At your table · {mins}",
       heading: "When the text came from **AI**, what does each role look like?",
       body: "Each table takes one role. Name one way it changes, and one way it stays the same.",
-      foot: "Add it to the Padlet, under your role.",
       timer: 5,
       notes: "Andrew: count tables off 1 to 4 by role. Spread media specialists across tables; they'll pull toward text analyst, and every table benefits from that lens.\n\nHear one answer per role out loud before moving on. This is the room's lens for the rest of the hour."
     },
@@ -199,7 +197,6 @@ export default {
       kicker: "Pause · {mins}",
       heading: "What must we preserve? What should we **test**?",
       body: "Half the room takes Case A, half takes Case B. Name one value that shouldn't bend, and one thing you'd try and watch.",
-      foot: "Add both to the Padlet, under Making text.",
       timer: 6,
       notes: "Sean: {Mins:words}. Split the room by side. Listen for values (ownership of ideas, every student in the shared text, struggle that builds something) and for tests (what would you look at a month from now?)."
     },
@@ -269,7 +266,7 @@ export default {
         { kicker: "Questions for practice", heading: "Evidence to examine", body: "Media specialists: what do your students do now when an answer sounds right? What do they do when they don't know the topic?", key: true }
       ],
       foot: "Dangol et al. (2025), IDC; arXiv 2505.01106 (preprint, France); Brodsky et al. (2023), AERA Open, 2,278 students.",
-      notes: "Sean: two small studies, different ages and tasks, pointing the same way. Treat that as a pattern worth testing, not a finding. If it holds, topic choice and a teacher-supplied reference text matter more than which checking move you teach. Add answers to the Padlet, under Navigating text."
+      notes: "Sean: two small studies, different ages and tasks, pointing the same way. Treat that as a pattern worth testing, not a finding. If it holds, topic choice and a teacher-supplied reference text matter more than which checking move you teach."
     },
     {
       id: "moves", part: "navigating", kind: "list",
@@ -306,7 +303,6 @@ export default {
       kicker: "Collaborative analysis · {mins}",
       heading: "Where might AI reduce or **support participation**?",
       body: "Look back at Case A, Case B, and the answer you just checked. Add one to each side.",
-      foot: "Add it to the Padlet, under The social thread.",
       timer: 4,
       notes: "Andrew: {Mins:words}. Pull two or three from each side out loud, and name where the room's columns differ from our starters."
     },
@@ -346,7 +342,7 @@ export default {
       heading: "Research and leadership resources",
       body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. Bring back what you notice when you try something.",
       foot: "inquiredu.org/what-we-talk-about",
-      notes: "Sean: this is where the room's learning lives after today. [ADD] how people send observations back (the Padlet stays open, an email, or a form on the site), and when we'll add the session's resources there. Link for the chat: {links.wwta}"
+      notes: "Sean: this is where the room's learning lives after today. [ADD] how people send observations back (to be decided), and when we'll add the session's resources there. Link for the chat: {links.wwta}"
     },
     {
       id: "way-back", part: "revisit", kind: "link",
