@@ -271,6 +271,34 @@ export default {
       foot: "Dangol et al. (2025), IDC; arXiv 2505.01106 (preprint, France); Brodsky et al. (2023), AERA Open, 2,278 students.",
       notes: "Sean: two small studies, different ages and tasks, pointing the same way. Treat that as a pattern worth testing, not a finding. If it holds, topic choice and a teacher-supplied reference text matter more than which checking move you teach. Add answers to the Padlet, under Navigating text."
     },
+    // Draft (2026-11-15): two slides on elementary skills the reading research says matter more with AI. Few words on
+    // the slide; the talking points are in the notes. Citations are from established research, not yet re-checked.
+    {
+      id: "basics-checking", part: "navigating", kind: "cards",
+      title: "The basics matter more: checking",
+      kicker: "What elementary literacy already teaches",
+      heading: "The basics matter **more**: checking",
+      cards: [
+        { kicker: "Knowledge & vocabulary", heading: "You can't check from nothing", body: "Knowing the topic beat being a strong reader.", key: true },
+        { kicker: "Monitoring", heading: "Does this make sense?", body: "Children miss contradictions until taught to look." },
+        { kicker: "Sourcing", heading: "Who says so? Who else?", body: "Fact-checkers leave the page to check it." }
+      ],
+      foot: "Recht & Leslie (1988), Journal of Educational Psychology 80(1); Markman (1979), Child Development 50(3); Wineburg & McGrew (2019), Teachers College Record 121(11).",
+      notes: "Sean: the research behind these predates AI, but it explains what the Charlotte's Web answer just showed us. Name each, briefly.\n\nKnowledge and vocabulary: in Recht and Leslie's study, weaker readers who knew baseball understood a baseball passage better than strong readers who didn't. Knowledge is how readers caught Templeton. A knowledge-rich curriculum is also a checking curriculum.\n\nMonitoring: Markman found elementary students often read right past contradictions in a text unless told to look for them. AI text is fluent and confident, with none of the usual signals of a weak source. Teach the stop: does this fit what I already know?\n\nSourcing: Wineburg and McGrew found professional fact-checkers leave a page to find out who's behind it before they read closely. An AI answer usually has no visible author. The elementary version: Who says so? How could we check? Does a second source agree? That's the claim nobody could check from memory."
+    },
+    {
+      id: "basics-thinking", part: "navigating", kind: "cards",
+      title: "The basics matter more: thinking",
+      kicker: "What elementary literacy already teaches",
+      heading: "The basics matter **more**: doing the thinking",
+      cards: [
+        { kicker: "Complex text", heading: "Hard text, with help", body: "With support, most readers kept up." },
+        { kicker: "Writing", heading: "Writing is thinking", body: "Writing about reading builds comprehension. What you make, you remember.", key: true },
+        { kicker: "Discussion", heading: "Argue with the text", body: "Structured talk builds comprehension. Every text has an author to question." }
+      ],
+      foot: "Lupo et al. (2019), Reading Research Quarterly 54(4); Graham & Hebert (2010), Writing to Read, Alliance for Excellent Education; Slamecka & Graf (1978), Journal of Experimental Psychology: Human Learning and Memory 4(6); Murphy et al. (2009), Journal of Educational Psychology 101(3); Beck, McKeown, Hamilton & Kucan (1997), Questioning the Author.",
+      notes: "Sean: the second set is about the work AI can do for students, and the learning they lose if it does.\n\nComplex text: the Lupo study from Case B. With support, most readers understood the harder text about as well as the easier one. If AI simplifies every text, students get less practice with hard text, and stamina goes with it. Scaffold first; level as a bridge you plan to leave.\n\nWriting: Graham and Hebert's meta-analysis found that writing about what students read improves their comprehension. Memory research calls it the generation effect: people remember what they produce better than what they only read. Explicit teaching of planning, drafting and revising (Graham and Harris's self-regulated strategy development) has strong evidence too. If AI does the generating, students skip the part that does the learning. That's Case A again: students write first; AI, if at all, gives feedback.\n\nDiscussion: Murphy and colleagues' meta-analysis found structured discussion about texts improves comprehension. Questioning the Author teaches students that every text is someone's choices, which applies to AI as much as any book.\n\nOne caution to say out loud: decoding and fluency are still the foundation. AI text is still text, and a student working hard to read the words has little attention left to question them."
+    },
     {
       id: "moves", part: "navigating", kind: "list",
       kicker: "Instructional approaches to examine", heading: "Verification with intermediate readers",
