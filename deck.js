@@ -14,7 +14,7 @@ const levels = (mode) => (mode === "stage" ? ["h1", "h2"] : ["h2", "h3"]);
 export default {
   id: "lirn-literacy-ai",
   title: "Literacy in an AI Era",
-  subtitle: "Professional judgment in literacy instruction, text creation, and critical inquiry in an age of AI.",
+  subtitle: "Professional judgment in literacy instruction, text creation, and critical inquiry.",
   by: "Andrew Rummel and Sean Beaverson",
   url: "https://inquiredu.org/lirn-literacy-ai/",   // live once the repo is public and Pages is on
   links: {
