@@ -162,7 +162,7 @@
 }
 .kind-title .sun::before, .kind-title .sun::after { content: none; }
 @container slide (max-width: 760px) {
-  .kind-title .sun { width: 80%; right: -24%; top: 0; opacity: .2; }
+  .slide.kind-title .sun.r { width: 80%; right: -24%; top: 0; opacity: .2; }   /* beats the reveal rules, which set opacity on every .r */
 }
 /* The birches take the top corner on the title slide; the rail already names the part */
 .kind-title .title-top .index-label { display: none; }
