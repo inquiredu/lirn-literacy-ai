@@ -49,9 +49,19 @@ const aim = land.aim && h("section", { class: "aim", "aria-labelledby": "a-head"
     h("p", { class: "intro" }, words(land.aim.intro))),
   h("div", {}, list(land.aim.items, "takeaways"), h("p", { class: "close" }, words(land.aim.close))));
 
+const authorProfile = (author) => h("article", { class: "author" },
+  h("h3", {}, words(author.name)),
+  h("p", { class: "author-role" }, words(author.role), h("br"), words(author.organization)),
+  h("p", { class: "author-bio" }, words(author.bio)),
+  h("div", { class: "author-links" }, author.links.map((link) =>
+    h("a", { href: link.url, "aria-label": author.name + ": " + link.label }, words(link.label)))));
+
 const us = land.us && h("section", { class: "facilitators", "aria-labelledby": "u-head" },
-  h("h2", { id: "u-head", class: "eyebrow" }, words(land.us.heading)),
-  h("div", {}, land.us.body.map((p, i) => h("p", { class: i ? "intro" : "facilitator-names" }, words(p)))));
+  h("div", { class: "author-intro" },
+    h("p", { class: "eyebrow" }, words(land.us.label)),
+    h("h2", { id: "u-head" }, words(land.us.heading)),
+    h("p", { class: "intro" }, words(land.us.intro))),
+  h("div", { class: "authors" }, land.us.people.map(authorProfile)));
 
 const resources = land.resources && h("section", { class: "resources", "aria-labelledby": "r-head" },
   h("div", {}, h("h2", { id: "r-head" }, words(land.resources.heading)), h("p", {}, words(land.resources.body))),

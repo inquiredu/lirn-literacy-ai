@@ -57,10 +57,30 @@ export default {
       close: "The aim is a considered next step, grounded in what students need to learn."
     },
     us: {
-      heading: "Session facilitators",
-      body: [
-        "{by}",
-        "Longtime colleagues bringing a shared inquiry to literacy, AI, and the social nature of learning. The session combines classroom cases, research discussion, and participants' professional experience."
+      label: "About the authors",
+      heading: "Experience grounded in schools",
+      intro: "Andrew and Sean bring complementary experience in literacy instruction, professional learning, and district technology leadership.",
+      people: [
+        {
+          name: "Andrew Rummel",
+          role: "Digital Learning Coordinator, Secondary",
+          organization: "Bloomington Public Schools",
+          bio: "Andrew's background includes work as a language arts teacher, literacy coach, and K–12 literacy coordinator. He supports digital learning and New Code Academy's secondary program, and has co-authored guidance on ethical AI use in K–12 education.",
+          links: [
+            { label: "District profile", url: "https://www.newcodeacademy.org/about/staff?combine=&field_school_level_target_id=All&page=1" },
+            { label: "Selected writing", url: "https://www.eschoolnews.com/digital-learning/2024/04/02/crafting-ethical-ai-landscapes-in-k-12-education/" }
+          ]
+        },
+        {
+          name: "Sean Beaverson",
+          role: "Director of Technology",
+          organization: "Orono Public Schools",
+          bio: "Sean brings more than two decades of experience in instructional design, professional development, and district leadership. His work includes helping school leaders examine AI use and co-authoring an account of Orono's use of AI to develop teacher evaluation rubrics for the Minnesota School Boards Association Journal.",
+          links: [
+            { label: "Professional background", url: "https://www.mnasa.org/edtalks" },
+            { label: "Selected writing", url: "https://search.mnmsba.org/api/download/file-1756959159342-download-AI-Harnessing-Trust-Technology-September-October-2025.pdf" }
+          ]
+        }
       ]
     },
     resources: {

@@ -52,3 +52,5 @@ One line each: date · decision · why. The standard's own decisions come first;
 - 2026-11-14 · Timer accessible names include their visible labels, the stage is keyboard-focusable, and the accessibility scan rejects HTTP errors and drops the removed sample tally page · Browser QA exposed label mismatches, inaccessible long-slide scrolling, and a stale kit scan target.
 
 - 2026-11-14 · The user reviewed the local redesign and approved pushing it to main · Explicit approval in the active session.
+
+- 2026-11-14 · Add separate author biographies and professional source links at the user's request · Sean's current role and AI work are documented by MSBA's September–October 2025 Journal, with prior experience in MASA's EdTalks profile. Andrew's role is documented in the New Code Academy directory and the University of Minnesota LEAD program; his literacy background appears in his co-authored eSchool News article.
