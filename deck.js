@@ -31,7 +31,7 @@ export default {
   landing: {
     questions: {
       heading: "The questions we're carrying",
-      intro: "We don't have conclusions. We have questions we'd like to get sharper, and we'd rather work on them with you than at you.",
+      intro: "We don't have conclusions yet. We have questions we'd like to get sharper, and we'd like to work on them with you.",
       items: [
         "What does it mean to be literate now, with AI in the room?",
         "What has reading and writing always asked of us, and what is actually new?",
@@ -43,19 +43,19 @@ export default {
     },
     aim: {
       heading: "If it goes well",
-      intro: "Nobody leaves with the answer. We hope everyone leaves with a clearer way to ask:",
+      intro: "You'll leave with a clearer way to ask, and with:",
       items: [
         "A sentence about literacy now that you wrote, revised, and can stand behind.",
         "A shared lens, the four roles of the reader, to use on any text AI made.",
         "One signpost to watch for, and one small thing to try in your building.",
         "A few more people to keep thinking with."
       ],
-      close: "Clarity and precision, at a moment when the words are moving fast. Decisions for now, held up against what we already believe about how kids become readers and writers."
+      close: "We want more clarity and precision while the words are moving this fast. Whatever we decide is a decision for now, and we'll keep checking it against what we already believe about how kids become readers and writers."
     },
     us: {
       heading: "Why the two of us",
       body: [
-        "We've been friends since Sean was seventeen. We both started as English teachers. Andrew went deep into literacy: intervention, coaching, and K–12 literacy for Minneapolis Public Schools. Sean went toward technology and how schools take it on. We keep meeting in the middle of the same conversation.",
+        "We've been friends since Sean was seventeen. We both started as English teachers. Andrew went deep into literacy: intervention, coaching, and K-12 literacy for Minneapolis Public Schools. Sean went toward technology and how schools take it on. We keep meeting in the middle of the same conversation.",
         "We share what we're working out because saying it out loud, to people who'll push back, is how we get clearer. We don't always agree, and you'll hear that. We also just like doing this together, and we hope that comes through."
       ],
       signoff: "Andrew & Sean",
@@ -204,7 +204,7 @@ export default {
         { kicker: "Would tell us", heading: "Your evidence", body: "Does she come back to the shared text? Does she join the discussion? Which words from the original does she use a week later?", key: true }
       ],
       foot: "Lupo, Tortorelli, Invernizzi, Ryoo & Strong (2019), Reading Research Quarterly 54(4). Texts leveled by people, not AI.",
-      notes: "Andrew: the students who did better with easier versions look a lot like the newcomer in Case B, so the study doesn't settle the case; it sharpens it. One option to name, not prescribe: scaffold the original first (key words taught ahead, glosses, chunking, audio, partner talk), and treat a leveled version as a bridge you plan to leave."
+      notes: "Andrew: the students who did better with easier versions look a lot like the newcomer in Case B, which makes this the study closest to her. It still used texts leveled by people, so it can't tell us what an AI version does. One option to name: scaffold the original first (key words taught ahead, glosses, chunking, audio, partner talk), and treat a leveled version as a bridge you plan to leave."
     },
     {
       id: "middle", part: "making", kind: "statement",
@@ -238,8 +238,8 @@ export default {
         { name: "“The first word she writes is ‘Terrific’”", why: "Wrong: it was “Some Pig.” Harder, even for people who know the book well." },
         { name: "“The most-assigned chapter book in fourth grade”", why: "No source. You can't check it from memory at all, and it sounds the most authoritative.", key: true }
       ],
-      foot: "Three claims, three different kinds of checking.",
-      notes: "Sean: ask how people caught each one, and who missed which. The point isn't the errors; it's that checking depended on what each reader already knew, and the claim that sounded most like a fact was the one nobody could check from memory."
+      foot: "Each claim took a different kind of checking.",
+      notes: "Sean: ask how people caught each one, and who missed which. Checking depended on what each reader already knew, and the claim that sounded most like a fact was the one nobody could check from memory."
     },
     {
       id: "noticing-nav", part: "navigating", kind: "cards",
@@ -279,7 +279,7 @@ export default {
         { kicker: "Where talk can thin out", heading: "Asking each other", body: "“Just ask the chatbot” replaces asking a classmate. Each student prompts alone. Peer feedback gets thinner." },
         { kicker: "Where a door can open", heading: "Rehearsing first", body: "Private, ungraded practice before speaking. Help drafting a message for a student who finds live interaction costly. A bridge for multilingual learners." }
       ],
-      foot: "Starters, not findings. The same tool can do either. You'll build the rest.",
+      foot: "These are starters, and the same tool can do either. You'll fill in the rest.",
       notes: "Sean: a T-chart. [ADD] the University of Minnesota research we planned to bring in. The 'door' column matters as much as the other: for students with social anxiety, or for whom interaction is costly, AI can lower the barrier. Most of the evidence on both sides is small, short and from higher education."
     },
     {
@@ -310,7 +310,7 @@ export default {
       kicker: "Version 2 · {mins}",
       heading: "What does it mean to be **literate now**?",
       body: "Revise your sentence from the start. Put version 2 next to version 1. What changed? What didn't?",
-      foot: "What didn't change may matter most.",
+      foot: "Notice what stayed the same.",
       timer: 3,
       notes: "Both: {Mins:words}. Then read three or four pairs aloud, version 1 then version 2. Notice together what stayed the same; that's where the values are."
     },
