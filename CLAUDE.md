@@ -25,6 +25,7 @@ Plain HTML, CSS and ES modules; no build step, no dependencies (a departure from
 - `node scripts/serve.js` — http://localhost:4188/present.html; `?at=12` rehearses twelve minutes in.
 - `node scripts/a11y.js` (`THEME=dark` for Night) and `node scripts/preview.js` (map, shoot, compare, pdf) need `npm i -D playwright @axe-core/playwright` once; `PREVIEW_BROWSER` points at Chrome if Playwright's browser isn't installed.
 - `node scripts/sync-brand.js` — after the brand changes in `BrandID/inquiredu`.
+- Handed an edited `.pptx` (from the review page's "Download .pptx to edit")? `node scripts/pptx.js import <file> --dry-run`, show the changes, then run it without `--dry-run` and `node scripts/check-all.js`. Only words travel; a note it prints (a skipped box, names matched by order) goes to the user. `node scripts/pptx.js export` writes the same file.
 - Say what was run, and what wasn't. Work on a branch and let Sean merge; never deploy or change repository settings unasked.
 
 ## Things that will bite you

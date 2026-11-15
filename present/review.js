@@ -2,10 +2,11 @@
 // Narrow screens stack the two. Stable slide anchors, keyboard controls, and the printable backup
 // share the same deck as the stage.
 import { lengthLabel, slideTitle } from "./core.js";
-import { h, loadDeck, rich } from "./dom.js";
+import { h, loadDeck, rich, say } from "./dom.js";
 import { renderSlide } from "./kinds.js";
+import { colorsFrom, deckToPptx } from "./pptx.js";
 
-const { model } = await loadDeck();
+const { deck, model } = await loadDeck();
 document.title = "Review · " + model.title;
 
 const ctx = { model, mode: "review", timer: null, embeds: null };
@@ -123,7 +124,8 @@ document.body.append(
       h("a", { class: "tool", href: "./" }, "Overview"),
       contentsButton,
       h("a", { class: "tool primary", href: "present.html" }, "Present"),
-      h("button", { type: "button", class: "tool", on: { click: () => window.print() } }, "Print or save as PDF"))),
+      h("button", { type: "button", class: "tool", on: { click: () => window.print() } }, "Print or save as PDF"),
+      h("button", { type: "button", class: "tool", title: "Every slide's words and notes, to edit in PowerPoint or Google Slides and hand back to Claude Code", on: { click: downloadPptx } }, "Download .pptx to edit"))),
   h("main", { class: "review" }, contents, book, h("div", { class: "print-pages" }, pages)));
 show(at);
 
@@ -146,4 +148,20 @@ function groups() {
     else out.push({ part: s.part, slides: [s] });
   });
   return out;
+}
+
+// The deck as a PowerPoint file for editing words, built here from deck.js so it is never out of date. Colors come
+// from the talk's own tokens in the light theme; the file is for words, and its look never travels back.
+function downloadPptx() {
+  const probe = h("div", { "data-theme": "light", hidden: true });
+  document.body.append(probe);
+  const style = getComputedStyle(probe);
+  const colors = colorsFrom((name) => style.getPropertyValue("--" + name).trim());
+  probe.remove();
+  const blob = new Blob([deckToPptx(deck, { colors })], { type: "application/vnd.openxmlformats-officedocument.presentationml.presentation" });
+  const link = h("a", { href: URL.createObjectURL(blob), download: (model.id || "deck") + ".pptx" });
+  document.body.append(link);
+  link.click();
+  setTimeout(() => { URL.revokeObjectURL(link.href); link.remove(); }, 1000);
+  say("Downloaded " + (model.id || "deck") + ".pptx");
 }

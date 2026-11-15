@@ -12,6 +12,10 @@ The landing page now includes a linked agenda, explicit intended outcomes, inqui
 
 Seasonal artwork and portrait files remain in the repository but are no longer shown. The shared brand source `present/inquiredu.css` is unchanged. The talk's existing paper-and-spruce palette and self-hosted fonts remain.
 
+## Editing words in PowerPoint
+
+The review page's **Download .pptx to edit** builds a PowerPoint file from `deck.js` (every word in its own text box, notes in the notes pane). Edit it in PowerPoint, Keynote or Google Slides and give it back to Claude Code, which runs `node scripts/pptx.js import`. Only changed words go into `deck.js`; the theme and layout never change. Checked: export and import round trip with no changes, through LibreOffice too, and five edits made with python-pptx came back as exactly five strings in `deck.js`. Not checked: a file saved by PowerPoint, Keynote or Google Slides themselves.
+
 ## Day-of call: breakout rooms
 
 Made at the call to order by headcount (participants, not presenters), and sent to the co-host in a private chat. The title slide's notes repeat it.
