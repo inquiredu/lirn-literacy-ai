@@ -1,4 +1,4 @@
-# Content review: Literacy Across Modalities
+# Content review: Literacy in an AI Era
 
 November 15, 2026. A review of `deck.js` (28 slides, 6 parts, 60 minutes) against the November 12 planning meeting notes, for a one-hour LiRN session on Zoom that includes elementary educators. Citations were checked against publisher, arXiv and author pages on the web; what couldn't be checked is listed at the end.
 

@@ -1,4 +1,4 @@
-# Literacy Across Modalities: handoff
+# Literacy in an AI Era: handoff
 
 Updated November 15, 2026. The underlying presentation engine follows `STANDARD.md`.
 
