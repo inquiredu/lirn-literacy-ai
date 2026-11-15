@@ -34,8 +34,8 @@ $.timer = h("section", { class: "n-card n-timer", "aria-label": "Timer on the st
   h("p", { class: "label" }, "Timer on the stage"),
   h("p", { class: "t-read" }, $.tDisplay, $.tStatus),
   h("div", { class: "n-buttons" }, $.tGo,
-    button("−1 min", () => send("minus"), { "aria-label": "One minute less" }),
-    button("+1 min", () => send("plus"), { "aria-label": "One minute more" }),
+    button("−1 min", () => send("minus"), { "aria-label": "−1 min: one minute less" }),
+    button("+1 min", () => send("plus"), { "aria-label": "+1 min: one minute more" }),
     button("Reset", () => send("reset-timer"))));
 $.next = h("p", { class: "n-next" });
 $.call = button("Call to order", () => send("call"), { class: "primary" });

@@ -1,55 +1,61 @@
-// The front door, where the QR code leads. Every word comes from deck.js: the title slide's kicker, the deck's
-// title, subtitle and byline, and deck.landing (the questions, what we hope for, and why the two of us).
-// Elements are built with h() and words with rich(), so deck text never becomes HTML.
+// Session overview. Content and agenda come from the same deck as the stage and notes.
 import { h, loadDeck, rich } from "./dom.js";
+import { lengthLabel } from "./core.js";
 
 const { deck, model } = await loadDeck({ theme: false });
 const ctx = { model };
-const title = deck.slides.find((s) => s.kind === "title");
 const land = deck.landing || {};
-const season = model.parts.find((p) => p.season?.art)?.season;
 document.title = model.title;
+const words = (text) => rich(text, ctx);
+const list = (items, cls) => items?.length && h("ol", { class: cls }, items.map((t) => h("li", {}, words(t))));
 
-const list = (items, cls) => items?.length && h("ol", { class: cls }, items.map((t) => h("li", {}, rich(t, ctx))));
+const masthead = h("nav", { class: "masthead", "aria-label": "Session navigation" },
+  h("a", { class: "identity", href: "./" }, land.identity, h("span", {}, land.context)),
+  h("div", { class: "nav-links" },
+    h("a", { href: "#overview" }, land.nav?.overview),
+    h("a", { href: "#agenda" }, land.nav?.agenda),
+    h("a", { href: "review.html" }, land.nav?.review)));
+
+const agenda = h("aside", { class: "agenda", id: "agenda", "aria-labelledby": "agenda-head" },
+  h("div", { class: "agenda-head" }, h("h2", { id: "agenda-head" }, land.agendaHeading), h("p", {}, words(land.agendaLabel))),
+  h("ol", {}, model.parts.map((part, i) => h("li", {},
+    h("a", { href: "review.html#" + model.slides[part.slides[0]].id },
+      h("span", { class: "agenda-n", "aria-hidden": "true" }, String(i + 1).padStart(2, "0")),
+      h("span", { class: "agenda-name" }, words(part.title)),
+      h("span", { class: "agenda-time" }, lengthLabel(part.minutes)))))));
 
 const hero = h("header", { class: "hero" },
   h("div", { class: "hero-words" },
-    title?.kicker && h("p", { class: "eyebrow" }, rich(title.kicker, ctx)),
-    h("h1", {}, rich(model.title, ctx)),
-    model.subtitle && h("p", { class: "lead" }, rich(model.subtitle, ctx)),
-    title?.by && h("p", { class: "byline" }, rich(title.by, ctx)),
+    h("p", { class: "eyebrow" }, land.overviewLabel),
+    h("h1", {}, words(model.title)),
+    h("p", { class: "lead" }, words(model.subtitle)),
+    h("p", { class: "byline" }, words(model.by)),
     h("div", { class: "ways" },
-      h("a", { href: "review.html" }, h("strong", {}, "Read it"), h("span", {}, "The slides, with our notes.")),
-      h("a", { href: "present.html" }, h("strong", {}, "Present"), h("span", {}, "For presenting.")))),
-  season && h("figure", { class: "field-note hero-note" },
-    h("img", { src: season.art, alt: "", decoding: "async" }),
-    season.caption && h("figcaption", {}, rich(season.caption, ctx))));
+      h("a", { class: "primary-link", href: "review.html" }, land.reviewLabel, h("span", { "aria-hidden": "true" }, "↗")),
+      h("a", { class: "secondary-link", href: "present.html" }, land.presentLabel))),
+  agenda);
 
-const questions = land.questions && h("section", { class: "sheet questions", "aria-labelledby": "q-head" },
-  h("h2", { id: "q-head" }, rich(land.questions.heading, ctx)),
-  land.questions.intro && h("p", { class: "intro" }, rich(land.questions.intro, ctx)),
+const questions = land.questions && h("section", { class: "questions", id: "overview", "aria-labelledby": "q-head" },
+  h("div", { class: "section-intro" },
+    h("p", { class: "eyebrow" }, land.questions.label),
+    h("h2", { id: "q-head" }, words(land.questions.heading)),
+    h("p", { class: "intro" }, words(land.questions.intro))),
   list(land.questions.items, "asks"));
 
 const aim = land.aim && h("section", { class: "aim", "aria-labelledby": "a-head" },
-  h("h2", { id: "a-head" }, rich(land.aim.heading, ctx)),
-  land.aim.intro && h("p", { class: "intro" }, rich(land.aim.intro, ctx)),
-  list(land.aim.items, "takeaways"),
-  land.aim.close && h("p", { class: "close" }, rich(land.aim.close, ctx)));
+  h("div", { class: "section-intro" },
+    h("p", { class: "eyebrow" }, land.aim.label),
+    h("h2", { id: "a-head" }, words(land.aim.heading)),
+    h("p", { class: "intro" }, words(land.aim.intro))),
+  h("div", {}, list(land.aim.items, "takeaways"), h("p", { class: "close" }, words(land.aim.close))));
 
-const usSeason = land.us?.season && model.partById.get(land.us.season)?.season;
-const us = land.us && h("section", { class: "sheet us" + (usSeason || land.us.photo ? " with-note" : ""), "aria-labelledby": "u-head" },
-  h("div", { class: "us-words" },
-    h("h2", { id: "u-head" }, rich(land.us.heading, ctx)),
-    (land.us.body || []).map((p) => h("p", {}, rich(p, ctx))),
-    land.us.signoff && h("p", { class: "signoff" }, rich(land.us.signoff, ctx))),
-  (land.us.photo || usSeason?.art) && h("div", { class: "us-collage" },
-    usSeason?.art && h("figure", { class: "field-note us-note" + (land.us.photo ? " tucked" : "") },
-      h("img", { src: usSeason.art, alt: "", decoding: "async" }),
-      !land.us.photo && usSeason.caption && h("figcaption", {}, rich(usSeason.caption, ctx))),
-    land.us.photo && h("figure", { class: "field-note us-photo" },
-      h("img", { src: land.us.photo.src, alt: land.us.photo.alt || "", decoding: "async" }),
-      land.us.photo.caption && h("figcaption", {}, rich(land.us.photo.caption, ctx)))));
+const us = land.us && h("section", { class: "facilitators", "aria-labelledby": "u-head" },
+  h("h2", { id: "u-head", class: "eyebrow" }, words(land.us.heading)),
+  h("div", {}, land.us.body.map((p, i) => h("p", { class: i ? "intro" : "facilitator-names" }, words(p)))));
 
-const made = land.made && h("p", { class: "made" }, rich(land.made, ctx));
+const resources = land.resources && h("section", { class: "resources", "aria-labelledby": "r-head" },
+  h("div", {}, h("h2", { id: "r-head" }, words(land.resources.heading)), h("p", {}, words(land.resources.body))),
+  h("a", { href: deck.links.wwta }, words(land.resources.label), h("span", { "aria-hidden": "true" }, " ↗")));
 
-document.querySelector("main").replaceChildren(...[hero, questions, aim, us, made].filter(Boolean));
+const footer = land.made && h("footer", { class: "made" }, h("p", {}, words(land.made)));
+document.querySelector("main").replaceChildren(...[masthead, hero, questions, aim, us, resources, footer].filter(Boolean));

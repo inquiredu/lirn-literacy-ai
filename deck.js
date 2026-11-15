@@ -1,19 +1,17 @@
 // The deck: everything about this talk lives here. The stage, the speaker notes, the review and the printed
 // backup all read this one file. docs/DECK.md explains every field; node scripts/check.js says what's wrong.
 //
-// SEAN'S WORKING DRAFT, v2 (2026-11-14), for Andrew to react to. Rebuilt as a working session: the room reads,
+// SEAN'S WORKING DRAFT, leadership design revision (2026-11-14), for Andrew to react to. Rebuilt as a working session: the room reads,
 // writes and revises, and the evidence is offered as "what we're noticing," not as findings. Audience: literacy
 // coaches, literacy leaders and media specialists. [ADD] in a note marks a gap only Andrew or Sean can fill.
 // The room's thinking goes to a Padlet for now (an Apps Script capture tool is pinned for later). Resources and
 // what the room learns afterward are shared through What We Talk About When We Talk About AI.
-// Authorship: a joint piece, not either presenter's brand. "R&B: Reading & Belonging" (Rummel & Beaverson) is a
-// working name for Andrew and Sean to settle together. It appears in two places: the title slide's kicker and
-// the thank-you slide's foot.
+// Authorship: a joint session by Andrew Rummel and Sean Beaverson. Public copy remains a draft for their review.
 
 export default {
   id: "lirn-literacy-ai",
   title: "Literacy Across Modalities",
-  subtitle: "A working session on what it means to be literate now, with AI in the room.",
+  subtitle: "Professional judgment in literacy instruction, text creation, and critical inquiry in an age of AI.",
   by: "Andrew Rummel and Sean Beaverson",
   url: "https://inquiredu.org/lirn-literacy-ai/",   // live once the repo is public and Pages is on
   links: {
@@ -26,66 +24,67 @@ export default {
   // Set these once the start time is confirmed; until then the clock waits for T.
   // day: "2026-11-19", start: "HH:MM", timeZone: "America/Chicago",
 
-  // The front door (index.html, where the QR code leads). Plain on purpose; "…" marks a place for us to write.
+  // Public-facing copy is a proposed editorial revision for Andrew and Sean to review.
   landing: {
+    identity: "LiRN",
+    context: "Literacy & artificial intelligence",
+    nav: { overview: "Overview", agenda: "Agenda", review: "Read the session" },
+    overviewLabel: "A working session for literacy leaders",
+    reviewLabel: "Read slides & notes",
+    presentLabel: "Open presentation",
+    agendaHeading: "Session agenda",
+    agendaLabel: "{length} / {parts} parts",
     questions: {
-      heading: "Questions we're working on",
-      intro: "…",
+      label: "The inquiry",
+      heading: "What does literacy require now?",
+      intro: "AI changes how texts are produced and encountered. This session examines what those changes ask of readers, writers, and the educators who support them.",
       items: [
-        "What does it mean to be literate now?",
-        "What's stayed the same, and what's new?",
-        "When AI helps write something, whose thinking is it?",
-        "How do you check what a machine wrote?",
-        "What happens to the talk between people?",
-        "What should hold steady while the tools change?"
+        "What should remain central to literacy instruction as the tools change?",
+        "How do we preserve a student's authorship and intellectual work?",
+        "What knowledge and evidence do readers need to evaluate AI output?",
+        "How can AI support participation in a shared learning community?"
       ]
     },
     aim: {
-      heading: "If it goes well",
-      intro: "…",
+      label: "Intended outcomes",
+      heading: "A basis for professional judgment",
+      intro: "Use familiar literacy principles to examine emerging practices and identify what deserves closer study.",
       items: [
-        "A sentence about literacy now, in your own words.",
-        "The four roles of the reader, as a lens.",
-        "One thing to watch for, and one thing to try.",
-        "A few more people to think with."
+        "A working definition of literacy that accounts for AI and multiple modes of meaning.",
+        "The Four Resources model as a lens for creating and evaluating texts.",
+        "A focused instructional trial, with evidence to examine and a condition for reconsidering it."
       ],
-      close: "…"
+      close: "The aim is a considered next step, grounded in what students need to learn."
     },
     us: {
-      heading: "The two of us",
+      heading: "Session facilitators",
       body: [
-        "Minneapolis boys, both deeply Minnesotan. Longtime friends and colleagues.",
-        "…"
-      ],
-      signoff: "Andrew & Sean",
-      photo: { src: "assets/sean-and-andrew.jpg", alt: "A soft pencil-and-watercolor sketch of Sean, left, and Andrew, right, side by side in a coffee shop", caption: "Sean, left, and Andrew" },
-      season: "social"            // the part whose drawing is tucked behind the sketch: October, the fire
+        "{by}",
+        "Longtime colleagues bringing a shared inquiry to literacy, AI, and the social nature of learning. The session combines classroom cases, research discussion, and participants' professional experience."
+      ]
     },
-    made: "Made with Gemini and Claude, and a lot of talking. …"
+    resources: {
+      heading: "Continue the inquiry",
+      body: "Explore the research library and leadership resources at What We Talk About When We Talk About AI.",
+      label: "Explore the resources"
+    },
+    made: "Developed by Andrew Rummel and Sean Beaverson with AI assistance from Gemini and Claude. The presenters retain responsibility for the content and its interpretation."
   },
 
-  // Each part is a Minnesota season, so the review reads through a year and comes back round: a line drawing
-  // and a field-note caption at the foot of every notes page in that part (assets/seasons/, drawn for this talk).
   parts: [
-    { id: "open", title: "Opening", minutes: 8,
-      season: { art: "assets/seasons/november.svg", caption: "November · birches at the lake's edge" } },
-    { id: "lens", title: "1 · A shared lens", minutes: 8,
-      season: { art: "assets/seasons/january.svg", caption: "January · a fish house on the ice" } },
-    { id: "making", title: "2 · Making text with AI", minutes: 15,
-      season: { art: "assets/seasons/april.svg", caption: "April · ice-out, and the loons come back" } },
-    { id: "navigating", title: "3 · Navigating AI text", minutes: 12,
-      season: { art: "assets/seasons/july.svg", caption: "July · a canoe, and the portage on the map" } },
-    { id: "social", title: "4 · The social thread", minutes: 10, tone: "accent",
-      season: { art: "assets/seasons/october.svg", caption: "October · a fire, and someone to sit with" } },
-    { id: "revisit", title: "Revisit", minutes: 7,
-      season: { art: "assets/seasons/first-snow.svg", caption: "First snow · the year comes round" } }
+    { id: "open", title: "Opening inquiry", minutes: 8 },
+    { id: "lens", title: "A shared literacy lens", minutes: 8 },
+    { id: "making", title: "Creating text with AI", minutes: 15 },
+    { id: "navigating", title: "Evaluating AI text", minutes: 12 },
+    { id: "social", title: "Literacy as social practice", minutes: 10 },
+    { id: "revisit", title: "Implications for practice", minutes: 7 }
   ],
 
   slides: [
     // ── Opening: read a text, learn how it was made, write a first definition ───────────────────────────
     {
       id: "title", part: "open", kind: "title",
-      kicker: "R&B · Reading & Belonging", heading: "Literacy Across Modalities", sub: "{subtitle}", by: "{by} · a working session for LiRN",
+      kicker: "LiRN leadership session", heading: "{title}", sub: "{subtitle}", by: "{by}", sun: false,
       notes: "Both: welcome people as they come in. Press T (or Call to order) when you begin; the clock counts {length} from then.\n\nSean: set the frame in two sentences. This is a working session, not a talk, and nothing we show today is a conclusion. Most of the hour belongs to you."
     },
     {
@@ -99,7 +98,7 @@ export default {
     },
     {
       id: "how-made", part: "open", kind: "steps",
-      kicker: "The reveal", heading: "How this text was made",
+      kicker: "Authorship and process", heading: "How this text was made",
       steps: [
         "Andrew and Sean talked for twenty minutes.",
         "Gemini took notes, and we asked it for a paragraph.",
@@ -115,7 +114,7 @@ export default {
       kicker: "Version 1 · {mins}",
       heading: "What does it mean to be **literate now**?",
       body: "One sentence, on the Padlet. You'll come back to it before you leave.",
-      foot: "It's supposed to be incomplete.",
+      foot: "Use this as a working definition to revisit at the close.",
       timer: 2,
       notes: "Sean: {Mins:words}. Put the Padlet link in the chat or on table cards: {links.padlet}\n\nSet the Padlet up beforehand with five columns: Literate now (v1 and v2), The four roles, Making text, Navigating text, The social thread. Don't read answers aloud yet; we come back to them at the end."
     },
@@ -123,7 +122,7 @@ export default {
     // ── 1 · A shared lens ─────────────────────────────────────────────────────────────────────────────────
     {
       id: "lens", part: "lens", kind: "section",
-      heading: "A shared lens",
+      heading: "A shared literacy lens",
       body: "Before AI: what has reading and writing always asked of us?",
       notes: "Andrew: section one, about {lens.length}. We borrow a lens most of this room already knows, and use it on text AI made."
     },
@@ -150,7 +149,7 @@ export default {
     },
     {
       id: "framings", part: "lens", kind: "cards",
-      heading: "Two places we'll test the lens",
+      heading: "Creating and evaluating texts",
       cards: [
         { kicker: "Part 2", heading: "**Making** text with AI", body: "AI as a thought partner for writing, and as a tool for creating and adapting texts." },
         { kicker: "Part 3", heading: "**Navigating** AI text", body: "AI as a source students read, question and decide whether to trust." }
@@ -162,13 +161,13 @@ export default {
     // ── 2 · Making text with AI ───────────────────────────────────────────────────────────────────────────
     {
       id: "making", part: "making", kind: "section",
-      heading: "Making text with AI",
-      body: "Two cases. Same question: what would you hold onto?",
+      heading: "Creating text with AI",
+      body: "Authorship, access, and the instructional choices that shape learning.",
       notes: "Andrew: section two, about {making.length}. Both cases are made up, but they'll sound familiar."
     },
     {
       id: "cases", part: "making", kind: "cards",
-      heading: "Two cases",
+      heading: "Classroom cases for discussion",
       cards: [
         { kicker: "Case A · A student writer", heading: "Is the draft **hers**?", body: "A fifth grader asks AI for ideas for her opinion piece. She gets five, picks one, and writes. Her draft is fluent and on topic." },
         { kicker: "Case B · A teacher adapting text", heading: "Is the easier version enough?", body: "A newcomer joins a third-grade class in October. Her teacher asks AI for an easier version of the science article. It's ready in seconds." }
@@ -178,7 +177,7 @@ export default {
     {
       id: "hold-test", part: "making", kind: "pause",
       kicker: "Pause · {mins}",
-      heading: "What would you hold onto? What would you **test**?",
+      heading: "What must we preserve? What should we **test**?",
       body: "Half the room takes Case A, half takes Case B. Name one value that shouldn't bend, and one thing you'd try and watch.",
       foot: "Add both to the Padlet, under Making text.",
       timer: 6,
@@ -186,44 +185,44 @@ export default {
     },
     {
       id: "noticing-a", part: "making", kind: "cards",
-      heading: "Case A: what we're noticing so far",
+      heading: "Case A: learning and authorship",
       cards: [
-        { kicker: "Noticing", heading: "Practice isn't learning", body: "In one high school math experiment, a plain chatbot raised practice scores, and exam scores fell once it was taken away. A version that gave hints instead of answers didn't show that drop." },
-        { kicker: "Don't know yet", heading: "Young writers", body: "We found no study of intermediate-grade students drafting with AI, or of what happens to their writing and their sense of ownership." },
-        { kicker: "Would tell us", heading: "Your evidence", body: "What would you look for in her next draft, written without AI? What would she say if you asked where the idea came from?", key: true }
+        { kicker: "Research signal", heading: "Performance and learning", body: "In one high school math experiment, a plain chatbot raised practice scores, and exam scores fell once it was taken away. A version that gave hints instead of answers didn't show that drop." },
+        { kicker: "Evidence gap", heading: "Young writers", body: "We found no study of intermediate-grade students drafting with AI, or of what happens to their writing and their sense of ownership." },
+        { kicker: "Questions for practice", heading: "Evidence to examine", body: "What would you look for in her next draft, written without AI? What would she say if you asked where the idea came from?", key: true }
       ],
       foot: "Bastani et al. (2025), PNAS 122(26): about 1,000 high school math students in Turkey. Math, not writing.",
       notes: "Sean: present this as something we're noticing, not a finding about writing. The design point may carry over: a tool that answers can stand in for the work; a tool that asks can support it. Then turn it back: what's your evidence?\n\nIf the room wants a worked structure for this, Kit 05 (Curriculum Mapping) on What We Talk About is built to catch AI doing the thinking a standard names."
     },
     {
       id: "noticing-b", part: "making", kind: "cards",
-      heading: "Case B: what we're noticing so far",
+      heading: "Case B: access and text complexity",
       cards: [
-        { kicker: "Noticing", heading: "Most read the harder text", body: "293 ninth graders read easy or challenging versions of the same texts for 12 weeks, with support. Most understood both about equally well; a small group well below average, many of them English learners, did better with easier versions." },
-        { kicker: "Don't know yet", heading: "AI-leveled text", body: "No study we found tests AI-leveled texts with K-12 readers, or what an easier version takes away over time." },
-        { kicker: "Would tell us", heading: "Your evidence", body: "Does she come back to the shared text? Does she join the discussion? Which words from the original does she use a week later?", key: true }
+        { kicker: "Research signal", heading: "Most read the harder text", body: "293 ninth graders read easy or challenging versions of the same texts for 12 weeks, with support. Most understood both about equally well; a small group well below average, many of them English learners, did better with easier versions." },
+        { kicker: "Evidence gap", heading: "AI-leveled text", body: "No study we found tests AI-leveled texts with K-12 readers, or what an easier version takes away over time." },
+        { kicker: "Questions for practice", heading: "Evidence to examine", body: "Does she come back to the shared text? Does she join the discussion? Which words from the original does she use a week later?", key: true }
       ],
       foot: "Lupo, Tortorelli, Invernizzi, Ryoo & Strong (2019), Reading Research Quarterly 54(4). Texts leveled by people, not AI.",
       notes: "Andrew: the students who did better with easier versions look a lot like the newcomer in Case B, which makes this the study closest to her. It still used texts leveled by people, so it can't tell us what an AI version does. One option to name: scaffold the original first (key words taught ahead, glosses, chunking, audio, partner talk), and treat a leveled version as a bridge you plan to leave."
     },
     {
       id: "middle", part: "making", kind: "statement",
-      kicker: "Thinking out loud",
-      heading: "“Never” is as unwise as “always.”",
-      body: "We don't fully agree on leveling texts with AI. Here's where each of us lands today, and why.",
+      kicker: "Professional dialogue",
+      heading: "The judgment behind text adaptation",
+      body: "Our perspectives on AI text adaptation differ. We will examine the reasoning, the tradeoffs, and the evidence that would change our positions.",
       notes: "Andrew and Sean: three minutes, unscripted, out loud. Andrew: the grade-level text talking point and the newcomer it doesn't account for. Sean: clarifying our values and norms first, and finding the middle lever we can use intelligently. Disagree where you do. End with what would change your mind."
     },
 
     // ── 3 · Navigating AI text ───────────────────────────────────────────────────────────────────────────
     {
       id: "navigating", part: "navigating", kind: "section",
-      heading: "Navigating AI text",
-      body: "When the text in front of a reader came from a machine.",
+      heading: "Evaluating AI text",
+      body: "Knowledge, verification, and the limits of a fluent answer.",
       notes: "Sean: section three, about {navigating.length}. Media specialists, this is your home turf; we'll lean on you."
     },
     {
       id: "check-this", part: "navigating", kind: "pause",
-      kicker: "Try it · {mins}",
+      kicker: "Text analysis · {mins}",
       heading: "Check this answer.",
       body: "“Charlotte's Web (1952) by E. B. White follows Wilbur, a runt pig saved first by a girl named Fern and then by Charlotte, a barn spider. With help from Templeton, a greedy goose, Charlotte weaves words into her web to show that Wilbur is special. The first word she writes is ‘Terrific.’ It is the most-assigned chapter book in U.S. fourth-grade classrooms.”",
       foot: "Use what you know. Then mark one claim you couldn't check.",
@@ -232,7 +231,7 @@ export default {
     },
     {
       id: "what-was-in-it", part: "navigating", kind: "list",
-      heading: "What was in it",
+      heading: "Three claims, different verification demands",
       items: [
         { name: "“Templeton, a greedy goose”", why: "Wrong: Templeton is a rat. Easy to catch if you know the book." },
         { name: "“The first word she writes is ‘Terrific’”", why: "Wrong: it was “Some Pig.” Harder, even for people who know the book well." },
@@ -243,18 +242,18 @@ export default {
     },
     {
       id: "noticing-nav", part: "navigating", kind: "cards",
-      heading: "Navigating: what we're noticing so far",
+      heading: "Evaluating AI output: the evidence",
       cards: [
-        { kicker: "Noticing", heading: "Knowing the answer matters", body: "21 children, ages 6 to 11, caught a chatbot's errors on puzzles they could solve themselves. 63 students, ages 14 to 15, couldn't tell good chatbot answers from poor ones on science problems." },
-        { kicker: "Don't know yet", heading: "Grades 4 to 6", body: "Lateral reading has strong support for websites with students in grades 7 to 12. We found nothing testing checking moves on chatbot text with younger students." },
-        { kicker: "Would tell us", heading: "Your evidence", body: "Media specialists: what do your students do now when an answer sounds right? What do they do when they don't know the topic?", key: true }
+        { kicker: "Research signal", heading: "Knowing the answer matters", body: "21 children, ages 6 to 11, caught a chatbot's errors on puzzles they could solve themselves. 63 students, ages 14 to 15, couldn't tell good chatbot answers from poor ones on science problems." },
+        { kicker: "Evidence gap", heading: "Grades 4 to 6", body: "Lateral reading has strong support for websites with students in grades 7 to 12. We found nothing testing checking moves on chatbot text with younger students." },
+        { kicker: "Questions for practice", heading: "Evidence to examine", body: "Media specialists: what do your students do now when an answer sounds right? What do they do when they don't know the topic?", key: true }
       ],
       foot: "Dangol et al. (2025), IDC; arXiv 2505.01106 (preprint, France); Brodsky et al. (2023), AERA Open, 2,278 students.",
       notes: "Sean: two small studies, different ages and tasks, pointing the same way. Treat that as a pattern worth testing, not a finding. If it holds, topic choice and a teacher-supplied reference text matter more than which checking move you teach. Add answers to the Padlet, under Navigating text."
     },
     {
       id: "moves", part: "navigating", kind: "list",
-      kicker: "To try, not a sequence", heading: "Moves worth testing with intermediate readers",
+      kicker: "Instructional approaches to examine", heading: "Verification with intermediate readers",
       items: [
         { name: "Test it on what you know", why: "A book you just read, a topic you know well. What did it get right or wrong?" },
         { name: "Find the planted error", why: "The teacher makes the answer; students interrogate it." },
@@ -268,24 +267,24 @@ export default {
     // ── 4 · The social thread ────────────────────────────────────────────────────────────────────────────
     {
       id: "social", part: "social", kind: "section",
-      heading: "The social thread",
+      heading: "Literacy as social practice",
       body: "Literacy rarely develops apart from other people. What happened to talk in each case?",
       notes: "Sean: section four, about {social.length}. This is the reason underneath both framings."
     },
     {
       id: "t-chart", part: "social", kind: "cards",
-      heading: "AI and the people in the room",
+      heading: "Participation and peer dialogue",
       cards: [
-        { kicker: "Where talk can thin out", heading: "Asking each other", body: "“Just ask the chatbot” replaces asking a classmate. Each student prompts alone. Peer feedback gets thinner." },
-        { kicker: "Where a door can open", heading: "Rehearsing first", body: "Private, ungraded practice before speaking. Help drafting a message for a student who finds live interaction costly. A bridge for multilingual learners." }
+        { kicker: "Potential loss", heading: "Asking each other", body: "“Just ask the chatbot” replaces asking a classmate. Each student prompts alone. Peer feedback gets thinner." },
+        { kicker: "Potential support", heading: "Rehearsing first", body: "Private, ungraded practice before speaking. Help drafting a message for a student who finds live interaction costly. A bridge for multilingual learners." }
       ],
-      foot: "These are starters, and the same tool can do either. You'll fill in the rest.",
+      foot: "Discussion hypotheses: the instructional design determines what needs examination.",
       notes: "Sean: a T-chart. [ADD] the University of Minnesota research we planned to bring in. The 'door' column matters as much as the other: for students with social anxiety, or for whom interaction is costly, AI can lower the barrier. Most of the evidence on both sides is small, short and from higher education."
     },
     {
       id: "build-chart", part: "social", kind: "pause",
-      kicker: "Build it · {mins}",
-      heading: "Where would talk thin out? Where would it **open up**?",
+      kicker: "Collaborative analysis · {mins}",
+      heading: "Where might AI reduce or **support participation**?",
       body: "Look back at Case A, Case B, and the answer you just checked. Add one to each side.",
       foot: "Add it to the Padlet, under The social thread.",
       timer: 4,
@@ -293,14 +292,14 @@ export default {
     },
     {
       id: "bridge", part: "social", kind: "list",
-      kicker: "A lens to try",
+      kicker: "Questions for instructional design",
       heading: "Bridge or substitute?",
       items: [
         { name: "Does it end in a human interaction?", why: "A share, a discussion, a conference. Or does it end with the AI?" },
         { name: "Did the student's own words survive?", why: "Student drafts first and AI coaches, not AI writing the student's message." },
         { name: "Is the AI's output argued over, or just pasted?", why: "One shared AI a group critiques together, rather than each student prompting alone." }
       ],
-      foot: "Our synthesis from early research. Try it on your own cases and tell us where it breaks.",
+      foot: "A provisional framework for discussion, not a validated assessment tool.",
       notes: "Sean: the same private rehearsal that helps a student speak up can, set up differently, replace speaking at all. From the doorway they look alike. These questions aren't validated; offer them as something to test."
     },
 
@@ -316,15 +315,15 @@ export default {
     },
     {
       id: "signpost", part: "revisit", kind: "statement",
-      kicker: "Before you go",
-      heading: "One signpost to watch. One thing to **test**.",
-      body: "A sign that AI is costing a reader something, or a small change you'll try and watch. We're early in this. What we decide now is a decision for now, measured against what we already believe about how kids become readers and writers.",
+      kicker: "Implications for practice",
+      heading: "A next step and the **evidence to examine**",
+      body: "Identify one instructional change, the learning it should support, and the evidence you will examine. Name a condition that would lead you to revise or stop the approach.",
       notes: "Sean: the underpinning why, said once. When the next tool arrives, the social nature of learning and the values the room just named are how to evaluate it, not the tool's promises."
     },
     {
       id: "keep-learning", part: "revisit", kind: "statement",
-      kicker: "Where this goes next",
-      heading: "Keep learning **with us**.",
+      kicker: "Resources and continued inquiry",
+      heading: "Research and leadership resources",
       body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. Bring back what you notice when you try something.",
       foot: "inquiredu.org/what-we-talk-about",
       notes: "Sean: this is where the room's learning lives after today. [ADD] how people send observations back (the Padlet stays open, an email, or a form on the site), and when we'll add the session's resources there. Link for the chat: {links.wwta}"
@@ -336,11 +335,11 @@ export default {
       notes: "Andrew: leave this up while people scan. Q shows the code large."
     },
     {
-      id: "thanks", part: "revisit", kind: "split",
+      id: "thanks", part: "revisit", kind: "statement", tone: "night",
       kicker: "Thank you",
       heading: "Literacy rarely develops **apart from others**.",
-      foot: "{by} · R&B",
-      image: { src: "assets/sean-and-andrew.jpg", alt: "A soft pencil-and-watercolor sketch of Sean, left, and Andrew, right, side by side in a coffee shop" },
+      body: "Thank you for contributing your experience and professional judgment.",
+      foot: "{by}",
       notes: "Both: thank the room. Point them to What We Talk About for resources, and to this deck for slides, notes and sources."
     }
   ]

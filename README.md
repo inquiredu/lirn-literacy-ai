@@ -1,4 +1,10 @@
-# Present Kit
+# Literacy Across Modalities
+
+A LiRN working session by Andrew Rummel and Sean Beaverson on literacy, AI, and professional judgment. The landing page, 28-slide presentation, speaker notes, and printable review all read `deck.js`.
+
+The current design uses a restrained editorial layout with a linked session agenda and paired slide-and-notes reading view. See `HANDOFF.md` for content decisions still awaiting the presenters.
+
+## Presentation engine
 
 A presentation that lives inside a project: one deck file, a stage for the room, speaker notes in a window of their own, and a review to read again or print as the backup. Plain HTML, CSS and JavaScript modules. No build step, no dependencies, nothing loaded from elsewhere, nothing sent anywhere. An inquiredu kit, by Sean Beaverson, in the inquiredu design system.
 

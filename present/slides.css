@@ -175,3 +175,32 @@
   .slide .r { opacity: 0; transform: translateY(.5em); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); transition-delay: calc(var(--i, 0) * 70ms); }
   .slide.on .r, .review .slide .r { opacity: 1; transform: none; }
 }
+
+/* Leadership edition: typography and rules carry the hierarchy. */
+.kind-title .title-words { max-width: 90%; gap: 1em; }
+.kind-title .title { font-size: 4.3em; max-width: 19ch; font-weight: 500; letter-spacing: -.045em; }
+.kind-title .lede { max-width: 42ch; }
+.kind-title .title-top { border-bottom: 1px solid var(--line); padding-bottom: 1em; }
+.kind-title .kicker { color: var(--fg-accent); }
+.kind-title .byline { font: 400 .95em/1.5 var(--heading); }
+.kind-title .title-top .index-label { font-size: .7em; }
+.display { font-weight: 500; letter-spacing: -.035em; }
+.section-n { font: 400 1em/1 var(--mono); margin-bottom: 1.4em; letter-spacing: .12em; }
+.kind-section .heading { margin-bottom: .4em; }
+.cards { gap: 1.6em; }
+.card, .card.key { border: 0; border-top: 2px solid var(--line); border-radius: 0; background: transparent; padding: 1em 0 0; }
+.card.key { border-top-color: var(--accent); }
+.card-icon { display: none; }
+.card-k { font-size: .68em; letter-spacing: .12em; }
+.card-t { font-size: 1.6em; line-height: 1.25; font-weight: 500; letter-spacing: -.025em; }
+.card-b { font-size: 1.15em; line-height: 1.5; }
+.kind-cards .foot { font: 400 .85em/1.5 var(--heading); color: var(--soft); border-top: 1px solid var(--line); padding-top: 1em; }
+.foot { font-weight: 500; }
+.star { display: none; }
+.timer { border-radius: var(--radius-xs); box-shadow: none; }
+.url-pill { border-radius: var(--radius-xs); font-size: 1.1em; overflow-wrap: anywhere; }
+@container slide (max-width: 760px) {
+  .kind-title .title-words { max-width: 100%; }
+  .kind-title .title { font-size: 3em; }
+  .card { padding-top: 1em; }
+}

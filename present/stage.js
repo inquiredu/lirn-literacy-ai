@@ -45,7 +45,7 @@ const save = () => {
 
 
 // ---------- The page around the slide ----------
-const stage = h("main", { class: "stage", id: "stage", tabIndex: -1 });
+const stage = h("main", { class: "stage", id: "stage", tabIndex: 0 });
 const frame = h("div", { class: "slide-frame stage-frame" }, stage);
 const live = { title: h("span", { class: "rail-title" }), length: h("span", { class: "rail-len" }), where: h("span", { class: "rail-where" }), count: h("span", { class: "rail-count" }) };
 const siteHref = model.links?.site || "./";
@@ -141,8 +141,8 @@ function timerBlock(key) {
     status, display, h("div", { class: "t-bar" }, fill),
     h("div", { class: "t-btns" },
       go,
-      button("−1 min", () => act("minus"), { "aria-label": "One minute less" }),
-      button("+1 min", () => act("plus"), { "aria-label": "One minute more" }),
+      button("−1 min", () => act("minus"), { "aria-label": "−1 min: one minute less" }),
+      button("+1 min", () => act("plus"), { "aria-label": "+1 min: one minute more" }),
       button("Reset", () => act("reset-timer"), { class: "t-reset" })));
 }
 

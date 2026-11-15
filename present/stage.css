@@ -93,6 +93,7 @@ button { font: inherit; }
 .session-clock[data-state="paused"] .sc-time { color: var(--fg-2); }
 .sc-actions, .sc-wait { display: none; }
 
+.session-clock[data-mode="corner"] .sc-label { display: none; }
 .session-clock[data-mode="corner"] .sc-face { background: var(--surface-raised); border: 1px solid var(--border-hairline); }
 .session-clock[data-mode="corner"] .sc-wait:not([hidden]) {
   display: flex; order: -1; align-items: baseline; gap: .4em; padding: .15em .7em; border-radius: var(--radius-pill);

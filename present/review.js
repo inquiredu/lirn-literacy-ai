@@ -1,7 +1,6 @@
-// The review: the same slides as a book to read, for anyone who missed a part or comes back after.
-// On a wide screen each spread is the slide on the left page and its speaker notes on the facing page, and a leaf
-// turns around the spine to the next; on a narrow one, single pages lift away. Every slide keeps an address of its
-// own (review.html#parable), and printing gives one slide to a page with its notes beneath: the backup deck.
+// The review presents each slide beside its speaker notes, with a quiet crossfade on navigation.
+// Narrow screens stack the two. Stable slide anchors, keyboard controls, and the printable backup
+// share the same deck as the stage.
 import { lengthLabel, slideTitle } from "./core.js";
 import { h, loadDeck, rich } from "./dom.js";
 import { renderSlide } from "./kinds.js";
@@ -34,12 +33,12 @@ const folio = h("span", { class: "folio" });
 const prevButton = h("button", { type: "button", class: "turn", "aria-label": "Previous page", on: { click: () => go(at - 1) } }, "‹");
 const nextButton = h("button", { type: "button", class: "turn", "aria-label": "Next page", on: { click: () => go(at + 1) } }, "›");
 const live = h("p", { class: "sr-only", "aria-live": "polite" });
-const book = h("section", { class: "book", "aria-roledescription": "book", "aria-label": model.title },
+const book = h("section", { class: "book", "aria-roledescription": "slide review", "aria-label": model.title },
   spread, h("div", { class: "book-nav" }, prevButton, folio, nextButton), live);
 let at = Math.max(0, indexOf(location.hash));
 let turning = null;
 
-/** The slide, laid out for a left page. A fresh copy each time, so a turning leaf and the page under it never share nodes. */
+/** The slide in the reading spread. */
 function slidePage(i) {
   const s = slides[i];
   return h("div", { class: "slide-frame book-frame" }, renderSlide(s, ctx));
@@ -48,16 +47,10 @@ function slidePage(i) {
 /** The facing page: where it sits in the session, its title, and what the presenter says. */
 function notesPage(i) {
   const s = slides[i];
-  const season = s.part?.season;
-  // The part's season, taped in at the foot like a field note; the tape and its tilt shift a little from page to page
-  const note = season?.art && h("figure", { class: "field-note", style: { "--tilt": `${[-1.6, 1.1, -0.6, 1.8, -1.2][s.n % 5]}deg`, "--tape": `${[-4, 3, -2, 5, -3][s.n % 5]}deg` } },
-    h("img", { src: season.art, alt: "", decoding: "async" }),
-    season.caption && h("figcaption", {}, rich(season.caption, { model, slide: s })));
   return h("div", { class: "notes-page" },
     h("p", { class: "running-head" }, s.part ? rich(s.part.title, { model }) : "", h("span", {}, String(s.n) + " / " + slides.length)),
     h("h2", { class: "notes-title" }, slideTitle(s, model)),
     h("div", { class: "notes-body" }, notesParagraphs(s)),
-    note || h("span"),
     h("p", { class: "folio-n", "aria-hidden": "true" }, String(s.n)));
 }
 
@@ -79,51 +72,16 @@ function show(i) {
   if (location.hash.slice(1) !== slides[i].id) history.replaceState(null, "", "#" + slides[i].id);
 }
 
-/** Turn to page i: a leaf swings around the spine (or a single page lifts away), then the spread settles. */
+/** Change the spread without a decorative page-turn transition. */
 function go(i) {
   i = Math.min(slides.length - 1, Math.max(0, i));
   if (i === at) return;
-  if (turning) turning.finish();
-  const from = at;
+  turning?.cancel();
   at = i;
-  if (still.matches || typeof Element.prototype.animate !== "function") return show(i);
-  const forward = i > from;
-  const duration = 760;
-  const easing = "cubic-bezier(.645,.045,.355,1)";
-  const leaf = h("div", { class: "leaf " + (wide.matches ? (forward ? "leaf-forward" : "leaf-back") : "leaf-single"), "aria-hidden": "true" });
-  const face = (node, side) => h("div", { class: `leaf-face ${side} bpage ${node.className.includes("notes") ? "bpage-right" : "bpage-left"}` }, node, h("div", { class: "shade" }));
-
-  let frames;
-  let after = () => show(i);
-  if (wide.matches) {
-    if (forward) {
-      // The right page lifts from the spine and lands on the left as the next slide; the next notes wait beneath
-      leaf.append(face(notesPage(from), "front"), face(slidePage(i), "back"));
-      fill(rightSlot, notesPage(i));
-      frames = [{ transform: "rotateY(0deg)" }, { transform: "rotateY(-180deg)" }];
-    } else {
-      leaf.append(face(slidePage(from), "front"), face(notesPage(i), "back"));
-      fill(leftSlot, slidePage(i));
-      frames = [{ transform: "rotateY(0deg)" }, { transform: "rotateY(180deg)" }];
-    }
-  } else {
-    // One page: it swings up off the spine toward the reader and away (or, going back, swings down into place),
-    // solid all the way, with the next page already lying beneath
-    if (book.getBoundingClientRect().top < 0) book.scrollIntoView({ block: "start", behavior: "instant" });
-    leaf.append(face(singlePage(forward ? from : i), "front"));
-    if (forward) fill(leftSlot, singlePage(i));
-    const flat = { transform: "rotateY(0deg)" }, up = { transform: "rotateY(-92deg)" };
-    frames = forward ? [flat, up] : [up, flat];
+  show(i);
+  if (!still.matches && typeof spread.animate === "function") {
+    turning = spread.animate([{ opacity: .65 }, { opacity: 1 }], { duration: 160, easing: "ease-out" });
   }
-  spread.append(leaf);
-  // Light falls off the leaf as it rises toward the reader, and comes back as it lies down
-  const rising = [{ opacity: 0 }, { opacity: .32 }], settling = [{ opacity: .32 }, { opacity: 0 }];
-  leaf.querySelectorAll(".shade").forEach((s, n) => s.animate(
-    n === 0 && (wide.matches || forward) ? rising : settling, { duration, easing, fill: "both" }));
-  turning = leaf.animate(frames, { duration, easing, fill: "forwards" });
-  const done = () => { leaf.remove(); turning = null; after(); };
-  turning.finished.then(done, done);
-  folio.textContent = `${slides[i].n} of ${slides.length}`;
 }
 
 function indexOf(hash) {
@@ -158,10 +116,11 @@ wide.addEventListener("change", () => show(at));
 document.body.append(
   h("header", { class: "review-head" },
     h("div", { class: "head-words" },
-      h("p", { class: "kicker" }, "Review"),
+      h("p", { class: "kicker" }, "Session reading"),
       h("h1", {}, rich(model.title, { model })),
       model.by && h("p", { class: "byline" }, rich(model.by, { model }))),
     h("div", { class: "tools" },
+      h("a", { class: "tool", href: "./" }, "Overview"),
       contentsButton,
       h("a", { class: "tool primary", href: "present.html" }, "Present"),
       h("button", { type: "button", class: "tool", on: { click: () => window.print() } }, "Print or save as PDF"))),
@@ -172,6 +131,7 @@ function toggleContents(open = contents.hidden) {
   contents.hidden = !open;
   contentsButton.setAttribute("aria-expanded", String(open));
   if (open) contents.querySelector("a")?.focus();
+  else if (contents.contains(document.activeElement)) contentsButton.focus();
 }
 
 function notesParagraphs(s) {

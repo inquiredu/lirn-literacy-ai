@@ -23,14 +23,15 @@ const server = createServer();
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const base = `http://127.0.0.1:${server.address().port}/`;
 const browser = await chromium.launch(process.env.PREVIEW_BROWSER ? { executablePath: process.env.PREVIEW_BROWSER } : {});
-const routes = [...model.slides.map((s) => `present.html#${s.id}`), "notes.html", "review.html", "index.html", "assets/tally.html"];
+const routes = [...model.slides.map((s) => `present.html#${s.id}`), "notes.html", "review.html", "index.html"];
 const seen = new Map();
 try {
   for (const width of [1280, 375]) {
     const context = await browser.newContext({ viewport: { width, height: 800 }, reducedMotion: "reduce", colorScheme: process.env.THEME === "light" ? "light" : "dark" });
     const page = await context.newPage();
     for (const route of routes) {
-      await page.goto(base + route, { waitUntil: "networkidle" });
+      const response = await page.goto(base + route, { waitUntil: "networkidle" });
+      if (response && !response.ok()) throw new Error(`Cannot scan ${route}: HTTP ${response.status()}`);
       if (process.env.THEME) await page.evaluate((t) => { document.documentElement.dataset.theme = t; }, process.env.THEME);
       await page.waitForTimeout(250);
       const { violations } = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();

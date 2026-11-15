@@ -1,69 +1,79 @@
-/* The talk's front door, where the QR code leads: a journal page. Its words come from deck.js (present/landing.js).
-   No inline style or script. In a project with a site of its own, link to present.html and review.html from there. */
-body { background: var(--surface-sunken) url("assets/seasons/contours.svg") center top / 1200px repeat; }
-main { max-width: 1040px; margin: 0 auto; padding: var(--space-8) var(--space-5) var(--space-8); display: grid; gap: var(--space-8); }
-
-/* ---------- The hero: the title, the ways in, and November taped beside them ---------- */
-.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: var(--space-7); align-items: center; }
-.hero-words { display: grid; gap: var(--space-4); justify-items: start; }
-.eyebrow { margin: 0; font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-accent); }
-h1 { font: var(--type-display); letter-spacing: var(--tracking-display); }
-.lead { margin: 0; font: var(--type-lead); color: var(--fg-2); max-width: 32em; }
-.byline { margin: 0; font: var(--type-small); color: var(--fg-2); }
-.hero-note { --tilt: 2deg; --tape: -4deg; width: 100%; max-width: 26rem; justify-self: center; }
-.ways { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); gap: var(--space-3); margin-top: var(--space-2); }
-.ways a { display: grid; gap: var(--space-1); padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); color: var(--fg-1); text-decoration: none; transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
-.ways a:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); color: var(--fg-1); }
-.ways a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-.ways strong { font: var(--type-h3); letter-spacing: var(--tracking-heading); }
-.ways span { font: var(--type-small); color: var(--fg-2); }
-
-/* ---------- A sheet of ruled journal paper ---------- */
-.sheet {
-  --rule: color-mix(in srgb, var(--fg-1) 7%, transparent); --margin: color-mix(in srgb, var(--fg-accent) 32%, transparent); --pad-left: var(--space-9);
-  padding: var(--space-7) var(--space-7) var(--space-6) var(--pad-left); border-radius: var(--radius-md); border: 1px solid var(--border-hairline); box-shadow: var(--shadow-2);
-  background:
-    linear-gradient(to right, transparent calc(var(--pad-left) - 26px), var(--margin) calc(var(--pad-left) - 26px) calc(var(--pad-left) - 25px), transparent calc(var(--pad-left) - 25px)),
-    repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule) 33px 34px),
-    var(--surface-raised);
+/* An editorial session overview. All colors and type use the shared design tokens. */
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+body { background: var(--surface-page); }
+main { max-width: 1240px; margin: 0 auto; padding: 0 var(--space-6); }
+a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.masthead { display: flex; justify-content: space-between; align-items: center; gap: var(--space-5); min-height: 100px; border-bottom: 1px solid var(--border-hairline); }
+.identity { display: flex; align-items: center; gap: var(--space-4); font: 600 27px/1 var(--font-sans); letter-spacing: -.05em; color: var(--fg-1); text-decoration: none; }
+.identity span { max-width: 15em; padding-left: var(--space-4); border-left: 1px solid var(--border-hairline); font: var(--type-small); letter-spacing: 0; color: var(--fg-2); }
+.nav-links { display: flex; gap: var(--space-5); font: var(--type-small); }
+.nav-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--fg-1); text-underline-offset: .35em; text-decoration: none; }
+.nav-links a:hover { text-decoration: underline; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); padding: 80px 0 76px; align-items: center; }
+.hero-words { display: grid; gap: var(--space-5); justify-items: start; }
+.eyebrow { margin: 0; font: var(--type-eyebrow); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-accent); }
+h1 { max-width: 14ch; font: 500 clamp(42px, 4.6vw, 66px)/1.07 var(--font-sans); letter-spacing: -.045em; text-wrap: balance; }
+.lead { margin: 0; font: 400 25px/1.45 var(--font-serif); color: var(--fg-2); max-width: 32ch; }
+.byline { margin: 0; font: var(--type-small); color: var(--fg-1); }
+.ways { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-5); margin-top: var(--space-3); font: var(--type-ui); }
+.primary-link { display: inline-flex; justify-content: space-between; align-items: center; gap: var(--space-5); min-height: 52px; padding: 0 var(--space-5); background: var(--action-primary); color: var(--on-action-primary); text-decoration: none; border-radius: var(--radius-xs); }
+.primary-link:hover { background: var(--action-primary-hover); color: var(--on-action-primary); }
+.primary-link span { font-size: 20px; }
+.secondary-link { padding-block: 12px; color: var(--fg-1); text-underline-offset: .35em; }
+.agenda { background: var(--surface-inverse); color: var(--fg-on-inverse); padding: var(--space-6); border-top: 3px solid var(--surface-accent); }
+.agenda-head h2 { font: 500 23px/1.3 var(--font-sans); }
+.agenda-head p { margin: var(--space-2) 0 var(--space-5); font: var(--type-small); color: var(--fg-on-inverse-2); }
+.agenda ol { list-style: none; padding: 0; margin: 0; }
+.agenda li { border-top: 1px solid color-mix(in srgb, var(--fg-on-inverse) 22%, transparent); }
+.agenda a { display: grid; grid-template-columns: 2em minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-2); padding: 20px 0; color: inherit; text-decoration: none; }
+.agenda a:hover .agenda-name { text-decoration: underline; text-underline-offset: .3em; }
+.agenda-n { font: 400 12px/1.4 var(--font-mono); color: var(--fg-accent-on-inverse); }
+.agenda-name { font: 500 14px/1.5 var(--font-sans); }
+.agenda-time { font: 400 12px/1.5 var(--font-sans); color: var(--fg-on-inverse-2); white-space: nowrap; }
+.questions, .aim { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 7vw, 7rem); padding: 68px 0; border-top: 1px solid var(--border-hairline); }
+.section-intro { display: grid; gap: var(--space-4); align-content: start; }
+h2 { font: 500 34px/1.2 var(--font-sans); letter-spacing: -.03em; }
+.intro { margin: 0; font: 400 21px/1.55 var(--font-serif); color: var(--fg-2); max-width: 38em; }
+.asks, .takeaways { list-style: none; padding: 0; margin: 0; counter-reset: item; }
+.asks li, .takeaways li { counter-increment: item; display: grid; grid-template-columns: 2em 1fr; gap: var(--space-3); border-top: 1px solid var(--border-hairline); padding: 20px 0; font: 400 22px/1.4 var(--font-serif); }
+.asks li:first-child, .takeaways li:first-child { padding-top: 0; border-top: 0; }
+.asks li::before, .takeaways li::before { content: counter(item, decimal-leading-zero); font: 400 13px/1.8 var(--font-mono); color: var(--fg-accent); }
+.close { margin: var(--space-4) 0 0; padding-top: var(--space-4); border-top: 1px solid var(--border-hairline); font: 400 19px/1.5 var(--font-serif); color: var(--fg-2); }
+.facilitators { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 7vw, 7rem); padding: 48px 0; border-top: 1px solid var(--border-hairline); }
+.facilitator-names { margin: 0 0 var(--space-3); font: 500 24px/1.4 var(--font-sans); letter-spacing: -.02em; }
+.resources { display: flex; justify-content: space-between; align-items: center; gap: var(--space-6); background: var(--surface-water-soft); padding: var(--space-6); }
+.resources h2 { font-size: 26px; }
+.resources p { margin: var(--space-3) 0 0; max-width: 40em; font: 400 19px/1.5 var(--font-serif); color: var(--fg-2); }
+.resources a { flex-shrink: 0; color: var(--fg-1); font: var(--type-ui); text-underline-offset: .35em; }
+.made { padding: 28px 0 36px; }
+.made p { margin: 0; max-width: 70em; font: 400 12px/1.7 var(--font-sans); color: var(--fg-2); }
+@media (max-width: 900px) {
+  .masthead { min-height: 84px; }
+  .nav-links a:not(:last-child) { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 52px 0; gap: 40px; }
+  h1 { max-width: 18ch; font-size: clamp(42px, 7vw, 64px); }
+  .lead { max-width: 40ch; }
+  .agenda { padding: var(--space-5); }
+  .agenda a { padding: 16px 0; }
+  .questions, .aim, .facilitators { grid-template-columns: 1fr; gap: 32px; padding: 44px 0; }
+  .resources { align-items: start; flex-direction: column; gap: var(--space-4); }
 }
-h2 { font: var(--type-h2); letter-spacing: var(--tracking-heading); }
-.intro { margin: var(--space-3) 0 0; font: var(--type-lead); color: var(--fg-2); max-width: 34em; }
-
-/* The questions: numbered in the hand, read in Newsreader */
-.asks { margin: var(--space-5) 0 0; padding: 0; list-style: none; counter-reset: ask; display: grid; gap: var(--space-4); }
-.asks li { counter-increment: ask; position: relative; padding-left: 2.6rem; font: 400 21px/1.5 var(--font-serif); color: var(--fg-1); max-width: 36em; }
-.asks li::before { content: counter(ask); position: absolute; left: 0; top: -.2em; font: 700 34px/1 var(--font-hand); color: var(--fg-accent); }
-
-/* What we hope for: open on the page, no sheet */
-.aim { padding-inline: var(--space-5); }
-.takeaways { margin: var(--space-5) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); max-width: 46rem; }
-.takeaways li { padding: var(--space-4) var(--space-5); border-left: 3px solid var(--surface-accent); background: color-mix(in srgb, var(--surface-raised) 70%, transparent); font: 400 18px/1.5 var(--font-serif); color: var(--fg-1); }
-.close { margin: var(--space-5) 0 0; font: italic 400 20px/1.55 var(--font-serif); color: var(--fg-1); max-width: 38em; }
-
-/* Why the two of us, signed by hand, with October's fire taped beside it */
-.us.with-note { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: var(--space-6); align-items: center; }
-.us-note { --tilt: -2deg; --tape: 4deg; width: 100%; max-width: 20rem; justify-self: center; align-self: center; margin: 0; }
-/* The photo taped on top, with October's fire tucked behind it at an angle, like a page in a kept journal */
-.us-collage { position: relative; display: grid; justify-items: center; padding: var(--space-5) 0 var(--space-6); }
-.us-photo { --tilt: 2.5deg; --tape: -5deg; position: relative; z-index: 1; width: 100%; max-width: 13rem; margin: 0; padding-bottom: 6px; }
-.us-photo img { aspect-ratio: 1; object-fit: cover; }
-.us-note.tucked { --tilt: -7deg; --tape: 8deg; position: absolute; z-index: 0; left: 2%; bottom: -4%; width: 58%; max-width: 11rem; }
-.us-note.tucked::before { display: none; }
-.us p { margin: var(--space-3) 0 0; font: 400 19px/1.65 var(--font-serif); color: var(--fg-1); max-width: 36em; }
-.us .signoff { margin-top: var(--space-4); font: 700 36px/1 var(--font-hand); color: var(--fg-accent); transform: rotate(-2deg); transform-origin: left center; }
-
-.made { margin: 0; padding: var(--space-4) var(--space-5) 0; border-top: 1px solid var(--border-hairline); font: var(--type-small); color: var(--fg-2); max-width: 52em; }
-
-/* ---------- A phone ---------- */
-@media (max-width: 760px) {
-  main { padding: var(--space-6) var(--space-4) var(--space-7); gap: var(--space-7); }
-  .hero { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .hero-note { max-width: 22rem; }
-  h1 { font: var(--type-h1); letter-spacing: var(--tracking-display); }
-  .sheet { --pad-left: var(--space-7); padding: var(--space-5) var(--space-5) var(--space-5) var(--pad-left); }
-  .asks li { font-size: 19px; padding-left: 2.2rem; }
-  .aim { padding-inline: 0; }
-  .takeaways, .us.with-note { grid-template-columns: minmax(0, 1fr); }
-  .us-note.tucked { left: 0; width: 55%; }
+@media (max-width: 520px) {
+  main { padding-inline: 22px; }
+  .identity { font-size: 24px; }
+  .identity span { display: none; }
+  .nav-links { font-size: 12px; }
+  .hero-words { gap: 20px; }
+  .eyebrow { font-size: 10px; }
+  .lead { font-size: 23px; }
+  .ways { align-items: stretch; flex-direction: column; gap: 10px; width: 100%; }
+  .secondary-link { text-align: center; }
+  .agenda { padding: 24px 20px; }
+  .agenda a { grid-template-columns: 1.7em 1fr; }
+  .agenda-time { grid-column: 2; }
+  .agenda-name { font-size: 14px; }
+  h2 { font-size: 29px; }
+  .asks li, .takeaways li { font-size: 21px; }
+  .resources { padding: 26px; }
 }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
