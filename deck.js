@@ -434,9 +434,9 @@ export default {
       id: "keep-learning", part: "revisit", kind: "statement",
       kicker: "Resources and continued inquiry",
       heading: "Research and leadership resources",
-      body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. Bring back what you notice when you try something.",
+      body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. When you try something, email us what you notice.",
       foot: "inquiredu.org/what-we-talk-about",
-      notes: "Sean: this is where the room's learning lives after today. [ADD] how people send observations back after today (the chat closes with the meeting), and when we'll add the session's resources there. Link for the chat: {links.wwta}"
+      notes: "Sean: this is where the room's learning lives after today. Observations come back by email: paste both our school addresses in the chat now, before it closes with the meeting. They're kept off the deck because the review page is public. [ADD] when we'll add the session's resources there. Link for the chat: {links.wwta}"
     },
     {
       id: "way-back", part: "revisit", kind: "link",
