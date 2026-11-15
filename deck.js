@@ -22,6 +22,9 @@ export default {
     wwta: "https://inquiredu.org/what-we-talk-about/" // where resources and the room's learning are shared afterward
   },
   theme: "light",
+  // Minnesota in late fall and winter, for each slide's bare side (core.js artFor): birches on the dark slides,
+  // and each part's line drawing on its light statement, list and steps slides. art: false on a slide leaves it out.
+  art: { dark: "assets/late-fall-birches.svg" },
 
   // Set these once the start time is confirmed; until then the clock waits for T.
   // day: "2026-11-19", start: "HH:MM", timeZone: "America/Chicago",
@@ -94,12 +97,12 @@ export default {
   },
 
   parts: [
-    { id: "open", title: "Opening inquiry", minutes: 8 },
-    { id: "lens", title: "A shared literacy lens", minutes: 11 },
-    { id: "making", title: "Creating text with AI", minutes: 16 },
-    { id: "navigating", title: "Evaluating AI text", minutes: 10 },
-    { id: "social", title: "Literacy as social practice", minutes: 8 },
-    { id: "revisit", title: "Implications for practice", minutes: 7 }
+    { id: "open", title: "Opening inquiry", minutes: 8, art: "assets/seasons/november.svg" },
+    { id: "lens", title: "A shared literacy lens", minutes: 11, art: "assets/seasons/first-snow.svg" },
+    { id: "making", title: "Creating text with AI", minutes: 16, art: "assets/seasons/january.svg" },
+    { id: "navigating", title: "Evaluating AI text", minutes: 10, art: "assets/seasons/november.svg" },
+    { id: "social", title: "Literacy as social practice", minutes: 8, art: "assets/seasons/october.svg" },
+    { id: "revisit", title: "Implications for practice", minutes: 7, art: "assets/seasons/first-snow.svg" }
   ],
 
   slides: [
@@ -474,7 +477,7 @@ export default {
       notes: "Sean: the underpinning why, said once. When the next tool arrives, the social nature of learning and the values the room just named are how to evaluate it, not the tool's promises."
     },
     {
-      id: "keep-learning", part: "revisit", kind: "statement",
+      id: "keep-learning", part: "revisit", kind: "statement", art: "assets/seasons/january.svg",
       kicker: "Resources and continued inquiry",
       heading: "Research and leadership resources",
       body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. When you try something, email us what you notice.",

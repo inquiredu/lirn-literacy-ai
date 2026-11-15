@@ -11,6 +11,7 @@ export default {
   url: "https://…/",               // the public address: printed on the stage and drawn as its QR code
   links: { site: "./", … },        // links for {links.name}; site is where "Open the site" goes
   theme: "light",                  // inquiredu's Ivory (the default), or "dark" for Night
+  art: { dark: "assets/…svg" },    // optional: a drawing for the bare side of dark slides (title, sections, night); see Drawings
   logo: { light: "assets/inquiredu-wordmark.svg", dark: "assets/inquiredu-wordmark-reversed.svg", alt: "inquiredu" },
                                    // the brand's files: one for light grounds, one for dark; the title slide and review use it
   mark: { src: "assets/inquiredu-monogram.svg" },   // the small mark in the rail
@@ -37,6 +38,7 @@ export default {
 | `minutes` | How long the part runs. Parts run end to end; together they should make `length` (the check says if they don't) |
 | `tone` | The ground of the part's section slide: `inverse` (the default), `accent`, `water`, `warm` or `night`. See Tones below |
 | `where` | Optional, a place: "Main room", "Breakout rooms". Shown in the rail and the plan |
+| `art` | Optional, a drawing for the light statement, list and steps slides in this part (see Drawings) |
 
 Each part's slides sit together in one stretch. The check fails a slide that comes back to an earlier part.
 
@@ -89,6 +91,10 @@ Each tone is a ground from the inquiredu design system, with the text pair the b
 | `custom` | `render({ h, rich, mode, model, slide })` | A one-off layout. Build elements with `h(tag, props, ...children)` and words with `rich(text)`; never HTML strings |
 
 `body` may be one string or a list of paragraphs. The ✦ marks one key item per slide (the check fails a second), and there's no emoji anywhere in an inquiredu deck. Pictures are `{ src, alt }`; a picture that says nothing (a flourish) is `{ src, decorative: true }`. The check fails a picture without either.
+
+## Drawings
+
+A talk can put a drawing in the bare side of its slides, behind the words and silent to a screen reader. `art.dark` on the deck goes on dark slides (the title, section slides, a `night` slide), at the right edge; each part's `art` goes on the light `statement`, `list` and `steps` slides in that part, in the right third, and the words keep the left. Other kinds fill their width and take none. On a slide, `art: false` leaves it out and `art: "assets/…svg"` picks its own, on any kind. Drawings step aside on a phone and in the review's narrow pages, and print with the backup. The rule is `artFor` in `present/core.js`; the check fails a drawing that isn't on disk.
 
 ## Braces
 

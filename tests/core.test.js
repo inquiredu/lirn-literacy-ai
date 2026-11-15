@@ -259,3 +259,35 @@ test("saved lengths and runs are cleaned before use", () => {
   assert.deepEqual(cleanLengths("{not json", timers), timers);
   assert.deepEqual(cleanRuns({ pairs: { end: t0 }, rooms: { left: -5 }, gone: { end: 1 } }, timers), { pairs: { end: t0 } });
 });
+
+// ---------- Drawings ----------
+import { artFor } from "../present/core.js";
+
+test("drawings: dark slides take the deck's, light slides their part's, and only kinds with a bare side", () => {
+  const deck = {
+    id: "art-test", title: "T", art: { dark: "dark.svg" },
+    parts: [{ id: "a", title: "A", art: "a.svg" }, { id: "b", title: "B" }],
+    slides: [
+      { id: "t", part: "a", kind: "title", heading: "T", notes: "n" },
+      { id: "s", part: "a", kind: "statement", heading: "S", notes: "n" },
+      { id: "c", part: "a", kind: "cards", cards: [], notes: "n" },
+      { id: "off", part: "a", kind: "list", items: [], art: false, notes: "n" },
+      { id: "own", part: "a", kind: "cards", cards: [], art: "own.svg", notes: "n" },
+      { id: "pic", part: "a", kind: "statement", heading: "P", image: { src: "x.png", alt: "a picture" }, notes: "n" },
+      { id: "none", part: "b", kind: "statement", heading: "N", notes: "n" },
+      { id: "night", part: "b", kind: "statement", tone: "night", heading: "N", notes: "n" }
+    ]
+  };
+  const model = buildDeck(deck);
+  const art = (id) => artFor(model.slideById.get(id), model);
+  assert.deepEqual(art("t"), { src: "dark.svg", dark: true, variant: 0 });
+  assert.deepEqual(art("s"), { src: "a.svg", dark: false, variant: 0 });
+  assert.equal(art("c"), null);                         // cards fill the width
+  assert.equal(art("off"), null);                       // art: false
+  assert.equal(art("own").src, "own.svg");              // a slide's own drawing, any kind
+  assert.equal(art("pic"), null);                       // a picture already fills the side
+  assert.equal(art("none"), null);                      // its part has no drawing
+  assert.deepEqual(art("night"), { src: "dark.svg", dark: true, variant: 1 });
+  assert.ok(deckProblems({ ...deck, slides: [{ ...deck.slides[1], art: 3 }] }).some((p) => /art that isn't a file path/.test(p)));
+  assert.ok(deckProblems(deck, { fileExists: () => false }).some((p) => /drawing that isn't there: a\.svg/.test(p)));
+});

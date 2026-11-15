@@ -14,7 +14,7 @@ import { buildDeck, inline } from "./core.js";
 // ---------- What counts as words ----------
 
 /** Keys that are structure, not words: never exported, never changed by an import. */
-const STRUCTURE = new Set(["id", "part", "kind", "tone", "title", "notes", "src", "side", "render", "timer", "url", "sun", "key", "later", "frame", "decorative", "number"]);
+const STRUCTURE = new Set(["id", "part", "kind", "tone", "title", "notes", "src", "side", "render", "timer", "url", "sun", "key", "later", "frame", "decorative", "number", "art"]);
 /** A field that is exactly one of these braces shows the deck's own value, and edits go to the deck. */
 const DECK_FIELDS = { "{title}": "title", "{subtitle}": "subtitle", "{by}": "by" };
 export const GUIDE_ID = "_how-to-edit";
