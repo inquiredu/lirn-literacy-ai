@@ -1,7 +1,7 @@
-/* The kit's front door, an inquiredu page. In a project with a site of its own, link to present.html and
-   review.html from there instead. (A file of its own, so the page carries no inline style or script.) */
+/* The talk's front door, where the QR code leads. Its words come from deck.js (present/landing.js). In a project with
+   a site of its own, link to present.html and review.html from there instead. No inline style or script. */
 main { max-width: var(--content-narrow); margin: 0 auto; padding-inline: var(--space-4); padding-block: var(--space-9) var(--space-8); display: grid; gap: var(--space-4); justify-items: start; }
-.lockup { width: 200px; height: auto; margin-bottom: var(--space-5); }
+
 .eyebrow { margin: 0; font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-accent); }
 h1 { font: var(--type-display); letter-spacing: var(--tracking-display); }
 .lead { margin: 0; font: var(--type-lead); color: var(--fg-2); }

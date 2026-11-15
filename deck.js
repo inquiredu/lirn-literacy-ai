@@ -6,6 +6,9 @@
 // coaches, literacy leaders and media specialists. [ADD] in a note marks a gap only Andrew or Sean can fill.
 // The room's thinking goes to a Padlet for now (an Apps Script capture tool is pinned for later). Resources and
 // what the room learns afterward are shared through What We Talk About When We Talk About AI.
+// Authorship: a joint piece, not either presenter's brand. "R&B: Reading & Belonging" (Rummel & Beaverson) is a
+// working name for Andrew and Sean to settle together. It appears in two places: the title slide's kicker and
+// the thank-you slide's foot.
 
 export default {
   id: "lirn-literacy-ai",
@@ -19,8 +22,6 @@ export default {
     wwta: "https://inquiredu.org/what-we-talk-about/" // where resources and the room's learning are shared afterward
   },
   theme: "light",
-  logo: { light: "assets/inquiredu-wordmark.svg", dark: "assets/inquiredu-wordmark-reversed.svg", alt: "inquiredu" },
-  mark: { src: "assets/inquiredu-monogram.svg" },
 
   // Set these once the start time is confirmed; until then the clock waits for T.
   // day: "2026-11-19", start: "HH:MM", timeZone: "America/Chicago",
@@ -38,7 +39,7 @@ export default {
     // ── Opening: read a text, learn how it was made, write a first definition ───────────────────────────
     {
       id: "title", part: "open", kind: "title",
-      kicker: "LiRN · A working session", heading: "Literacy Across Modalities", sub: "{subtitle}", by: "{by}",
+      kicker: "R&B · Reading & Belonging", heading: "Literacy Across Modalities", sub: "{subtitle}", by: "{by} · a working session for LiRN",
       notes: "Both: welcome people as they come in. Press T (or Call to order) when you begin; the clock counts {length} from then.\n\nSean: set the frame in two sentences. This is a working session, not a talk, and nothing we show today is a conclusion. Most of the hour belongs to you."
     },
     {
@@ -292,7 +293,7 @@ export default {
       id: "thanks", part: "revisit", kind: "statement",
       kicker: "Thank you",
       heading: "Literacy rarely develops **apart from others**.",
-      foot: "{by}",
+      foot: "{by} · R&B",
       notes: "Both: thank the room. Point them to What We Talk About for resources, and to this deck for slides, notes and sources."
     }
   ]
