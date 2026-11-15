@@ -57,10 +57,6 @@ body { margin: 0; min-height: 100vh; background: var(--surface-sunken) url("../a
     repeating-linear-gradient(to bottom, transparent 0 29px, var(--rule) 29px 30px) 0 var(--space-7) / 100% auto no-repeat,
     var(--surface-raised);
 }
-.field-note { position: relative; align-self: end; justify-self: center; width: min(94%, 25rem); margin: var(--space-4) 0 0; padding: 10px 10px 4px; background: var(--surface-raised); border: 1px solid var(--border-hairline); box-shadow: var(--shadow-1); transform: rotate(var(--tilt, -1deg)); }
-.field-note img { display: block; width: 100%; height: auto; }
-.field-note::before { content: ""; position: absolute; top: -12px; left: 50%; width: 88px; height: 24px; transform: translateX(-50%) rotate(var(--tape, -3deg)); background: color-mix(in srgb, var(--surface-accent) 42%, transparent); }
-.field-note figcaption { padding: 2px 4px 2px; text-align: center; font: 500 22px/1.15 var(--font-hand); color: var(--fg-2); }
 .running-head { margin: 0; display: flex; justify-content: space-between; gap: var(--space-3); font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-2); }
 .running-head span { font-variant-numeric: tabular-nums; }
 .notes-title { font: var(--type-h3); letter-spacing: var(--tracking-heading); color: var(--fg-1); }

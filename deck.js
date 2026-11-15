@@ -26,6 +26,44 @@ export default {
   // Set these once the start time is confirmed; until then the clock waits for T.
   // day: "2026-11-19", start: "HH:MM", timeZone: "America/Chicago",
 
+  // The front door (index.html, where the QR code leads): why we're doing this, in our own words. DRAFT for
+  // Andrew to read and change; every line here is his to edit as much as Sean's.
+  landing: {
+    questions: {
+      heading: "The questions we're carrying",
+      intro: "We don't have conclusions. We have questions we'd like to get sharper, and we'd rather work on them with you than at you.",
+      items: [
+        "What does it mean to be literate now, with AI in the room?",
+        "What has reading and writing always asked of us, and what is actually new?",
+        "When AI helps make a text (a student's draft, a teacher's easier version), whose thinking is on the page, and what should we hold onto?",
+        "When the text came from a machine, how does a reader check it, especially on a topic they don't know yet?",
+        "What happens to the talk between people that literacy has always grown from?",
+        "Which of our values should hold steady while the tools keep changing?"
+      ]
+    },
+    aim: {
+      heading: "If it goes well",
+      intro: "Nobody leaves with the answer. We hope everyone leaves with a clearer way to ask:",
+      items: [
+        "A sentence about literacy now that you wrote, revised, and can stand behind.",
+        "A shared lens, the four roles of the reader, to use on any text AI made.",
+        "One signpost to watch for, and one small thing to try in your building.",
+        "A few more people to keep thinking with."
+      ],
+      close: "Clarity and precision, at a moment when the words are moving fast. Decisions for now, held up against what we already believe about how kids become readers and writers."
+    },
+    us: {
+      heading: "Why the two of us",
+      body: [
+        "We've been friends since Sean was seventeen. We both started as English teachers. Andrew went deep into literacy: intervention, coaching, and K–12 literacy for Minneapolis Public Schools. Sean went toward technology and how schools take it on. We keep meeting in the middle of the same conversation.",
+        "We share what we're working out because saying it out loud, to people who'll push back, is how we get clearer. We don't always agree, and you'll hear that. We also just like doing this together, and we hope that comes through."
+      ],
+      signoff: "Andrew & Sean",
+      season: "social"            // the part whose drawing is taped beside it: October, the fire
+    },
+    made: "How this was made: our conversation, Gemini's notes on it, deep-research prompts, and a first draft of the deck by Claude, all revised by us, with the studies on the slides checked against their sources. Telling you that is part of the session."
+  },
+
   // Each part is a Minnesota season, so the review reads through a year and comes back round: a line drawing
   // and a field-note caption at the foot of every notes page in that part (assets/seasons/, drawn for this talk).
   parts: [

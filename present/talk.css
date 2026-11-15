@@ -172,3 +172,10 @@
 @font-face { font-family: "Caveat"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/caveat-latin-500-normal.woff2") format("woff2"); }
 @font-face { font-family: "Caveat"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/caveat-latin-700-normal.woff2") format("woff2"); }
 :root { --font-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive; }
+
+/* A field note: a drawing taped in like a journal page, with a handwritten caption (the book's notes pages and the
+   front door). --tilt and --tape, when set, vary it from page to page. */
+.field-note { position: relative; align-self: end; justify-self: center; width: min(94%, 25rem); margin: var(--space-4) 0 0; padding: 10px 10px 4px; background: var(--surface-raised); border: 1px solid var(--border-hairline); box-shadow: var(--shadow-1); transform: rotate(var(--tilt, -1deg)); }
+.field-note img { display: block; width: 100%; height: auto; }
+.field-note::before { content: ""; position: absolute; top: -12px; left: 50%; width: 88px; height: 24px; transform: translateX(-50%) rotate(var(--tape, -3deg)); background: color-mix(in srgb, var(--surface-accent) 42%, transparent); }
+.field-note figcaption { padding: 2px 4px 2px; text-align: center; font: 500 22px/1.15 var(--font-hand); color: var(--fg-2); }

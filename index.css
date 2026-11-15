@@ -1,14 +1,62 @@
-/* The talk's front door, where the QR code leads. Its words come from deck.js (present/landing.js). In a project with
-   a site of its own, link to present.html and review.html from there instead. No inline style or script. */
-main { max-width: var(--content-narrow); margin: 0 auto; padding-inline: var(--space-4); padding-block: var(--space-9) var(--space-8); display: grid; gap: var(--space-4); justify-items: start; }
+/* The talk's front door, where the QR code leads: a journal page. Its words come from deck.js (present/landing.js).
+   No inline style or script. In a project with a site of its own, link to present.html and review.html from there. */
+body { background: var(--surface-sunken) url("assets/seasons/contours.svg") center top / 1200px repeat; }
+main { max-width: 1040px; margin: 0 auto; padding: var(--space-8) var(--space-5) var(--space-8); display: grid; gap: var(--space-8); }
 
+/* ---------- The hero: the title, the ways in, and November taped beside them ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: var(--space-7); align-items: center; }
+.hero-words { display: grid; gap: var(--space-4); justify-items: start; }
 .eyebrow { margin: 0; font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-accent); }
 h1 { font: var(--type-display); letter-spacing: var(--tracking-display); }
-.lead { margin: 0; font: var(--type-lead); color: var(--fg-2); }
-.ways { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
-.ways a { display: grid; gap: var(--space-1); padding: var(--space-5); border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); color: var(--fg-1); text-decoration: none; transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+.lead { margin: 0; font: var(--type-lead); color: var(--fg-2); max-width: 32em; }
+.byline { margin: 0; font: var(--type-small); color: var(--fg-2); }
+.hero-note { --tilt: 2deg; --tape: -4deg; width: 100%; max-width: 26rem; justify-self: center; }
+.ways { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); gap: var(--space-3); margin-top: var(--space-2); }
+.ways a { display: grid; gap: var(--space-1); padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); color: var(--fg-1); text-decoration: none; transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
 .ways a:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); color: var(--fg-1); }
+.ways a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .ways strong { font: var(--type-h3); letter-spacing: var(--tracking-heading); }
 .ways span { font: var(--type-small); color: var(--fg-2); }
-.small { margin: var(--space-4) 0 0; font: var(--type-small); color: var(--fg-2); }
-.badge { display: inline-block; margin-right: var(--space-2); padding: 0 var(--space-2); border-radius: var(--radius-xs); background: var(--status-warning-bg); color: var(--status-warning); font: 600 12px/1.6 var(--font-sans); letter-spacing: var(--tracking-badge); text-transform: uppercase; }
+
+/* ---------- A sheet of ruled journal paper ---------- */
+.sheet {
+  --rule: color-mix(in srgb, var(--fg-1) 7%, transparent); --margin: color-mix(in srgb, var(--fg-accent) 32%, transparent); --pad-left: var(--space-9);
+  padding: var(--space-7) var(--space-7) var(--space-6) var(--pad-left); border-radius: var(--radius-md); border: 1px solid var(--border-hairline); box-shadow: var(--shadow-2);
+  background:
+    linear-gradient(to right, transparent calc(var(--pad-left) - 26px), var(--margin) calc(var(--pad-left) - 26px) calc(var(--pad-left) - 25px), transparent calc(var(--pad-left) - 25px)),
+    repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule) 33px 34px),
+    var(--surface-raised);
+}
+h2 { font: var(--type-h2); letter-spacing: var(--tracking-heading); }
+.intro { margin: var(--space-3) 0 0; font: var(--type-lead); color: var(--fg-2); max-width: 34em; }
+
+/* The questions: numbered in the hand, read in Newsreader */
+.asks { margin: var(--space-5) 0 0; padding: 0; list-style: none; counter-reset: ask; display: grid; gap: var(--space-4); }
+.asks li { counter-increment: ask; position: relative; padding-left: 2.6rem; font: 400 21px/1.5 var(--font-serif); color: var(--fg-1); max-width: 36em; }
+.asks li::before { content: counter(ask); position: absolute; left: 0; top: -.2em; font: 700 34px/1 var(--font-hand); color: var(--fg-accent); }
+
+/* What we hope for: open on the page, no sheet */
+.aim { padding-inline: var(--space-5); }
+.takeaways { margin: var(--space-5) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); max-width: 46rem; }
+.takeaways li { padding: var(--space-4) var(--space-5); border-left: 3px solid var(--surface-accent); background: color-mix(in srgb, var(--surface-raised) 70%, transparent); font: 400 18px/1.5 var(--font-serif); color: var(--fg-1); }
+.close { margin: var(--space-5) 0 0; font: italic 400 20px/1.55 var(--font-serif); color: var(--fg-1); max-width: 38em; }
+
+/* Why the two of us, signed by hand, with October's fire taped beside it */
+.us.with-note { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: var(--space-6); align-items: center; }
+.us-note { --tilt: -2deg; --tape: 4deg; width: 100%; max-width: 20rem; justify-self: center; align-self: center; margin: 0; }
+.us p { margin: var(--space-3) 0 0; font: 400 19px/1.65 var(--font-serif); color: var(--fg-1); max-width: 36em; }
+.us .signoff { margin-top: var(--space-4); font: 700 36px/1 var(--font-hand); color: var(--fg-accent); transform: rotate(-2deg); transform-origin: left center; }
+
+.made { margin: 0; padding: var(--space-4) var(--space-5) 0; border-top: 1px solid var(--border-hairline); font: var(--type-small); color: var(--fg-2); max-width: 52em; }
+
+/* ---------- A phone ---------- */
+@media (max-width: 760px) {
+  main { padding: var(--space-6) var(--space-4) var(--space-7); gap: var(--space-7); }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .hero-note { max-width: 22rem; }
+  h1 { font: var(--type-h1); letter-spacing: var(--tracking-display); }
+  .sheet { --pad-left: var(--space-7); padding: var(--space-5) var(--space-5) var(--space-5) var(--pad-left); }
+  .asks li { font-size: 19px; padding-left: 2.2rem; }
+  .aim { padding-inline: 0; }
+  .takeaways, .us.with-note { grid-template-columns: minmax(0, 1fr); }
+}
