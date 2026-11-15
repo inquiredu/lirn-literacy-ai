@@ -26,10 +26,22 @@ Before the day: turn on breakout rooms and "Allow participants to choose room" o
 
 ## Outstanding content decisions
 
-- Padlet removed (November 15, 2026). Responses go in the Zoom chat; a co-host saves the chat after version 1. Still `[ADD]`: how people send observations back after the session.
-- Resolve the five `[ADD]` facilitator notes in `deck.js`: changes to the session description, the framing attribution, the prepared/live checking example, University of Minnesota research, and the follow-up submission process.
-- Confirm any session date and start time before configuring automatic clock start. The clock currently waits for the presenter.
-- The user approved the design and wording direction. Resolve the remaining content placeholders with the presenters.
+Decided with Sean on November 15, 2026, step by step after the content review (`docs/CONTENT-REVIEW.md`): responses go in the Zoom chat; after the session, observations come back by email (addresses pasted in the chat, kept off the public deck); breakout rooms switch on by headcount (below); a K–2 beat and Case C; grade bands on every card; three figures; four added perspectives.
+
+**For Andrew** (Sean said Andrew, who also works in this repo, will supply these). Each is an `[ADD]` in a slide's notes in `deck.js`:
+
+| Slide | What's needed |
+| --- | --- |
+| `how-made` | Exactly what you changed in Gemini's session description, and what you didn't check |
+| `framings` | The author of the "AI as thought partner / AI as source of content" framing from Andrew's earlier session |
+| `noticing-a` (notes) | Confirm "Kit 05 (Curriculum Mapping)" on What We Talk About; the site couldn't be reached to check |
+| `noticing-b` | An EL colleague's view on Case B, if one can be had before the day |
+| `check-this` | Keep the prepared Charlotte's Web answer, or generate one live with planted errors |
+| `moves` | Vet the Dakota and Ojibwe example with district American Indian education staff, or drop it |
+| `t-chart` | The University of Minnesota study on AI and interpersonal connection; it should be checked against its source before it goes on a slide |
+| `keep-learning` | When the session's resources go up on What We Talk About |
+
+Also: confirm the session date and start time before setting `day` and `start` (the clock waits for the presenter until then), and confirm the 2026–27 LiRN series theme.
 
 ## Verification
 

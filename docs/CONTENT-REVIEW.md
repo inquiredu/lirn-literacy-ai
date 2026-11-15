@@ -20,6 +20,8 @@ Decided with Sean, step by step, after the review:
 | 3 | Dakota and Ojibwe | Drafted in `moves` notes only, marked `[ADD]` to vet with district American Indian education staff. Grounded in Minn. R. 3501.0660 (ELA standards) and Minn. Stat. 120B.021 (Indigenous Education for All) |
 | 3 | Graphics: four roles as a quadrant; an annotated AI answer; an evidence map | Yes: `four-roles` and `what-was-in-it` are now drawn figures; new `evidence-map` slide after `noticing-nav` |
 | 3 | The real Gemini summary as an example | Yes: `how-made` notes (16 vs 50 registrations; "upper tiers") |
+| 4 | After the session, observations come back by email | Yes: `keep-learning` body and notes; addresses go in the chat, not on the public deck |
+| 4 | Remaining facts | Andrew, who also works in this repo, will supply them; listed slide by slide in `HANDOFF.md` |
 
 ## Rating
 
