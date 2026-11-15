@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "present-kit", "runtimeExecutable": "node", "runtimeArgs": ["scripts/serve.js"], "port": 4188, "autoPort": true }
+  ]
+}

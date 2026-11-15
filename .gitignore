@@ -1,0 +1,10 @@
+# Secrets never belong here (the commit hook stops them too)
+.env*
+!.env.example
+service-account*.json
+*-credentials.json
+# Built or fetched, not source
+dist/
+node_modules/
+.preview/
+.DS_Store

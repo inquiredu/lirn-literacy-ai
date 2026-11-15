@@ -1,0 +1,54 @@
+/* The review: slides as pages to read on any screen, and one slide to a printed page for the backup.
+   An inquiredu page: centered columns, Montserrat headings, Newsreader for reading, hairlines before shadows. */
+html { scroll-padding-top: var(--space-4); }
+body { margin: 0; background: var(--surface-sunken); color: var(--fg-1); font: var(--type-body); }
+.review-head, .review { max-width: var(--content-default); margin: 0 auto; padding-inline: var(--space-4); }
+.review-head { padding-block: var(--space-8) var(--space-6); display: grid; gap: var(--space-3); justify-items: start; }
+.review-head .logo { height: 28px; width: auto; margin-bottom: var(--space-3); }
+.review-head .kicker { font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); color: var(--fg-accent); }
+.review-head h1 { font: var(--type-display); letter-spacing: var(--tracking-display); max-width: 18ch; }
+.review-head .lede { margin: 0; font: var(--type-lead); color: var(--fg-2); max-width: var(--content-narrow); }
+.review-head .byline { margin: 0; font: var(--type-small); color: var(--fg-2); }
+.tools { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.tool {
+  display: inline-flex; align-items: center; min-height: var(--control-lg); padding: 0 var(--space-5); border-radius: var(--radius-sm); cursor: pointer;
+  font: var(--type-ui); text-decoration: none; color: var(--fg-1); background: var(--control-bg); border: 1px solid var(--control-border);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.tool:hover { background: var(--action-ghost-hover); color: var(--fg-1); }
+.tool.primary { background: var(--action-primary); color: var(--on-action-primary); border-color: transparent; }
+.tool.primary:hover { background: var(--action-primary-hover); color: var(--on-action-primary); }
+.tool[aria-pressed="true"] { background: var(--surface-water-soft); border-color: var(--indicator-selected); }
+
+.contents { margin: 0 0 var(--space-7); padding: var(--space-5) var(--space-5) var(--space-4); border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); }
+.contents h2 { font: var(--type-h3); letter-spacing: var(--tracking-heading); margin-bottom: var(--space-2); }
+.toc-part h3 { margin: var(--space-4) 0 var(--space-1); font: var(--type-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--fg-accent); }
+.toc-len { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--fg-2); }
+.contents ol { margin: 0; padding-left: 2.2em; columns: 2 18rem; column-gap: var(--space-6); font: var(--type-small); }
+.contents li { break-inside: avoid; padding: .15rem 0; }
+.contents li::marker { color: var(--fg-2); font-variant-numeric: tabular-nums; }
+
+.page { margin: 0 0 var(--space-6); }
+.page-n { margin: 0 0 var(--space-2); font: var(--type-label); letter-spacing: var(--tracking-label); color: var(--fg-2); }
+.page-frame { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-hairline); }
+.page-frame .slide { font-size: clamp(11px, 1.6cqw, 15.5px); min-height: 0; padding-top: 2.6em; padding-bottom: 3em; }
+.page-frame .kind-title { min-height: 30em; }
+.page-notes { display: none; margin: var(--space-3) 0 0; padding: var(--space-3) var(--space-4); border-left: 4px solid var(--indicator-selected); border-radius: 0 var(--radius-md) var(--radius-md) 0; background: var(--surface-raised); }
+.with-notes .page-notes { display: block; }
+.page-notes p { margin: 0; }
+.page-notes p + p { margin-top: .5em; }
+.page-notes .label { margin-bottom: var(--space-1); font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-2); }
+
+/* ---------- Print: one slide to a 16:9 page, with its notes below when they're on ---------- */
+@page { size: 13.333in 7.5in; margin: 0; }
+@media print {
+  body { background: var(--surface-page); }
+  .review-head, .contents, .page-n { display: none; }
+  .review { max-width: none; padding: 0; }
+  .page { margin: 0; height: 7.5in; break-after: page; display: grid; grid-template-rows: minmax(0, 1fr) auto; overflow: hidden; }
+  .page-frame { container: slide / size; border: 0; border-radius: 0; }
+  .page-frame .slide { font-size: min(1.35cqw, 2.4cqh); min-height: 100%; height: 100%; padding: 3.2em 4.2em 3.6em; }
+  .with-notes .page-notes { margin: 0; border-radius: 0; padding: .14in .35in; font-size: 11pt; }
+  .slide, .page-frame, .page-notes { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .embed { display: none; }
+}

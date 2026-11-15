@@ -1,0 +1,15 @@
+{
+  "name": "present-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Present Standard: one deck file, a stage, a presenter view and a review. No build step, no dependencies.",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node scripts/check-all.js",
+    "check": "node scripts/check.js",
+    "map": "node scripts/preview.js map",
+    "preview": "node scripts/preview.js",
+    "a11y": "node scripts/a11y.js"
+  }
+}

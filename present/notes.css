@@ -1,0 +1,47 @@
+/* The presenter view: calm type for a glance mid-sentence, the note itself in Newsreader. It follows the
+   presenter's own light or dark setting (data-theme="auto"). */
+html, body { margin: 0; }
+body { background: var(--surface-page); color: var(--fg-1); font: var(--type-ui); }
+button { font: inherit; }
+.notes { max-width: 46rem; margin: 0 auto; padding: var(--space-4) 20px 28px; display: grid; gap: 14px; }
+.n-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; color: var(--fg-2); font: var(--type-small); }
+.n-clock { font: 600 1.15rem/1.2 var(--font-sans); color: var(--fg-1); font-variant-numeric: tabular-nums; }
+.n-clock.over { color: var(--status-danger); }
+.n-status { margin: -6px 0 0; font: var(--type-small); color: var(--fg-2); }
+.n-status.off { padding: 8px 12px; border-radius: var(--radius-md); background: var(--status-info-bg); color: var(--status-info); }
+.n-part { margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); font: var(--type-small); }
+.n-part strong { font-weight: 600; }
+.n-part span { color: var(--fg-2); }
+.n-pace { font-weight: 600; }
+.n-pace:not(:empty)::before { content: " · "; font-weight: 400; color: var(--fg-2); }
+.n-pace[data-diff="1"] { color: var(--status-warning); }
+.label { margin: 0; font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-2); }
+.n-heading { margin: 2px 0 0; font: 600 1.6rem/1.2 var(--font-sans); letter-spacing: var(--tracking-heading); }
+.n-note { padding: 14px 18px; border-left: 4px solid var(--indicator-selected); border-radius: 0 var(--radius-md) var(--radius-md) 0; background: var(--surface-raised); font: 400 1.35rem/1.5 var(--font-serif); }
+.n-note p { margin: 0; text-wrap: pretty; }
+.n-note p + p { margin-top: .7em; }
+.n-card { display: grid; gap: 10px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); }
+.n-card[hidden] { display: none; }
+.t-read { margin: 0; display: flex; align-items: baseline; gap: 12px; }
+.t-display { font: 500 2.2rem/1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.n-timer.done .t-display { color: var(--status-danger); }
+.t-status { color: var(--fg-2); font: var(--type-small); }
+.n-next { margin: 0; color: var(--fg-2); }
+.n-next strong { color: var(--fg-1); font-weight: 600; }
+.n-buttons, .n-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.n-nav button { flex: 1; padding: 14px; font-size: 1.05rem; }
+button {
+  min-height: 44px; padding: 8px 14px; border-radius: var(--radius-sm); cursor: pointer; font: var(--type-ui);
+  color: var(--fg-1); background: var(--control-bg); border: 1px solid var(--control-border);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+button:hover:not(:disabled) { background: var(--action-ghost-hover); }
+button:active:not(:disabled) { transform: translateY(1px); }
+button.primary { background: var(--action-primary); color: var(--on-action-primary); border-color: transparent; }
+button.primary:hover:not(:disabled) { background: var(--action-primary-hover); }
+button[aria-pressed="true"] { background: var(--surface-water-soft); border-color: var(--indicator-selected); }
+button:disabled { background: var(--control-bg-disabled); color: var(--fg-2); border-color: var(--border-hairline); cursor: not-allowed; }
+button[hidden] { display: none; }
+.n-wait-read { letter-spacing: 0; text-transform: none; color: var(--fg-1); }
+.n-links { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 16px; font: var(--type-small); }
+.n-links a { font-weight: 600; }

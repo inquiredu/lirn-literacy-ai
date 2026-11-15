@@ -1,0 +1,189 @@
+/* The stage around the slide: the rail along the bottom, the progress bar, controls that stay quiet until you
+   reach for them, the session clock in its three places, the way back to the site, and the dialogs.
+   The stage keeps a fixed rail and corner controls, where an inquiredu page has none: a stage is an instrument
+   the presenter works, not a page to read (docs/DECISIONS.md). Grounds stay flat; lines before shadows. */
+
+:root { --rail-h: 64px; }
+html, body { height: 100%; margin: 0; }
+body { overflow: hidden; background: var(--bg); color: var(--fg); font: var(--type-ui); }
+button { font: inherit; }
+
+/* ---------- The slide area ---------- */
+.stage-frame { container: slide / size; position: fixed; inset: 0 0 var(--rail-h) 0; }
+.stage {
+  height: 100%;
+  overflow-y: auto;                 /* a tall slide on a small window scrolls instead of clipping */
+  scrollbar-width: none;            /* without a scrollbar on the shared screen */
+  outline: none;
+}
+.stage::-webkit-scrollbar { display: none; }
+.stage .slide { font-size: clamp(14px, min(1.35cqw, 2.4cqh), 38px); min-height: 100cqh; }
+.stage .kind-title .title-words { padding-bottom: 5.5em; }   /* room for the session clock, waiting below the words */
+
+/* ---------- The rail ---------- */
+.rail {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; height: var(--rail-h);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--space-4);
+  padding: 0 2vw; background: var(--surface-raised); border-top: 1px solid var(--border-hairline);
+  font: 500 clamp(.85rem, 1.2vw, 1.1rem)/1.3 var(--heading); color: var(--fg-1);
+}
+.rail p { margin: 0; display: flex; align-items: center; gap: var(--space-3); white-space: nowrap; min-width: 0; }
+.rail-part { overflow: hidden; }
+.rail-title { font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
+.rail-len:not(:empty)::before, .rail-where:not(:empty)::before { content: "· "; }
+.rail-len, .rail-where { color: var(--fg-2); }
+.rail-mark { width: 30px; height: 30px; }
+.rail-url { justify-self: center; padding: .2em .9em; border-radius: var(--radius-pill); border: 1px solid var(--border-hairline); color: var(--fg-1); font-weight: 600; text-decoration: none; }
+.rail-url:hover { background: var(--action-ghost-hover); color: var(--fg-1); }
+.rail-right { justify-self: end; padding-right: var(--clock-room, 11em); color: var(--fg-2); font-variant-numeric: tabular-nums; }
+
+/* The bar: one segment per slide along the top of the rail, the current one in violet, a wider gap between parts */
+.bar { position: absolute; left: 0; right: 0; top: -9px; height: 16px; display: flex; gap: 2px; padding: 0 2px; }
+.seg { flex: 1; min-width: 0; height: 100%; padding: 0; border: 0; background: none; cursor: default; position: relative; }
+.seg.part-start { margin-left: 6px; }
+.seg::after { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 4px; border-radius: var(--radius-xs); background: var(--border-hairline); transition: background var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+.seg.past::after { background: var(--fg-2); }
+.seg.now::after { background: var(--indicator-selected); transform: scaleY(1.8); }
+.bar.jump .seg { cursor: pointer; }
+.bar.jump .seg:hover::after { background: var(--indicator-selected); }
+.bar:not(.jump) .seg { pointer-events: none; }
+/* Where the plan says the room is: a small mark on the bar, so behind and ahead show at a glance */
+.pace-mark { position: absolute; top: -15px; width: 2px; height: 14px; border-radius: 1px; background: var(--fg-1); transition: left 1s linear; }
+.pace-mark::before { content: ""; position: absolute; left: -4px; top: -5px; border: 5px solid transparent; border-top-color: var(--fg-1); }
+
+/* ---------- Buttons: the brand's ghost and primary, square-ish (radius-sm) ---------- */
+.controls button, .sc-actions button, .qr-x, .help-x {
+  min-height: 36px; padding: 6px 14px; border-radius: var(--radius-sm); cursor: pointer; font: var(--type-ui);
+  color: var(--fg-1); background: var(--surface-raised); border: 1px solid var(--border-hairline);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.controls button:hover, .sc-actions button:hover, .qr-x:hover, .help-x:hover { background: var(--action-ghost-hover); }
+.controls button:active, .sc-actions button:active { transform: translateY(1px); }
+
+/* Controls: quiet until you reach for them, and readable all the while (fg-2 holds 4.5:1 at rest) */
+.controls { position: fixed; top: 12px; right: 12px; z-index: 12; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.controls button { color: var(--fg-2); border-color: transparent; }
+.controls:hover button, .controls:focus-within button { color: var(--fg-1); border-color: var(--border-hairline); }
+.toast { position: fixed; top: 64px; right: 12px; z-index: 12; max-width: min(28rem, calc(100vw - 24px)); margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--surface-toast); color: var(--fg-on-toast); font: var(--type-small); box-shadow: var(--shadow-3); }
+.toast[hidden] { display: none; }
+.hint {
+  position: fixed; left: 50%; bottom: calc(var(--rail-h) + 18px); z-index: 11; transform: translateX(-50%); margin: 0;
+  padding: 7px 16px; border-radius: var(--radius-pill); background: var(--surface-toast); color: var(--fg-on-toast); font: var(--type-small); white-space: nowrap;
+  transition: opacity 1s var(--ease-out), visibility 1s;
+}
+.hint.gone { opacity: 0; visibility: hidden; }
+
+/* ---------- The session clock ----------
+   One element, three places: big on the first slide (hero), small in the rail's corner, and large above the stage
+   when clicked (open), as a flat raised panel. Moving between them is a short glide. */
+.session-clock {
+  --glide: var(--dur-slow) var(--ease-out);
+  position: fixed; z-index: 20; right: 2vw; bottom: 12px; transform: translate(0, 0);
+  display: grid; justify-items: end; gap: .3em;
+  font: 600 clamp(1rem, 1.5vw, 1.4rem)/1.2 var(--heading); color: var(--fg-1);
+  padding: .2em .4em; border-radius: var(--radius-lg); border: 1px solid transparent; background-color: transparent;
+  transition: right var(--glide), bottom var(--glide), transform var(--glide), font-size var(--glide), padding var(--glide),
+    border-color var(--glide), background-color var(--glide), box-shadow var(--glide);
+}
+.session-clock[hidden] { display: none; }
+.sc-face { display: flex; align-items: baseline; gap: .45em; padding: .15em .6em; font: inherit; color: var(--fg-1); background: none; border: 0; border-radius: var(--radius-pill); cursor: pointer; }
+.sc-time { font-weight: 600; font-variant-numeric: tabular-nums; }
+.sc-label { color: var(--fg-2); font-weight: 500; font-size: .74em; white-space: nowrap; }
+.session-clock[data-state="over"] .sc-time { color: var(--status-danger); }
+.session-clock[data-state="paused"] .sc-time { color: var(--fg-2); }
+.sc-actions, .sc-wait { display: none; }
+
+.session-clock[data-mode="corner"] .sc-face { background: var(--surface-raised); border: 1px solid var(--border-hairline); }
+.session-clock[data-mode="corner"] .sc-wait:not([hidden]) {
+  display: flex; order: -1; align-items: baseline; gap: .4em; padding: .15em .7em; border-radius: var(--radius-pill);
+  background: var(--surface-raised); border: 1px solid var(--border-hairline); animation: sc-rise var(--dur-slow) var(--ease-out);
+}
+.session-clock[data-mode="corner"] .sc-wait-label { font-size: .62em; }
+.session-clock[data-mode="corner"] .sc-wait-time { font-size: 1em; }
+
+/* Hero: waiting on the first slide for the call to order, low on the left, under the title's words */
+.session-clock[data-mode="hero"] { right: 96vw; bottom: calc(var(--rail-h) + 3.5vh); transform: translate(100%, 0); font-size: clamp(1.05rem, 1.8vw, 2.2rem); justify-items: start; }
+.session-clock[data-mode="hero"] .sc-face { flex-direction: row; align-items: baseline; gap: .5em; padding: 0; }
+.session-clock[data-mode="hero"] .sc-time { color: var(--fg-accent); font-size: 1.4em; }
+.session-clock[data-mode="hero"] .sc-actions { display: flex; font-size: .72em; }
+.session-clock[data-mode="hero"] .sc-waits, .session-clock[data-mode="hero"] .sc-close { display: none; }
+
+/* Open: large, a raised panel over a scrim */
+.session-clock[data-mode="open"] {
+  right: 50%; bottom: 50%; transform: translate(50%, 50%);
+  font-size: clamp(1.6rem, 4vw, 4.2rem); padding: .7em 1.1em .8em; gap: .4em; justify-items: center; max-width: 94vw;
+  background-color: var(--surface-raised); border-color: var(--border-hairline); box-shadow: var(--shadow-3);
+}
+.session-clock[data-mode="open"] .sc-time { font-size: 1.9em; line-height: 1; color: var(--fg-accent); }
+.session-clock[data-mode="open"][data-state="over"] .sc-time { color: var(--status-danger); }
+.session-clock[data-mode="open"] .sc-label { font-size: .45em; }
+.session-clock[data-mode="open"].waiting .sc-face { font-size: .55em; }
+.session-clock[data-mode="open"].waiting .sc-time { font-size: 1.6em; }
+.session-clock[data-mode="open"] .sc-wait:not([hidden]) { display: grid; justify-items: center; gap: .12em; animation: sc-rise var(--dur-slow) var(--ease-out); }
+.sc-wait-label { color: var(--fg-2); font-weight: 600; font-size: .4em; letter-spacing: .18em; text-transform: uppercase; }
+.sc-wait-time { font: 500 2.5em/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--fg-1); }
+.sc-wait.done .sc-wait-time { color: var(--status-danger); }
+.session-clock[data-mode="open"] .sc-actions { display: grid; justify-items: center; gap: .6em; font-size: .4em; margin-top: .4em; }
+.sc-actions button { white-space: nowrap; font-size: 1em; }
+.sc-actions .sc-start { background: var(--action-primary); color: var(--on-action-primary); border-color: transparent; }
+.sc-actions .sc-start:hover { background: var(--action-primary-hover); }
+.sc-row { display: flex; flex-wrap: wrap; align-items: center; gap: .4em; }
+.sc-waits { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4em; }
+.sc-waits > span { color: var(--fg-2); font-weight: 600; margin-right: .3em; }
+.sc-waits button { min-width: 4.4em; }
+.sc-waits [aria-pressed="true"] { background: var(--action-primary); color: var(--on-action-primary); border-color: transparent; }
+.session-clock.waiting .sc-waits > span { display: none; }
+.sc-actions [hidden] { display: none; }
+.sc-backdrop { position: fixed; inset: 0; z-index: 15; background: var(--scrim); animation: sc-dim var(--dur-slow) var(--ease-out); }
+.sc-backdrop[hidden] { display: none; }
+@keyframes sc-rise { from { opacity: 0; transform: translateY(.3em); } }
+@keyframes sc-dim { from { opacity: 0; } }
+
+/* ---------- The way back: a code to scan, in the corner and large ---------- */
+.qr-tile { position: fixed; right: 2vw; bottom: calc(var(--rail-h) + 14px); z-index: 9; width: 96px; height: 96px; padding: 6px; border-radius: var(--radius-md); background: var(--qr-ground); color: var(--qr-ink); border: 1px solid var(--border-hairline); cursor: pointer; }
+.qr-tile:hover { box-shadow: var(--shadow-2); }
+.qr-tile .qr { display: block; width: 100%; height: 100%; }
+.qr-tile[hidden] { display: none; }
+/* A running wait rises above the clock in the corner; the code steps up to make room */
+body:has(.session-clock.waiting[data-mode="corner"]) .qr-tile { bottom: calc(var(--rail-h) + 56px); }
+dialog { border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); padding: 1.4rem 1.6rem 1.2rem; box-shadow: var(--shadow-3); }
+dialog::backdrop { background: var(--scrim); }
+dialog h2 { margin: 0 0 .8rem; font: var(--type-h3); letter-spacing: var(--tracking-heading); }
+.qr-big { background: var(--qr-ground); color: var(--qr-ink); text-align: center; cursor: pointer; }
+.qr-big .qr { display: block; width: min(70vmin, 34rem); height: auto; margin: 0 auto; }
+.qr-addr { margin: .8rem 0 0; font: 600 1.5rem/1.3 var(--heading); }
+.qr-how { margin: .3rem 0 0; font: var(--type-small); }
+.qr-x, .help-x { position: absolute; top: .8rem; right: .8rem; }
+.qr-big .qr-x { color: var(--qr-ink); background: var(--qr-ground); border-color: currentColor; }
+
+.help { background: var(--surface-raised); color: var(--fg-1); max-width: min(40rem, calc(100vw - 2rem)); }
+.help dl { display: grid; grid-template-columns: auto 1fr; gap: .5rem 1rem; margin: 0; font: var(--type-small); }
+.help dt { text-align: right; }
+.help dd { margin: 0; color: var(--fg-2); }
+.help kbd { display: inline-block; min-width: 2.2em; padding: .1em .5em; border-radius: var(--radius-sm); border: 1px solid var(--control-border); background: var(--surface-page); font: 600 .9rem var(--mono); text-align: center; }
+.help-foot { margin: 1rem 0 0; color: var(--fg-2); font: var(--type-small); }
+
+/* B: the screen goes black, so the room looks at the room (black on purpose, in either theme) */
+.blank { position: fixed; inset: 0; z-index: 30; background: #000000; }
+.blank[hidden] { display: none; }
+
+/* ---------- A phone: controls stay visible and wrap, key hints go, the code steps aside ---------- */
+@media (max-width: 760px) {
+  :root { --rail-h: 56px; }
+  .rail { grid-template-columns: minmax(0, 1fr) auto; font-size: .8rem; padding: 0 12px; }
+  .rail-url, .rail-where, .rail-mark { display: none; }
+  .rail-right { padding-right: 0; }
+  .controls { left: 12px; }
+  .controls button { min-height: 32px; padding: 4px 10px; font-size: .8rem; }
+  .stage .slide { padding-top: 6.5rem; }
+  .stage .kind-title .title-words { padding-bottom: 4.5em; }
+  .hint, .qr-tile { display: none; }
+  .session-clock[data-mode="corner"] { right: 8px; bottom: 64px; }
+  .session-clock[data-mode="hero"] { right: auto; left: 1.4rem; transform: none; bottom: 72px; }
+}
+@media (hover: none) { .controls button { color: var(--fg-1); } .controls .keys-button { display: none; } }
+@media (pointer: coarse) { .controls button, .t-btns button, .sc-actions button { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) {
+  .session-clock, .seg::after, .pace-mark, .hint, .t-bar i { transition: none; }
+  .sc-wait, .sc-backdrop { animation: none; }
+}

@@ -1,0 +1,40 @@
+# Decisions
+
+One line each: date · decision · why. The standard's own decisions come first; add your talk's below them.
+
+## The standard
+
+- 2026-10-10 · One deck file holds every word, link, length, note and timer, and every view reads it · Both sites found this out. What We Talk About's facilitator run-of-show still numbers slides 1 to 35 while the talk has 43 beats, and its own docs say 41. Hands On's typed-out deck links drifted until they moved into the session file.
+- 2026-10-10 · Plain HTML, CSS and ES modules, no build and no dependencies; a React project uses the kit from `public/` or imports `core.js` · Hands On ran from a static page on the day with nothing to install, and What We Talk About's React stage couldn't be lifted into a static site. ES modules work in both.
+- 2026-10-10 · Slides are data with a kind, plus a `custom` kind with a render function · Hands On's kinds made a new talk a matter of editing words, and What We Talk About's JSX beats allowed any layout. Data covers most slides, and the escape hatch covers the rest without HTML strings.
+- 2026-10-10 · Slides are addressed by id (`#parable`), and numbers still work · What We Talk About's `/review/12` pointed at a different slide after an insertion. An id doesn't move.
+- 2026-10-10 · One slide at a time on the stage, not What We Talk About's long scroll with snap points · A scroll needs an observer, a lock and a resync to know which slide is on, and it animates choppily through a meeting's screen share. One slide at a time keeps the staggered ease-in and adds a swipe for phones.
+- 2026-10-10 · Speaker notes only in a second window (S), never drawn on the stage · What We Talk About's notes opened over the slide, and the room saw them whenever they were open.
+- 2026-10-10 · The stage owns the state; the notes window gets it raw and works out every figure with the same functions · Hands On's notes ran their own copy of the session clock. With the stage paused at 2:00:00, the notes kept counting down (reproduced October 10). Its notes' Reset meant something different from the stage's.
+- 2026-10-10 · Shortcuts with ⌘, Ctrl or Alt are left to the browser · On Hands On's stage, ⌘P paused the session clock and ⌘C (or Ctrl+C on the Windows PC) opened it (reproduced October 10).
+- 2026-10-10 · Running timers, the call to order and a wait are kept for the day, so a reload loses nothing · Both sites kept a timer's length but not its run, so a reload, a crash or a stray ⌘R mid-breakout reset a 25-minute countdown.
+- 2026-10-10 · + and − stretch a running timer without stopping it · Hands On decided this on October 8. What We Talk About's length control restarted the timer from the new length.
+- 2026-10-10 · Everything saved, and the notes channel, is named for the deck's id · inquiredu.org/what-we-talk-about and inquiredu.org/a-mn-hackathon share one origin on GitHub Pages, and so share localStorage. A second session forked from Hands On would have shared its call to order and its timer lengths.
+- 2026-10-10 · The QR code is drawn in the page from the deck's url, with no library · What We Talk About generated it at build time with a test for staleness. Drawn at run time, it can't go stale, and there's no step to forget. Checked module for module against the `qrcode` package across versions 1 to 13.
+- 2026-10-10 · The review prints one slide to a 16:9 page, with the notes on request · Hands On's backup Google Slides deck was kept by hand. It matched the site as of the evening of October 8 but had no plan slide, one slide carried another's speaker notes, and the site changed again the morning of the 9th.
+- 2026-10-10 · Pace: a mark on the bar where the plan says the room should be, "4 min behind the plan" in the notes, N to jump there · Hands On had the minutes and the clock and What We Talk About had the bar. Together they answer the question a presenter actually has: are we behind?
+- 2026-10-10 · B or a full stop blanks the screen · It's what a clicker's blank button sends, and Google Slides and PowerPoint both use B. Neither site had it.
+- 2026-10-10 · Rehearse with `?at=25` (minutes in), and never save it · Hands On's `?now=10:50` used clock times, which the kit doesn't have. A rehearsal must never start the real clock.
+- 2026-10-10 · Controls stay readable at rest (4.5:1) instead of fading to a quarter · Hands On's controls rested at 25% opacity, about 2:1. An axe scan passed them, but arithmetic didn't.
+- 2026-10-10 · No web fonts by default · Nothing leaves the page, the stage works offline, and a district network that blocks Google Fonts can't change the look on the day.
+- 2026-10-10 · A slide reveals by forcing a style recalc, not by waiting on requestAnimationFrame · rAF doesn't run in a hidden tab. A slide advanced from the notes window while the stage tab was in the background stayed invisible until someone looked at it.
+- 2026-10-11 · The kit wears the inquiredu design system: the brand's stylesheet copied in unchanged but for its Google Fonts @import (`present/inquiredu.css`, by `scripts/sync-brand.js`), and `theme.css` reduced to a map onto its semantic tokens · VIBECODE's brand rule puts public inquiredu work in Electric Lake. Linking the brand's own file keeps one source, and the map leaves room for another brand under the same token names.
+- 2026-10-11 · Montserrat, Newsreader and IBM Plex Mono self-hosted from Fontsource 5.3.0 (11 Latin weights, SIL Open Font License), replacing "no web fonts by default" · The brand README says offline projects, the Present Kit by name, self-host the same families. Nothing still leaves the page.
+- 2026-10-11 · The five part hues became the brand's tones (inverse, water, accent, warm, night), and the progress bar marks parts with a gap instead of a color · Electric Lake gives each view one accent and names the text pair for each ground; five hues on a stage broke both.
+- 2026-10-11 · The title slide follows the brand's own: Night, the reversed wordmark and an index label along the top, the words at the foot, and the sun at the edge, built the way the design sheet builds it · It's the brand's title slide; the kit takes the sheet's construction rather than drawing a sun of its own.
+- 2026-10-11 · The open session clock is a flat raised panel, not frosted glass · The brand's grounds are flat: no gradients, textures or glass.
+- 2026-10-11 · The stage keeps its fixed rail and corner controls, a departure from the brand's "no fixed elements beyond a slim top bar" · That rule is for pages people read. A stage is an instrument the presenter works, and the rail and controls are how they work it.
+- 2026-10-11 · The sample deck is Ivory, the brand's default; the speaker notes follow the presenter's own light or dark setting · Ivory is inquiredu's default, and the presenter's window is theirs, not the room's.
+- 2026-10-11 · ✦ marks one key item per slide (`key: true`), and the check fails a second one · The brand's one ornament, used once per view so it still means something.
+- 2026-10-11 · The QR code keeps a fixed white ground and navy ink, and B blanks to black, in either theme · A code must stay dark on light to scan, and a blank screen is black by convention.
+- 2026-10-11 · The contrast check reads the brand's own values through their var() chains, checks 53 pairs in Ivory and Night, and fails any var(--name) nothing defines · A misspelled token fails silently in a browser.
+- 2026-10-11 · `inquiredu/present-kit` is a private repository · Sean's call, for now. Make it public once it's been looked over.
+
+## This talk
+
+- YYYY-MM-DD · decision · why

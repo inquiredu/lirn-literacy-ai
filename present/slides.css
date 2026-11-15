@@ -1,0 +1,177 @@
+/* The slides themselves: the same rules on the stage, in the review, and in the printed backup.
+   Every size is in em, and a slide's font size comes from the frame it sits in (a container), so a slide keeps its
+   proportions on a projector, in a meeting shared small, on a phone, and on a printed page.
+   inquiredu throughout: Montserrat for headings and labels, Newsreader for what people read, IBM Plex Mono for code
+   and timers; lines before shadows; flat grounds; quiet motion. */
+
+.slide-frame { container: slide / inline-size; }
+.slide {
+  --pad-x: 4.2em;
+  position: relative;
+  display: grid;
+  align-content: center;
+  min-height: 100%;
+  padding: 3.2em var(--pad-x) 3.6em;
+  overflow: hidden;
+  background: var(--slide-bg, var(--bg));
+  color: var(--slide-fg, var(--fg));
+  font-family: var(--heading);
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+.slide-in { width: 100%; max-width: 68em; margin: 0 auto; display: grid; gap: 1.2em; position: relative; z-index: 1; }
+.slide-main { display: grid; gap: .75em; justify-items: start; align-content: center; min-width: 0; }
+.slide-in.with-timer { grid-template-columns: minmax(0, 1fr) 21em; gap: 3em; align-items: center; }
+.slide img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- Tones: the brand's grounds, each with the text pair the brand names for it ----------
+   inverse: the full-bleed band (navy in Ivory, ivory in Night) · accent: peach with navy text · water: soft ice
+   behind navy text · warm: soft peach with warm text · night: the slide wears the Night theme (data-theme="dark"). */
+.tone-inverse { --slide-bg: var(--surface-inverse); --slide-fg: var(--fg-on-inverse); --soft: var(--fg-on-inverse-2); --accent: var(--fg-accent-on-inverse); --star: var(--fg-accent-on-inverse); --mark: var(--fg-accent-on-inverse); --line: color-mix(in srgb, var(--fg-on-inverse) 24%, transparent); }
+.tone-accent { --slide-bg: var(--surface-accent); --slide-fg: var(--fg-on-accent); --soft: var(--fg-on-accent); --accent: var(--fg-on-accent); --star: var(--fg-on-accent); --mark: var(--fg-on-accent); --line: color-mix(in srgb, var(--fg-on-accent) 26%, transparent); }
+.tone-water { --slide-bg: var(--surface-water-soft); --accent: var(--fg-1); --star: var(--fg-1); }
+.tone-warm { --slide-bg: var(--surface-accent-soft); --slide-fg: var(--fg-warm); --soft: var(--fg-warm); --accent: var(--fg-warm); --star: var(--fg-warm); --mark: var(--fg-warm); }
+/* Cards, timers and code sit on their own raised ground, so they take the page's pairs back */
+.card, .timer, .code, .embed { --soft: var(--fg-2); --accent: var(--fg-accent); --star: var(--fg-accent); --mark: var(--indicator-selected); --line: var(--border-hairline); }
+
+/* ---------- Words ---------- */
+.kicker { margin: 0; font: 600 .78em/1.2 var(--heading); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.display { margin: 0; font-family: var(--heading); font-weight: 600; line-height: 1.08; letter-spacing: -.01em; text-wrap: balance; }
+.display strong { color: var(--accent); font-weight: inherit; }
+.heading { font-size: 2.6em; max-width: 24ch; }
+.title { font-size: 3.9em; max-width: 15ch; letter-spacing: -.02em; }
+.big { margin: .05em 0; font: 600 4em/1.04 var(--heading); letter-spacing: -.02em; color: var(--accent); text-wrap: balance; }
+.lede { margin: 0; max-width: 38ch; font: 400 1.5em/1.45 var(--reading); color: var(--soft); text-wrap: pretty; }
+.body { margin: 0; max-width: 48ch; font: 400 1.2em/1.55 var(--reading); text-wrap: pretty; }
+.soft { color: var(--soft); }
+.ask { margin: 0; max-width: 34ch; font: 400 1.6em/1.42 var(--reading); text-wrap: pretty; }
+.foot { margin: .4em 0 0; font: 600 1.05em/1.35 var(--heading); color: var(--accent); }
+.byline { margin: .2em 0 0; font: 400 1.2em/1.4 var(--reading); color: var(--soft); }
+.cite { margin: 0; font: 400 .9em/1.4 var(--heading); color: var(--soft); }
+.caption { margin: 0; font: 400 .95em/1.4 var(--heading); color: var(--soft); }
+.url-pill { margin: .4em 0 0; padding: .25em .85em; border-radius: var(--radius-pill); background: var(--highlight); color: var(--on-highlight); font: 600 1.45em/1.3 var(--heading); }
+.tone-accent .url-pill { background: var(--surface-raised); color: var(--fg-1); }
+.star { color: var(--star); margin-right: .35em; }
+.index-label { margin: 0; font: 600 .8em/1.2 var(--heading); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+
+/* ---------- Layouts ---------- */
+.split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 3em; align-items: center; width: 100%; }
+.split.rev { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+.split.rev > img, .split.rev > .frame { order: -1; }
+.split > div { display: grid; gap: .75em; justify-items: start; min-width: 0; }
+.media { width: 100%; max-height: 28em; object-fit: contain; border-radius: var(--radius-sm); }
+.frame { padding: .6em; border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); }
+
+/* The title slide, after the brand's own: Night, the wordmark and an index label along the top, the words low
+   on the left, and the sun at the edge (the brand sheet's construction: a peach disc with two bands of ground) */
+.kind-title { align-content: stretch; }   /* the top row at the top and the words at the foot, at any height */
+.kind-title .slide-in { height: 100%; }
+.kind-title .slide-main { height: 100%; grid-template-rows: auto 1fr; align-content: stretch; gap: 2em; }
+.title-top { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1em; }
+.title-top .logo { height: 2.4em; width: auto; }
+.title-words { display: grid; gap: .7em; justify-items: start; align-self: end; max-width: 64%; }
+.kind-title .kicker { color: var(--fg-warm); }
+.sun { position: absolute; right: -9%; top: 22%; width: 42%; aspect-ratio: 1; border-radius: 50%; background: var(--surface-accent); overflow: hidden; z-index: 0; }
+.sun::before, .sun::after { content: ""; position: absolute; left: 0; right: 0; background: var(--slide-bg, var(--bg)); }
+.sun::before { top: 56%; height: 4.5%; }
+.sun::after { top: 68%; height: 6.5%; }
+.kind-title.has-image .title-words { max-width: none; }
+
+.section-n { margin: 0; font: 600 5.4em/.95 var(--heading); letter-spacing: -.02em; color: var(--accent); }
+.kind-section .heading { font-size: 3.3em; }
+
+.kind-quote .slide-main { justify-items: center; text-align: center; }
+.quote { margin: 0; max-width: 22ch; font: 600 3.2em/1.15 var(--heading); letter-spacing: -.01em; text-wrap: balance; }
+.quote p { margin: 0; }
+.quote::before { content: "\201C"; display: block; height: .5em; color: var(--accent); font-size: 1.5em; line-height: .9; }
+.pull { margin: .4em 0 0; padding-left: .9em; border-left: 1.5px solid var(--accent); font: italic 400 1.4em/1.45 var(--reading); }
+
+.steps { list-style: none; margin: .3em 0 0; padding: 0; display: grid; counter-reset: step; width: 100%; max-width: 46em; }
+.steps li { display: grid; grid-template-columns: 2.2em 1fr; align-items: baseline; gap: .7em; padding: .55em 0; border-top: 1px solid var(--line); font: 400 1.4em/1.35 var(--reading); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps li::before { counter-increment: step; content: counter(step, decimal-leading-zero); font: 600 .8em/1 var(--heading); letter-spacing: .14em; color: var(--accent); }
+
+.cards { list-style: none; margin: .4em 0 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 1em; }
+.card { display: grid; align-content: start; gap: .4em; padding: 1.25em 1.35em 1.4em; border-radius: var(--radius-md); background: var(--surface-raised); color: var(--fg-1); border: 1px solid var(--border-hairline); }
+.card.key { border: 1.5px solid var(--border-strong); border-radius: 0; }
+.card-icon { font-size: 1.6em; line-height: 1; color: var(--accent); }
+.card-k { margin: 0; font: 600 .78em/1.2 var(--heading); letter-spacing: .18em; text-transform: uppercase; color: var(--soft); }
+.card-t { margin: 0; font: 600 1.7em/1.15 var(--heading); letter-spacing: -.01em; }
+.card-t strong { color: var(--accent); font-weight: inherit; }
+.card-b { margin: 0; font: 400 1.1em/1.5 var(--reading); color: var(--soft); }
+
+.stats { list-style: none; margin: .4em 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.2em 3em; }
+.stats li { display: grid; gap: .35em; max-width: 14em; }
+.stat-n { font: 600 3.4em/1 var(--heading); letter-spacing: -.02em; color: var(--accent); }
+.stat-l { font: 400 1.1em/1.4 var(--reading); color: var(--soft); }
+
+.ladder, .plan { list-style: none; margin: .3em 0 0; padding: 0; display: grid; width: 100%; max-width: 54em; counter-reset: rung; }
+.ladder li { display: grid; grid-template-columns: 2.6em 1fr; column-gap: .8em; align-items: baseline; padding: .55em 0; border-top: 1px solid var(--line); }
+.ladder li:last-child { border-bottom: 1px solid var(--line); }
+.ladder li::before { counter-increment: rung; content: counter(rung, decimal-leading-zero); grid-row: 1 / 3; font: 600 .95em/1.3 var(--heading); letter-spacing: .14em; color: var(--accent); }
+.ladder strong { font: 600 1.5em/1.2 var(--heading); }
+.ladder span { color: var(--soft); font: 400 1.1em/1.4 var(--reading); }
+.ladder li.later { opacity: .72; }
+.plan li { display: grid; grid-template-columns: 5.4em 1fr auto; align-items: baseline; gap: 1em; padding: .45em 0; border-top: 1px solid var(--line); font-size: 1.3em; }
+.plan li:last-child { border-bottom: 1px solid var(--line); }
+.plan strong { font-weight: 600; }
+.plan-len { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--accent); }
+.plan-where { color: var(--soft); font-size: .8em; }
+
+.code { margin: .3em 0 0; max-width: 100%; padding: 1.1em 1.4em; border-radius: var(--radius-md); background: var(--surface-sunken); color: var(--fg-1); border: 1px solid var(--border-hairline); font: 400 1.05em/1.6 var(--mono); white-space: pre-wrap; }
+
+.kind-embed .slide-in, .kind-embed .slide-main { height: 100%; }
+.kind-embed .slide-main { grid-template-rows: auto minmax(0, 1fr) auto; justify-items: stretch; }
+.embed { width: 100%; height: 100%; min-height: 22em; border: 1px solid var(--border-hairline); border-radius: var(--radius-md); background: var(--surface-raised); }
+
+.link-split { grid-template-columns: minmax(0, 1fr) minmax(0, 15em); }
+.qr-card { padding: .9em; border-radius: var(--radius-md); background: var(--qr-ground); color: var(--qr-ink); border: 1px solid var(--border-hairline); }
+.qr-card .qr { display: block; width: 100%; height: auto; }
+
+/* ---------- The timer beside a slide ---------- */
+.timer { display: grid; gap: .75em; padding: 1.35em 1.45em; border-radius: var(--radius-md); background: var(--surface-raised); color: var(--fg-1); border: 1px solid var(--border-hairline); }
+.t-status { margin: 0; font: 600 .74em/1.2 var(--heading); letter-spacing: .18em; text-transform: uppercase; color: var(--soft); }
+.t-display { margin: 0; font: 500 5em/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--fg-1); }
+.timer.done .t-display { color: var(--done); }
+.t-bar { height: .35em; border-radius: var(--radius-pill); background: var(--line); overflow: hidden; }
+.t-bar i { display: block; height: 100%; width: 100%; background: var(--mark); transition: width .25s linear; }
+.timer.done .t-bar i { background: var(--done); }
+.t-btns { display: flex; flex-wrap: wrap; gap: .45em; }
+.t-btns button {
+  min-height: 2.4em; padding: .4em .8em; border-radius: var(--radius-sm); cursor: pointer;
+  font: 500 .88em/1.3 var(--heading); color: var(--fg-1); background: var(--control-bg); border: 1px solid var(--control-border);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.t-btns button:hover { background: var(--action-ghost-hover); }
+.t-btns button:active { transform: translateY(1px); }
+.t-btns .t-go { background: var(--action-primary); color: var(--on-action-primary); border-color: transparent; }
+.t-btns .t-go:hover { background: var(--action-primary-hover); }
+
+/* Live lengths read like the words around them */
+.live-mins { font-variant-numeric: tabular-nums; }
+
+/* ---------- Narrow frames: a phone, or a column in the review ---------- */
+@container slide (max-width: 760px) {
+  .slide { --pad-x: 1.4em; padding-top: 2em; padding-bottom: 2.4em; }
+  .slide-in.with-timer, .split, .split.rev, .link-split { grid-template-columns: minmax(0, 1fr); gap: 1.6em; }
+  .split.rev > img, .split.rev > .frame { order: 0; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .title { font-size: 2.8em; }
+  .title-words { max-width: none; }
+  .title-top .index-label { display: none; }   /* the rail names the part; the sun takes the corner */
+  .sun { width: 58%; right: -22%; top: 8%; }
+  .heading { font-size: 2.1em; }
+  .kind-section .heading { font-size: 2.5em; }
+  .big { font-size: 3em; }
+  .quote { font-size: 2.4em; }
+  .lede, .ask { font-size: 1.3em; }
+  .plan li { grid-template-columns: 4.6em 1fr; }
+  .plan-where { display: none; }
+  .link-split .qr-card { max-width: 14em; }
+}
+
+/* ---------- Easing in: each part of a slide fades up a beat after the last (no bounce, no scale) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .slide .r { opacity: 0; transform: translateY(.5em); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); transition-delay: calc(var(--i, 0) * 70ms); }
+  .slide.on .r, .review .slide .r { opacity: 1; transform: none; }
+}

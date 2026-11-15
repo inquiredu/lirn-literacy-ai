@@ -1,0 +1,35 @@
+/* The look comes from the inquiredu design system: present/inquiredu.css (the brand's own stylesheet, copied by
+   scripts/sync-brand.js) and its three families, self-hosted in present/fonts.css. This file only says which of
+   the brand's semantic tokens each part of the stage uses, so no color is typed here twice. Every text pair is
+   one the brand names, and node scripts/contrast.js checks each at 4.5:1 in both themes.
+   For another brand: swap inquiredu.css for that brand's tokens under the same semantic names, keep this file. */
+
+/* Worked out on every element that sets data-theme, so one slide can wear the other theme (a Night title slide
+   in an Ivory deck) and everything inside it follows. */
+:root, [data-theme] {
+  --bg: var(--surface-page);
+  --surface: var(--surface-raised);
+  --sunken: var(--surface-sunken);
+  --fg: var(--fg-1);
+  --soft: var(--fg-2);
+  --accent: var(--fg-accent);            /* violet: kickers, strong words, figures */
+  --line: var(--border-hairline);
+  --mark: var(--indicator-selected);     /* progress, timer bars, the current slide */
+  --star: var(--fg-accent);              /* ✦, for the one key item on a slide */
+  --done: var(--status-danger);          /* a timer at Time, always beside the word */
+  --highlight: var(--surface-accent);    /* peach, the one warm highlight: the address pill */
+  --on-highlight: var(--fg-on-accent);
+  --shadow: var(--shadow-3);
+}
+
+:root {
+  --heading: var(--font-sans);           /* Montserrat: headings, interface, labels */
+  --reading: var(--font-serif);          /* Newsreader: what people read */
+  --mono: var(--font-mono);              /* IBM Plex Mono: code, timers */
+  /* A QR code must stay dark on light in both themes to scan, so it keeps its own fixed pair:
+     the brand's ivory-0 and navy-900. */
+  --qr-ground: #FFFFFF;
+  --qr-ink: #101438;
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
