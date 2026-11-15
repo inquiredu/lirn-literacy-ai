@@ -1,6 +1,15 @@
 # Literacy Across Modalities: handoff
 
-Updated November 14, 2026. The underlying presentation engine follows `STANDARD.md`.
+Updated November 15, 2026. The underlying presentation engine follows `STANDARD.md`.
+
+## Draft additions, November 15
+
+Three new slides, proposed for an hour on Zoom with mainly elementary teachers. Their wording is a draft for Andrew and Sean, and their citations are from established research but haven't been re-checked against the sources.
+
+- **Slide 8, `roles-now`** (Part 1, after the table activity): a proposed version of the four roles for AI-era text. Code breaker and maker, Sense maker, Author, Verifier. Each card shows its lineage (Freebody & Luke 1990, then Serafini 2012). Marked on the slide as a proposal, not a validated model.
+- **Slides 20 and 21, `basics-checking` and `basics-thinking`** (Part 3, between the evidence and the verification moves): six elementary literacy skills the reading research says matter more with AI. Knowledge and vocabulary, monitoring, sourcing; complex text, writing, discussion. Short words on the slide, talking points and sources in the notes and foot.
+
+Part minutes are unchanged, so Parts 1 and 3 are now likely to run three to five minutes long together. Decide where to trim. The deck still says its audience is literacy leaders, and the activities assume an in-person room ("at your table"); adapting them for Zoom breakout rooms is not done.
 
 ## Current revision
 

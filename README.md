@@ -1,6 +1,6 @@
 # Literacy Across Modalities
 
-A LiRN working session by Andrew Rummel and Sean Beaverson on literacy, AI, and professional judgment. The landing page, 28-slide presentation, speaker notes, and printable review all read `deck.js`.
+A LiRN working session by Andrew Rummel and Sean Beaverson on literacy, AI, and professional judgment. The landing page, 31-slide presentation, speaker notes, and printable review all read `deck.js`.
 
 The current design uses a restrained editorial layout with a linked session agenda and paired slide-and-notes reading view. See `HANDOFF.md` for content decisions still awaiting the presenters.
 
