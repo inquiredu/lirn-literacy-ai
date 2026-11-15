@@ -4,7 +4,7 @@
 // For a one-off, a slide can be kind: "custom" with render({ h, rich, mode, model, slide }) in the deck.
 import { h, rich, svg } from "./dom.js";
 import { qrPath } from "./qr.js";
-import { DEFAULT_TONES, lengthLabel, slideTitle } from "./core.js";
+import { DEFAULT_TONES, lengthLabel, slideTitle, artFor } from "./core.js";
 
 /** The slide's elements, wrapped: tone, part, and the timer beside the words when there is one. */
 export function renderSlide(slide, ctx) {
@@ -19,12 +19,15 @@ export function renderSlide(slide, ctx) {
   if (ctx.timer) { ctx.timer.classList.add("r"); inner.append(h("div", { class: "slide-timer" }, ctx.timer)); }
   const tone = toneOf(slide);
   const sun = slide.kind === "title" && slide.sun !== false && !slide.image ? h("div", { class: "sun r", "aria-hidden": "true" }) : null;
+  // A drawing for the slide's bare side (core.js artFor): decoration, so it says nothing to a screen reader
+  const art = artFor(slide, ctx.model);
+  const drawing = art && h("img", { class: `art ${art.dark ? "art-dark" : "art-light"}`, src: art.src, alt: "", "aria-hidden": "true", dataset: { variant: String(art.variant) } });
   return h("section", {
-    class: `slide kind-${slide.kind}${tone ? " tone-" + tone : ""}${ctx.timer ? " has-timer" : ""}${slide.image ? " has-image" : ""}`,
+    class: `slide kind-${slide.kind}${tone ? " tone-" + tone : ""}${ctx.timer ? " has-timer" : ""}${slide.image ? " has-image" : ""}${art ? (art.dark ? " has-art-dark" : " has-art") : ""}`,
     dataset: { part: slide.part?.id ?? "", ...(tone === "night" ? { theme: "dark" } : {}) },
     "aria-roledescription": "slide",
     "aria-label": `Slide ${slide.n} of ${ctx.model.slides.length}: ${slideTitle(slide, ctx.model)}`
-  }, sun, inner);
+  }, sun, drawing, inner);
 }
 
 /** A slide's ground: its own tone, else (for a section) its part's, else its kind's (core.js DEFAULT_TONES). */

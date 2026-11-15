@@ -203,3 +203,25 @@
   .fig-map { font-size: .7em; }
   .fig-map td, .fig-map th { padding: .5em .4em; }
 }
+
+/* ---------- Drawings: Minnesota in late fall and winter, in a slide's bare side (deck.art, parts[].art) ----------
+   Decoration only, behind the words. Birches stand at the right edge of the dark slides and fade toward the
+   words; on light slides, the part's line drawing sits in the bare right side and the words keep the left. */
+.slide .art { position: absolute; z-index: 0; pointer-events: none; user-select: none; display: block; }
+.slide .art-dark {
+  top: 0; right: 0; height: 100%; width: 40%; object-fit: cover; object-position: 50% 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, currentColor 42%); mask-image: linear-gradient(to right, transparent, currentColor 42%);
+}
+.slide .art-dark[data-variant="1"] { width: 34%; object-position: 85% 100%; transform: scaleX(-1);
+  -webkit-mask-image: linear-gradient(to left, transparent, currentColor 42%); mask-image: linear-gradient(to left, transparent, currentColor 42%); }
+.slide .art-dark[data-variant="2"] { width: 37%; object-position: 15% 100%; }
+.slide .art-light { right: var(--pad-x); top: 50%; transform: translateY(-50%); width: 27%; max-height: 52%; object-fit: contain; object-position: right center; }
+.has-art .slide-main { max-width: 64%; }
+.has-art-dark .slide-main { max-width: 62%; }
+@container slide (max-width: 760px) {
+  .slide .art { display: none; }
+  .has-art .slide-main, .has-art-dark .slide-main { max-width: none; }
+}
+/* The birches take the top corner of the title slide; the rail already names the part */
+.kind-title.has-art-dark .title-top { border-bottom: 0; }
+.kind-title.has-art-dark .title-top .index-label { display: none; }

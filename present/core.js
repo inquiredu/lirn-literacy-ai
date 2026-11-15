@@ -181,6 +181,11 @@ export function deckProblems(deck, { fileExists } = {}) {
     }
     if (s.timer && model.timers[s.timer.key] !== s.timer.minutes) say(`${where} shares the timer "${s.timer.key}" but gives it a different length.`);
 
+    // A drawing: a file that's there, named by a path or turned off with false
+    if (s.art !== undefined && s.art !== false && typeof s.art !== "string") say(`${where} has art that isn't a file path or false: ${JSON.stringify(s.art)}`);
+    const art = artFor(s, model);
+    if (art && fileExists && !fileExists(art.src)) say(`${where} uses a drawing that isn't there: ${art.src}`);
+
     // Pictures: on disk, with words for anyone who can't see them
     images(s).forEach(({ src, alt, decorative }) => {
       if (fileExists && src && !/^(https?:|data:)/.test(src) && !fileExists(src)) say(`${where} uses a picture that isn't there: ${src}`);
@@ -201,6 +206,27 @@ export function deckProblems(deck, { fileExists } = {}) {
     });
   });
   return problems;
+}
+
+// ---------- Drawings ----------
+// A talk can give its slides drawings for their bare side: deck.art.dark for dark grounds (the title, section
+// slides, a night slide), and each part's art for the light slides in it. Only kinds that leave a side bare take one.
+
+export const ART_KINDS = ["title", "section", "statement", "list", "steps"];
+
+/**
+ * The drawing a slide carries, or null: { src, dark, variant }. art: false on a slide leaves it out, and
+ * art: "path" picks its own. variant (0 to 2) lets a repeated drawing sit differently on each dark slide.
+ */
+export function artFor(slide, model) {
+  if (!slide || slide.art === false || slide.image) return null;
+  const tone = slide.tone || (slide.kind === "section" && slide.part?.tone) || DEFAULT_TONES[slide.kind] || "";
+  const dark = tone === "night" || tone === "inverse";
+  const variant = (slide.part?.index ?? 0) % 3;
+  if (typeof slide.art === "string") return { src: slide.art, dark, variant };
+  if (!ART_KINDS.includes(slide.kind)) return null;
+  const src = dark ? model?.art?.dark : slide.part?.art;
+  return src ? { src, dark, variant } : null;
 }
 
 function images(slide) {
