@@ -10,6 +10,10 @@ Decided with Sean, step by step, after the review:
 | --- | --- | --- |
 | 1 | Responses go in the Zoom chat (waterfalls; a co-host saves the chat after version 1) | Yes: `v1`, `roles-grid`, `hold-test`, `build-chart`, `v2` |
 | 1 | Fix the citation errors now | Yes: `noticing-a`, `noticing-nav` (card, foot, notes) |
+| 2 | Breakouts planned, with a day-of switch by headcount (12+ both breakouts; 9–11 cases only; under 9 main room), both plans in the notes | Yes: `title`, `roles-grid`, `hold-test` notes; slide wording works in either mode |
+| 2 | A short K–2 beat and a first-grade Case C | Yes: new `early-signposts` slide; Case C on `cases`; `hold-test` takes the case closest to your grades |
+| 2 | Label grade bands (no new secondary content) | Yes: every case and research card names its grades |
+| 2 | Re-time the hour for Zoom | Yes: lens 11, making 16, navigating 10, social 8 (still 60); four-roles timer 5 to 4 minutes |
 
 ## Rating
 
