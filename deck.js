@@ -10,12 +10,15 @@
 // working name for Andrew and Sean to settle together. It appears in two places: the title slide's kicker and
 // the thank-you slide's foot.
 
+import resources from "./resources.js";   // the sources page (resources.html): every source, checked three ways
+
 export default {
   id: "lirn-literacy-ai",
   title: "Literacy Across Modalities",
   subtitle: "A working session on what it means to be literate now, with AI in the room.",
   by: "Andrew Rummel and Sean Beaverson",
   url: "https://inquiredu.org/lirn-literacy-ai/",   // live once the repo is public and Pages is on
+  resources,
   links: {
     site: "./",
     padlet: "https://padlet.com/",                    // [ADD] the session's Padlet, with five columns (see the notes on slide 4)

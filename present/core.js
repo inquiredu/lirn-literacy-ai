@@ -200,6 +200,51 @@ export function deckProblems(deck, { fileExists } = {}) {
       if (t.token && resolveToken(t, { model, slide: null }) === null) say(`The deck's ${key} has {${t.token}}, which nothing fills in.`);
     });
   });
+  if (deck.resources !== undefined) problems.push(...resourceProblems(deck.resources, { parts: partIds }));
+  return problems;
+}
+
+// ---------- Sources ----------
+// deck.resources (resources.js): every source the talk leans on, looked at three ways. The sources page
+// shows them; these are the rules that keep each entry honest as people add, cut and edit.
+export const RESOURCE_CHECKS = ["found", "says", "others"];
+export const RESOURCE_STATUSES = ["yes", "partly", "no", "open"];
+export const RESOURCE_VERDICTS = ["stands", "care", "aside"];
+export const RESOURCE_FROM = ["deck", "doc", "added"];
+
+export function resourceProblems(resources, { parts } = {}) {
+  const problems = [];
+  const say = (m) => problems.push(m);
+  const kebab = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+  const https = (url) => /^https:\/\//.test(url);
+  if (!resources || !Array.isArray(resources.entries)) return ["The deck's resources need a list of entries."];
+  if (resources.checked !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(resources.checked)) say(`The resources' checked date should read YYYY-MM-DD: ${resources.checked}`);
+  const ids = new Set();
+  resources.entries.forEach((e, i) => {
+    const where = `Source ${i + 1} (${e.id || "no id"})`;
+    if (!e.id || !kebab.test(e.id)) say(`${where} needs an id in kebab-case.`);
+    if (ids.has(e.id)) say(`Two sources share the id "${e.id}".`);
+    ids.add(e.id);
+    if (!e.title) say(`${where} needs a title.`);
+    if (!e.who) say(`${where} needs to say who made it.`);
+    if (!RESOURCE_VERDICTS.includes(e.verdict)) say(`${where} needs a verdict: ${RESOURCE_VERDICTS.join(", ")}.`);
+    if (!RESOURCE_FROM.includes(e.from)) say(`${where} needs to say where it came from: ${RESOURCE_FROM.join(", ")}.`);
+    if (e.url !== undefined && e.url !== null && !https(e.url)) say(`${where} has a link that isn't https: ${e.url}`);
+    if (!Array.isArray(e.parts)) say(`${where} needs a list of parts (empty is fine).`);
+    else if (parts) e.parts.forEach((p) => { if (!parts.has(p)) say(`${where} names a part the deck doesn't have: ${p}`); });
+    if (e.verdict !== "aside" && e.parts?.length === 0) say(`${where} is kept but belongs to no part of the talk.`);
+    const checks = e.checks || {};
+    const extra = Object.keys(checks).filter((k) => !RESOURCE_CHECKS.includes(k));
+    if (extra.length) say(`${where} has checks nobody reads: ${extra.join(", ")}.`);
+    RESOURCE_CHECKS.forEach((k) => {
+      const c = checks[k];
+      if (!c) { say(`${where} is missing the "${k}" check. Every source gets all three; "open" is fine.`); return; }
+      if (!RESOURCE_STATUSES.includes(c.status)) say(`${where} has an unknown status for "${k}": ${JSON.stringify(c.status)}. Known: ${RESOURCE_STATUSES.join(", ")}.`);
+      if (!c.note || !String(c.note).trim()) say(`${where} says nothing about the "${k}" check. Say what was looked at, or that it wasn't.`);
+      if (c.link !== undefined && !https(c.link)) say(`${where} has a "${k}" link that isn't https: ${c.link}`);
+      if (c.status !== "open" && c.status !== "no" && !c.link && e.verdict !== "aside") say(`${where} passes "${k}" without a link to what was looked at.`);
+    });
+  });
   return problems;
 }
 

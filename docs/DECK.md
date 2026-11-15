@@ -20,9 +20,34 @@ export default {
   qr: false,                       // optional: no QR tile in the corner (Q and link slides still work)
   pace: false,                     // optional: no pace mark on the progress bar
   parts: [ … ],
-  slides: [ … ]
+  slides: [ … ],
+  resources                        // optional: import resources from "./resources.js"; shown on resources.html
 };
 ```
+
+### Sources (`resources.js`)
+
+The sources page lists every source the talk leans on. deck.js imports `resources.js` and carries it as
+`resources`, so the deck stays the one file every view reads. Each entry:
+
+```js
+{
+  id: "lupo-2019",                 // kebab-case; also the page anchor: resources.html#lupo-2019
+  verdict: "stands",               // "stands", "care" (use with the caveat), or "aside" (set aside for now)
+  from: "doc",                     // "deck" (behind a slide), "doc" (cited in the research document), "added"
+  parts: ["making"],               // parts of the talk it serves, first one decides where it's listed; [] only if set aside
+  kind: "Study", title, who, year, where, url,
+  what, use, careful,              // what it is, what we'd take from it, the caveat
+  checks: {                        // all three, always
+    found:  { status: "yes", note: "What was looked at.", link: "https://…" },   // real, and cited right?
+    says:   { status: "partly", note: "…", link: "https://…" },                 // says what we'd say?
+    others: { status: "open", note: "Not looked for yet." }                     // anyone besides the authors?
+  }
+}
+```
+
+Status is "yes", "partly", "no" or "open". A check that passes or partly passes links to what was looked at.
+`node scripts/check.js` holds every entry to this (`resourceProblems` in present/core.js).
 
 ## Parts
 

@@ -6,7 +6,8 @@ import assert from "node:assert/strict";
 import {
   buildDeck, deckProblems, slideFromHash, slideTitle, timerView, toggleRun, adjustRun, secondsLeft, clampMinutes,
   sessionClock, togglePause, clockStart, zonedTime, dayIn, plannedAt, plannedPosition, slideForNow, paceWords,
-  tokens, fill, inline, lengthLabel, clockFace, words, actionFor, KEYS, createStore, cleanLengths, cleanRuns, channelName
+  tokens, fill, inline, lengthLabel, clockFace, words, actionFor, KEYS, createStore, cleanLengths, cleanRuns, channelName,
+  resourceProblems
 } from "../present/core.js";
 
 const DECK = {
@@ -258,4 +259,42 @@ test("saved lengths and runs are cleaned before use", () => {
   assert.deepEqual(cleanLengths({ pairs: 99, rooms: "x", gone: 3 }, timers), { pairs: 60, rooms: 15 });
   assert.deepEqual(cleanLengths("{not json", timers), timers);
   assert.deepEqual(cleanRuns({ pairs: { end: t0 }, rooms: { left: -5 }, gone: { end: 1 } }, timers), { pairs: { end: t0 } });
+});
+
+
+// ---------- Sources ----------
+
+const SOURCE = {
+  id: "a-study", verdict: "stands", from: "added", parts: ["open"], title: "A Study", who: "A. Author", year: 2025,
+  url: "https://example.org/study",
+  checks: {
+    found: { status: "yes", note: "In the journal's index.", link: "https://example.org/index" },
+    says: { status: "partly", note: "The abstract says so.", link: "https://example.org/abstract" },
+    others: { status: "open", note: "Not looked for yet." }
+  }
+};
+
+test("a sound list of sources has no problems, inside the deck or on its own", () => {
+  assert.deepEqual(resourceProblems({ checked: "2026-11-14", entries: [SOURCE] }, { parts: new Set(["open"]) }), []);
+  assert.deepEqual(deckProblems({ ...DECK, resources: { entries: [SOURCE] } }), []);
+});
+
+test("every source gets all three checks, each with a known status, a note and, when it passes, a link", () => {
+  const { others, ...two } = SOURCE.checks;
+  const said = (entry) => resourceProblems({ entries: [entry] }).join("\n");
+  assert.match(said({ ...SOURCE, checks: two }), /missing the "others" check/);
+  assert.match(said({ ...SOURCE, checks: { ...SOURCE.checks, says: { status: "maybe", note: "Hm.", link: "https://x.org" } } }), /unknown status for "says"/);
+  assert.match(said({ ...SOURCE, checks: { ...SOURCE.checks, found: { status: "yes", note: "" , link: "https://x.org" } } }), /says nothing about the "found" check/);
+  assert.match(said({ ...SOURCE, checks: { ...SOURCE.checks, found: { status: "yes", note: "Trust me." } } }), /passes "found" without a link/);
+  assert.match(said({ ...SOURCE, checks: { ...SOURCE.checks, found: { status: "yes", note: "Seen.", link: "http://x.org" } } }), /"found" link that isn't https/);
+});
+
+test("sources name a verdict, where they came from, and parts the deck has", () => {
+  const said = (entry) => resourceProblems({ entries: [entry, entry] }, { parts: new Set(["open"]) }).join("\n");
+  assert.match(said({ ...SOURCE, verdict: "maybe" }), /needs a verdict/);
+  assert.match(said({ ...SOURCE, from: "somewhere" }), /where it came from/);
+  assert.match(said({ ...SOURCE, parts: ["middle"] }), /names a part the deck doesn't have: middle/);
+  assert.match(said(SOURCE), /Two sources share the id "a-study"/);
+  assert.match(said({ ...SOURCE, parts: [] }), /kept but belongs to no part/);
+  assert.equal(resourceProblems({ entries: [{ ...SOURCE, verdict: "aside", parts: [] }] }).length, 0);
 });

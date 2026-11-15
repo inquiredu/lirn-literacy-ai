@@ -11,7 +11,7 @@ h1 { font: var(--type-display); letter-spacing: var(--tracking-display); }
 .lead { margin: 0; font: var(--type-lead); color: var(--fg-2); max-width: 32em; }
 .byline { margin: 0; font: var(--type-small); color: var(--fg-2); }
 .hero-note { --tilt: 2deg; --tape: -4deg; width: 100%; max-width: 26rem; justify-self: center; }
-.ways { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); gap: var(--space-3); margin-top: var(--space-2); }
+.ways { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(10.5rem, 100%), 1fr)); gap: var(--space-3); margin-top: var(--space-2); }
 .ways a { display: grid; gap: var(--space-1); padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); color: var(--fg-1); text-decoration: none; transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
 .ways a:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); color: var(--fg-1); }
 .ways a:focus-visible { outline: none; box-shadow: var(--focus-ring); }

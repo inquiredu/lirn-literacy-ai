@@ -6,7 +6,7 @@ import { lengthLabel, slideTitle } from "./core.js";
 import { h, loadDeck, rich } from "./dom.js";
 import { renderSlide } from "./kinds.js";
 
-const { model } = await loadDeck();
+const { model, deck } = await loadDeck();
 document.title = "Review · " + model.title;
 
 const ctx = { model, mode: "review", timer: null, embeds: null };
@@ -163,6 +163,7 @@ document.body.append(
       model.by && h("p", { class: "byline" }, rich(model.by, { model }))),
     h("div", { class: "tools" },
       contentsButton,
+      deck.resources && h("a", { class: "tool", href: "resources.html" }, "Sources"),
       h("a", { class: "tool primary", href: "present.html" }, "Present"),
       h("button", { type: "button", class: "tool", on: { click: () => window.print() } }, "Print or save as PDF"))),
   h("main", { class: "review" }, contents, book, h("div", { class: "print-pages" }, pages)));
