@@ -167,6 +167,21 @@ export default {
       timer: 5,
       notes: "Andrew: count tables off 1 to 4 by role. Spread media specialists across tables; they'll pull toward text analyst, and every table benefits from that lens.\n\nHear one answer per role out loud before moving on. This is the room's lens for the rest of the hour."
     },
+    // Draft (2026-11-15): a proposed AI-era version of the four roles, for Andrew and Sean to test. Not a published model.
+    {
+      id: "roles-now", part: "lens", kind: "cards",
+      title: "The four roles, for AI-era text",
+      kicker: "A proposal to test",
+      heading: "The four roles, for **AI-era** text",
+      cards: [
+        { kicker: "Code breaker · Navigator", heading: "Code breaker and maker", body: "How was this made? How do I direct a tool?" },
+        { kicker: "Participant · Interpreter", heading: "Sense maker", body: "Does this fit what I know?" },
+        { kicker: "User · Designer", heading: "Author", body: "What's my purpose? What part is mine?", key: true },
+        { kicker: "Analyst · Interrogator", heading: "Verifier", body: "Who says so? Who else? Who's missing?" }
+      ],
+      foot: "Adapted from Freebody & Luke (1990), Prospect 5(3), and Serafini (2012), Pedagogies 7(2). Our proposal, not a validated model.",
+      notes: "Andrew: here's where our own thinking landed; set it beside what the tables just said. Each card shows the role's lineage: Freebody and Luke's original, then Serafini's 2012 version for visual and multimodal texts, then what we propose for text AI makes. Every role now covers reading and making.\n\nCode breaker and maker: decoding is still the foundation. New: working out how a text was made, and writing a clear request is a kind of composing.\n\nSense maker: meaning still comes from what you know, and now that knowledge is also how you catch errors.\n\nAuthor: the biggest change. Freebody and Luke asked what you do with a text; Serafini made the reader a designer. With AI the question is ownership: when to use the tool, and whether the thinking stays yours. Case A in the next section is this role.\n\nVerifier: the analyst's question still holds, plus checking across sources, because AI text usually has no visible author. Ask whose voices the tool learned from, and whose it leaves out.\n\nThe social side runs under all four; we come back to it in Part 4. Ask: what would you change on this slide?"
+    },
     {
       id: "framings", part: "lens", kind: "cards",
       heading: "Creating and evaluating texts",
