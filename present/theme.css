@@ -27,9 +27,9 @@
   --reading: var(--font-serif);          /* Newsreader: what people read */
   --mono: var(--font-mono);              /* IBM Plex Mono: code, timers */
   /* A QR code must stay dark on light in both themes to scan, so it keeps its own fixed pair:
-     the brand's ivory-0 and navy-900. */
+     white and this talk's spruce ink (present/talk.css). */
   --qr-ground: #FFFFFF;
-  --qr-ink: #101438;
+  --qr-ink: #1C2522;
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

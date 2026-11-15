@@ -9,16 +9,18 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (f) => fs.readFileSync(path.join(root, f), "utf8");
 const brand = read("present/inquiredu.css");
+// This talk's palette (present/talk.css) redefines the brand's semantic tokens; its values win, as in the browser
+const talk = fs.existsSync(path.join(root, "present/talk.css")) ? read("present/talk.css") : "";
 
-// The custom properties a block of the brand's stylesheet defines
-const block = (selector) => {
-  const at = brand.indexOf(selector + " {");
-  if (at < 0) throw new Error(`present/inquiredu.css has no "${selector}" block`);
-  const body = brand.slice(at + selector.length + 2, brand.indexOf("\n}", at));
+// The custom properties a block of a stylesheet defines
+const block = (selector, src = brand, required = true) => {
+  const at = src.indexOf(selector + " {");
+  if (at < 0) { if (required) throw new Error(`present/inquiredu.css has no "${selector}" block`); return {}; }
+  const body = src.slice(at + selector.length + 2, src.indexOf("\n}", at));
   return Object.fromEntries([...body.matchAll(/--([\w-]+):\s*([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
 };
-const light = { ...block(":root"), ...block(':root, [data-theme="light"]') };
-const themes = { Ivory: light, Night: { ...light, ...block('[data-theme="dark"]') } };
+const light = { ...block(":root"), ...block(':root, [data-theme="light"]'), ...block(':root, [data-theme="light"]', talk, false) };
+const themes = { Ivory: light, Night: { ...light, ...block('[data-theme="dark"]'), ...block('[data-theme="dark"]', talk, false) } };
 
 const resolve = (t, name, seen = new Set()) => {
   if (seen.has(name)) throw new Error(`--${name} refers to itself`);
@@ -65,12 +67,12 @@ for (const [name, t] of Object.entries(themes)) {
     if (r < min) failures.push(`${name}: --${fg} ${a} on --${bg} ${b} is ${r.toFixed(2)}:1, under ${min}:1 (${use})`);
   }
 }
-const qr = ratio("#101438", "#FFFFFF");
+const qr = ratio("#1C2522", "#FFFFFF");
 checked++;
 if (qr < 7) failures.push(`the QR code's ink on its ground is ${qr.toFixed(2)}:1; keep it dark on light`);
 
 // Every var(--name) the kit's CSS uses has to be defined somewhere: the brand, theme.css, or the rule itself
-const kitCss = ["present/theme.css", "present/slides.css", "present/stage.css", "present/notes.css", "present/review.css", "index.css"];
+const kitCss = ["present/talk.css", "present/theme.css", "present/slides.css", "present/stage.css", "present/notes.css", "present/review.css", "index.css"];
 const defined = new Set([...Object.keys(themes.Night), ...Object.keys(light)]);
 for (const f of kitCss) for (const m of read(f).matchAll(/(--[\w-]+)\s*:/g)) defined.add(m[1].slice(2));
 ["i", "n", "elapsed", "clock-room"].forEach((n) => defined.add(n));   // set from the stage's script, or with a fallback
@@ -85,4 +87,4 @@ if (failures.length) {
   [...new Set(failures)].forEach((f) => console.error("  - " + f));
   process.exit(1);
 }
-console.log(`contrast: ${checked} color pairs in Ivory and Night, from present/inquiredu.css, all clear; every token the kit's CSS names is defined`);
+console.log(`contrast: ${checked} color pairs in Ivory and Night, from present/inquiredu.css and present/talk.css, all clear; every token the kit's CSS names is defined`);

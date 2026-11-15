@@ -37,4 +37,6 @@ One line each: date · decision · why. The standard's own decisions come first;
 
 ## This talk
 
-- YYYY-MM-DD · decision · why
+- 2026-11-14 · This talk wears its own palette, Minnesota in late fall and the page (paper, spruce ink, tamarack gold, oak rust, a November lake), in `present/talk.css` over the brand's semantic tokens; the brand file stays untouched · Sean's call: Electric Lake didn't fit a late-fall literacy session. Same token names, so every view follows, and `scripts/contrast.js` now reads `talk.css` over the brand and checks all 53 pairs in both themes.
+- 2026-11-14 · The title slide shows birches at the edge of a November lake (`assets/late-fall-birches.svg`, drawn for this talk) in place of the brand's sun, and hides the index label · Birch bark marked in short dark lines reads like lines of text. The birches took the corner where the label sat; the rail already names the part.
+- 2026-11-14 · The inquiredu wordmark keeps its own colors · Logos are the brand's files, never recolored.

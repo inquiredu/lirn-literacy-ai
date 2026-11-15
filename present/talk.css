@@ -1,0 +1,168 @@
+/* This talk's look: Minnesota in late fall, and the page. Loaded after present/inquiredu.css, it redefines the
+   brand's semantic tokens (same names, so theme.css and every view follow) with a palette of its own:
+   paper and spruce ink, tamarack gold, oak rust, and a November lake. The brand file stays untouched and
+   syncable; scripts/contrast.js reads this file over it and checks every pair in both themes.
+
+   paper   #FFFDF8 #F6F1E7 #ECE4D3 #DCD1BC        ink (spruce)  #121916 #1C2522 #24302C #33423D #4F5D57 #6E7A74 #8E9993 #BAC3BD #E2E6E2
+   gold    #F5E8CC #E8C27A #D6A13C #6E4A0E        rust (oak)    #9B3A1E #7E2E17     cranberry #A12F3A #E3A3A8
+   lake    #E4EAE7 #8CC3C9 #2E6670 #1B2B2E        pine          #3F6650 #E2ECE4 #A9BAB0 #233542 */
+
+:root, [data-theme="light"] {
+  --surface-page: #F6F1E7;
+  --surface-raised: #FFFDF8;
+  --surface-sunken: #ECE4D3;
+  --surface-inverse: #1C2522;
+  --surface-inverse-deep: #121916;
+  --surface-accent: #D6A13C;
+  --surface-accent-soft: #F5E8CC;
+  --surface-water-soft: #E4EAE7;
+  --surface-toast: #24302C;
+  --fg-1: #1C2522;
+  --fg-2: #4F5D57;
+  --fg-3: #8E9993;
+  --fg-on-inverse: #F6F1E7;
+  --fg-on-inverse-2: #BAC3BD;
+  --fg-accent: #9B3A1E;
+  --fg-accent-on-inverse: #D6A13C;
+  --fg-on-accent: #1C2522;
+  --fg-warm: #6E4A0E;
+  --fg-link: #9B3A1E;
+  --fg-link-hover: #7E2E17;
+  --fg-on-toast: #F6F1E7;
+  --fg-on-toast-2: #BAC3BD;
+  --border-hairline: #DCD1BC;
+  --border-strong: #1C2522;
+  --border-accent-soft: #E8C27A;
+  --border-focus: #2E6670;
+  --action-primary: #1C2522;
+  --action-primary-hover: #121916;
+  --on-action-primary: #F6F1E7;
+  --action-accent: #D6A13C;
+  --action-accent-hover: #E8C27A;
+  --action-subtle-hover: #E2E6E2;
+  --action-ghost-hover: #ECE4D3;
+  --action-danger: #A12F3A;
+  --action-danger-hover: #7E2E17;
+  --on-action-danger: #FFFDF8;
+  --control-bg: #FFFDF8;
+  --control-bg-disabled: #ECE4D3;
+  --control-border: #6E7A74;
+  --control-halo: #E4EAE7;
+  --indicator-selected: #9B3A1E;
+  --status-success: #3F6650;
+  --status-success-bg: #E2ECE4;
+  --status-warning: #6E4A0E;
+  --status-warning-bg: #F5E8CC;
+  --status-danger: #A12F3A;
+  --status-danger-bg: #F4E1DD;
+  --status-info: #2E6670;
+  --status-info-bg: #E4EAE7;
+  --toast-success: #A9BAB0;
+  --toast-danger: #E3A3A8;
+  --toast-info: #8CC3C9;
+  --scrim: rgba(18,25,22,0.56);
+  --shadow-1: 0 1px 2px rgba(28,37,34,0.08);
+  --shadow-2: 0 2px 6px rgba(28,37,34,0.08), 0 8px 24px rgba(28,37,34,0.06);
+  --shadow-3: 0 12px 40px rgba(28,37,34,0.16);
+  --focus-ring: 0 0 0 3px #F6F1E7, 0 0 0 5px #2E6670;
+}
+
+/* Night: a November evening, spruce dark with snow-white paper */
+[data-theme="dark"] {
+  --surface-page: #131B19;
+  --surface-raised: #1C2724;
+  --surface-sunken: #0D1311;
+  --surface-inverse: #F6F1E7;
+  --surface-inverse-deep: #FFFDF8;
+  --surface-accent: #D6A13C;
+  --surface-accent-soft: #3A2F1C;
+  --surface-water-soft: #1B2B2E;
+  --surface-toast: #33423D;
+  --fg-1: #F6F1E7;
+  --fg-2: #BAC3BD;
+  --fg-3: #8E9993;
+  --fg-on-inverse: #1C2522;
+  --fg-on-inverse-2: #4F5D57;
+  --fg-accent: #E8C27A;
+  --fg-accent-on-inverse: #9B3A1E;
+  --fg-on-accent: #1C2522;
+  --fg-warm: #E8C27A;
+  --fg-link: #E8C27A;
+  --fg-link-hover: #F5E8CC;
+  --fg-on-toast: #F6F1E7;
+  --fg-on-toast-2: #BAC3BD;
+  --border-hairline: #33423D;
+  --border-strong: #F6F1E7;
+  --border-accent-soft: #8A6420;
+  --border-focus: #8CC3C9;
+  --action-primary: #F6F1E7;
+  --action-primary-hover: #ECE4D3;
+  --on-action-primary: #1C2522;
+  --action-accent: #D6A13C;
+  --action-accent-hover: #E8C27A;
+  --action-subtle-hover: #24302C;
+  --action-ghost-hover: #24302C;
+  --action-danger: #A12F3A;
+  --action-danger-hover: #7E2E17;
+  --on-action-danger: #FFFDF8;
+  --control-bg: #0D1311;
+  --control-bg-disabled: #24302C;
+  --control-border: #8E9993;
+  --control-halo: #2E6670;
+  --indicator-selected: #E8C27A;
+  --status-success: #A9BAB0;
+  --status-success-bg: #233542;
+  --status-warning: #E8C27A;
+  --status-warning-bg: #3A2F1C;
+  --status-danger: #E3A3A8;
+  --status-danger-bg: #492537;
+  --status-info: #8CC3C9;
+  --status-info-bg: #1B2B2E;
+  --toast-success: #A9BAB0;
+  --toast-danger: #E3A3A8;
+  --toast-info: #8CC3C9;
+  --scrim: rgba(5,8,7,0.72);
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-2: 0 2px 6px rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.3);
+  --shadow-3: 0 12px 40px rgba(0,0,0,0.5);
+  --focus-ring: 0 0 0 3px #131B19, 0 0 0 5px #8CC3C9;
+  color-scheme: dark;
+}
+
+/* The landing page and the notes window follow the viewer's setting: the same Night values */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --surface-page: #131B19; --surface-raised: #1C2724; --surface-sunken: #0D1311;
+    --surface-inverse: #F6F1E7; --surface-inverse-deep: #FFFDF8;
+    --surface-accent: #D6A13C; --surface-accent-soft: #3A2F1C; --surface-water-soft: #1B2B2E; --surface-toast: #33423D;
+    --fg-1: #F6F1E7; --fg-2: #BAC3BD; --fg-3: #8E9993;
+    --fg-on-inverse: #1C2522; --fg-on-inverse-2: #4F5D57;
+    --fg-accent: #E8C27A; --fg-accent-on-inverse: #9B3A1E; --fg-on-accent: #1C2522; --fg-warm: #E8C27A;
+    --fg-link: #E8C27A; --fg-link-hover: #F5E8CC; --fg-on-toast: #F6F1E7; --fg-on-toast-2: #BAC3BD;
+    --border-hairline: #33423D; --border-strong: #F6F1E7; --border-accent-soft: #8A6420; --border-focus: #8CC3C9;
+    --action-primary: #F6F1E7; --action-primary-hover: #ECE4D3; --on-action-primary: #1C2522;
+    --action-accent: #D6A13C; --action-accent-hover: #E8C27A; --action-subtle-hover: #24302C; --action-ghost-hover: #24302C;
+    --action-danger: #A12F3A; --action-danger-hover: #7E2E17; --on-action-danger: #FFFDF8;
+    --control-bg: #0D1311; --control-bg-disabled: #24302C; --control-border: #8E9993; --control-halo: #2E6670;
+    --indicator-selected: #E8C27A;
+    --status-success: #A9BAB0; --status-success-bg: #233542; --status-warning: #E8C27A; --status-warning-bg: #3A2F1C;
+    --status-danger: #E3A3A8; --status-danger-bg: #492537; --status-info: #8CC3C9; --status-info-bg: #1B2B2E;
+    --toast-success: #A9BAB0; --toast-danger: #E3A3A8; --toast-info: #8CC3C9;
+    --scrim: rgba(5,8,7,0.72);
+    --focus-ring: 0 0 0 3px #131B19, 0 0 0 5px #8CC3C9;
+    color-scheme: dark;
+  }
+}
+
+/* The title slide: birches at the edge of a November lake in place of the brand's sun. Birch bark is marked
+   in short dark lines, like lines of text; the far shore is spruce with tamaracks gone gold. */
+.kind-title .sun {
+  top: 0; right: 0; bottom: 0; width: 44%; height: 100%; aspect-ratio: auto; border-radius: 0;
+  background: url("../assets/late-fall-birches.svg") right bottom / auto 100% no-repeat;
+}
+.kind-title .sun::before, .kind-title .sun::after { content: none; }
+@container slide (max-width: 760px) {
+  .kind-title .sun { width: 80%; right: -24%; top: 0; opacity: .2; }
+}
+/* The birches take the top corner on the title slide; the rail already names the part */
+.kind-title .title-top .index-label { display: none; }
