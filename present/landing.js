@@ -37,14 +37,18 @@ const aim = land.aim && h("section", { class: "aim", "aria-labelledby": "a-head"
   land.aim.close && h("p", { class: "close" }, rich(land.aim.close, ctx)));
 
 const usSeason = land.us?.season && model.partById.get(land.us.season)?.season;
-const us = land.us && h("section", { class: "sheet us" + (usSeason ? " with-note" : ""), "aria-labelledby": "u-head" },
+const us = land.us && h("section", { class: "sheet us" + (usSeason || land.us.photo ? " with-note" : ""), "aria-labelledby": "u-head" },
   h("div", { class: "us-words" },
     h("h2", { id: "u-head" }, rich(land.us.heading, ctx)),
     (land.us.body || []).map((p) => h("p", {}, rich(p, ctx))),
     land.us.signoff && h("p", { class: "signoff" }, rich(land.us.signoff, ctx))),
-  usSeason?.art && h("figure", { class: "field-note us-note" },
-    h("img", { src: usSeason.art, alt: "", decoding: "async" }),
-    usSeason.caption && h("figcaption", {}, rich(usSeason.caption, ctx))));
+  (land.us.photo || usSeason?.art) && h("div", { class: "us-collage" },
+    usSeason?.art && h("figure", { class: "field-note us-note" + (land.us.photo ? " tucked" : "") },
+      h("img", { src: usSeason.art, alt: "", decoding: "async" }),
+      !land.us.photo && usSeason.caption && h("figcaption", {}, rich(usSeason.caption, ctx))),
+    land.us.photo && h("figure", { class: "field-note us-photo" },
+      h("img", { src: land.us.photo.src, alt: land.us.photo.alt || "", decoding: "async" }),
+      land.us.photo.caption && h("figcaption", {}, rich(land.us.photo.caption, ctx)))));
 
 const made = land.made && h("p", { class: "made" }, rich(land.made, ctx));
 

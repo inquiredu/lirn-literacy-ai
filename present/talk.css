@@ -179,3 +179,6 @@
 .field-note img { display: block; width: 100%; height: auto; }
 .field-note::before { content: ""; position: absolute; top: -12px; left: 50%; width: 88px; height: 24px; transform: translateX(-50%) rotate(var(--tape, -3deg)); background: color-mix(in srgb, var(--surface-accent) 42%, transparent); }
 .field-note figcaption { padding: 2px 4px 2px; text-align: center; font: 500 22px/1.15 var(--font-hand); color: var(--fg-2); }
+
+/* The closing slide's sketch of the two of us: small, an impression beside the words, not a portrait */
+.slide.kind-split[data-part="revisit"] .split > .media { max-width: 15em; justify-self: center; transform: rotate(2deg); border-radius: 0; }
