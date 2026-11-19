@@ -479,7 +479,7 @@ export default {
     {
       id: "roles-now", part: "revisit", kind: "cards",
       title: "Reading AI text critically",
-      kicker: "On a foundation of reading skills - building comprehension and content knowledge",
+      kicker: "On a foundation of reading skills · building comprehension and content knowledge",
       heading: "Reading AI text, **critically**",
       cards: [
         { kicker: "Who made this?", heading: "Origin", body: "Who and what made this, and in whose interest?" },
