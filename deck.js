@@ -196,8 +196,7 @@ export default {
           h(H, { class: "display heading" }, rich(slide.heading)),
           h("div", { class: "fig-roles" },
             h("ul", { class: "fig-roles-grid" }, slide.items.map((item) =>
-              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), h("p", { class: "fig-role-q" }, rich(item.why))))),
-            h("p", { class: "fig-roles-hub" }, rich("All four, every time"))),
+              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), h("p", { class: "fig-role-q" }, rich(item.why)))))),
           h("p", { class: "foot" }, rich(slide.foot))
         ];
       },
