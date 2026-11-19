@@ -1,4 +1,4 @@
-/* Paired slide and notes panes, using the same content as the stage and printable backup. */
+/* The review: the talk as a book (slide and notes on facing pages) and, on paper, the printed backup deck. */
 body { margin: 0; min-height: 100vh; background: var(--surface-page); color: var(--fg-1); font: var(--type-body); }
 
 /* ---------- The head: the title, small, and the tools ---------- */
@@ -18,56 +18,97 @@ body { margin: 0; min-height: 100vh; background: var(--surface-page); color: var
 .tool.primary:hover { background: var(--action-primary-hover); color: var(--on-action-primary); }
 .tool[aria-pressed="true"], .tool[aria-expanded="true"] { background: var(--surface-water-soft); border-color: var(--indicator-selected); }
 
-.review { max-width: var(--content-wide); margin: 0 auto; padding: 0 var(--space-4) var(--space-6); }
+.review { padding: 0; }
 
-/* ---------- Contents: a panel over the book ---------- */
-.contents { margin: 0 0 var(--space-4); padding: var(--space-5) var(--space-5) var(--space-4); border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--border-hairline); box-shadow: none; }
-.contents[hidden] { display: none; }
-.contents h2 { font: var(--type-h3); letter-spacing: var(--tracking-heading); margin-bottom: var(--space-2); }
-.toc-part h3 { margin: var(--space-4) 0 var(--space-1); font: var(--type-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--fg-accent); }
-.toc-len { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--fg-2); }
-.contents ol { margin: 0; padding-left: 2.2em; columns: 2 18rem; column-gap: var(--space-6); font: var(--type-small); }
-.contents li { break-inside: avoid; padding: .15rem 0; }
-.contents li::marker { color: var(--fg-2); font-variant-numeric: tabular-nums; }
+/* ---------- The book: What We Talk About's, on this talk's paper ----------
+   Two pages joined at a shaded spine on a sunken ground. A turn slides the new pages in a short way from the side
+   they come from as they fade up (What We Talk About's .45s); under reduced motion they're simply there. */
+.book {
+  --turn-time: .45s; --turn-ease: ease; --turn-shift: 1.5rem;
+  --page-min: clamp(30rem, calc(100svh - 14rem), 52rem);
+  --spine: color-mix(in srgb, var(--scrim) 30%, transparent); --spine-soft: color-mix(in srgb, var(--scrim) 16%, transparent);
+  background: var(--surface-sunken); padding: var(--space-5) var(--space-4) var(--space-4);
+}
+.book-tools, .spread, .book-nav { max-width: var(--content-wide); margin: 0 auto; }
+.book-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-4); }
+.spread { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; touch-action: pan-y; scroll-margin-top: var(--space-4); }
+.bpage {
+  position: relative; display: grid; min-width: 0; min-height: var(--page-min); background: var(--surface-raised);
+  box-shadow: var(--shadow-3); overflow-wrap: anywhere; scroll-margin-top: var(--space-4);
+}
+.bpage:focus { outline: none; }
+.bpage[data-side="l"] { grid-column: 1; border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.bpage[data-side="r"] { grid-column: 2; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.bpage[data-side="c"] { grid-column: 1 / -1; border-radius: var(--radius-sm); }
+.spread > .bpage { grid-row: 1; }
+/* The gutter: a soft shadow down the fold, over both pages and whatever the slide's ground is */
+.spread.two::after {
+  content: ""; position: absolute; inset-block: 0; left: 50%; width: 3.4rem; margin-left: -1.7rem; pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--spine-soft) 44%, var(--spine) 50%, var(--spine-soft) 56%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .spread.turn-f > .bpage { animation: turn-in-f var(--turn-time) var(--turn-ease) both; }
+  .spread.turn-b > .bpage { animation: turn-in-b var(--turn-time) var(--turn-ease) both; }
+}
+@keyframes turn-in-f { from { opacity: 0; transform: translateX(var(--turn-shift)); } }
+@keyframes turn-in-b { from { opacity: 0; transform: translateX(calc(-1 * var(--turn-shift))); } }
 
-/* ---------- The book ---------- */
-.book { --page-h: min(calc(100vh - 11rem), 860px); --page-w: min(calc(var(--page-h) * .8), calc((100vw - 3 * var(--space-4)) / 2)); display: grid; justify-items: center; gap: var(--space-4); }
-.spread { position: relative; display: grid; grid-template-columns: var(--page-w) var(--page-w); height: var(--page-h); gap: var(--space-4); border-radius: 0; touch-action: pan-y; }
-.bpage { position: relative; height: 100%; overflow: auto; overscroll-behavior: contain; background: var(--surface-raised); }
-.bpage-left { border: 1px solid var(--border-hairline); }
-.bpage-right { border: 1px solid var(--border-hairline); }
-/* The left page: the slide, filling the page */
-.book-frame { min-height: 100%; display: grid; }
-.book-frame .slide { font-size: clamp(12px, 2.25cqw, 18px); min-height: 100%; padding: 2.8em 2.6em 3em; }
+/* The left page: the slide, filling the page to its edges. When long notes make the spread taller than the window,
+   the slide stays at the top of the window beside them, and its ground carries on down the page (a spread of its own
+   color, clipped to the page). clip, not hidden, so the page isn't a scroller and the slide can stick to the window. */
+.bpage-slide { overflow: clip; }
+.bpage-slide .book-frame { position: sticky; top: 0; align-self: start; min-height: var(--page-min); }
+.bpage-slide .slide { box-shadow: 0 0 0 100vmax var(--slide-bg, var(--bg)); }
+.book-frame { display: grid; min-height: 100%; }
+.book-frame .slide { font-size: clamp(12px, 2.25cqw, 18px); padding: 2.8em 2.6em 3em; }
 .book .slide .r { opacity: 1; transform: none; }
 
 /* The facing page: the notes, set like a page of a book */
-.notes-page {
-  min-height: 100%; display: grid; grid-template-rows: auto auto 1fr auto; align-content: start;
-  gap: var(--space-4); padding: var(--space-6); box-sizing: border-box; background: var(--surface-raised);
-}
+.notes-page { display: grid; grid-template-rows: auto auto 1fr auto; align-content: start; gap: var(--space-4); padding: var(--space-7) var(--space-7) var(--space-5); }
 .running-head { margin: 0; display: flex; justify-content: space-between; gap: var(--space-3); font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--fg-2); }
 .running-head span { font-variant-numeric: tabular-nums; }
 .notes-title { font: var(--type-h3); letter-spacing: var(--tracking-heading); color: var(--fg-1); }
 .notes-body { font: 400 18px/1.65 var(--font-serif); color: var(--fg-1); max-width: 36em; }
 .notes-body p { margin: 0; }
-.notes-body p + p { margin-top: .8em;  }
+.notes-body p + p { margin-top: .8em; }
 .folio-n { margin: 0; justify-self: center; font: 400 15px/1 var(--font-serif); color: var(--fg-2); font-variant-numeric: oldstyle-nums; }
 
-/* One page on a narrow screen: the slide, then its notes */
-.spread.is-single { grid-template-columns: min(100%, 40rem); width: 100%; justify-content: center; height: auto; min-height: var(--page-h); box-shadow: none; }
-.spread.is-single .bpage-left { border-radius: var(--radius-md); }
-.spread.is-single .bpage-right { display: none; }
-.single .book-frame .slide { font-size: clamp(11px, 3.6cqw, 16px); min-height: 0; }
-.single .notes-page { --pad-left: var(--space-7); padding: var(--space-5) var(--space-5) var(--space-4) var(--pad-left); }
+/* The Contents: by part, the titles on the left and their page numbers on the right */
+.bpage-contents { align-content: start; padding: var(--space-7) var(--space-8) var(--space-6); }
+.contents-title { font: var(--type-h2); letter-spacing: var(--tracking-heading); color: var(--fg-1); margin-bottom: var(--space-2); }
+.toc-part h3 { margin: var(--space-5) 0 var(--space-2); font: var(--type-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--fg-accent); }
+.toc-part:first-child h3, .contents-title + .toc-part h3 { margin-top: var(--space-3); }
+.toc-len { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--fg-2); }
+.toc { list-style: none; margin: 0; padding: 0; }
+.toc a { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding: .2rem 0; font: var(--type-small); color: var(--fg-1); text-decoration: none; }
+.toc a:hover { color: var(--fg-accent); text-decoration: underline; text-decoration-color: var(--indicator-selected); }
+.toc .pn { flex: none; font: 400 15px/1 var(--font-serif); color: var(--fg-2); font-variant-numeric: oldstyle-nums tabular-nums; }
 
-/* Turning by hand: page buttons and the folio under the book */
-.book-nav { display: flex; align-items: center; gap: var(--space-4); }
-.turn { width: var(--control-lg); height: var(--control-lg); border-radius: var(--radius-xs); cursor: pointer; font: 400 26px/1 var(--font-serif); color: var(--fg-1); background: var(--control-bg); border: 1px solid var(--control-border); transition: background-color var(--dur-fast) var(--ease-out); }
-.turn:hover:not(:disabled) { background: var(--action-ghost-hover); }
-.turn:disabled { cursor: default; color: var(--fg-2); border-color: var(--border-hairline); }
-.turn:focus-visible, .tool:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-.folio { min-width: 7em; text-align: center; font: var(--type-small); color: var(--fg-2); font-variant-numeric: tabular-nums; }
+/* Turning by hand: Previous and Next under the book, staying in reach down a long page */
+.book-nav {
+  position: sticky; bottom: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  margin-top: var(--space-4); padding: var(--space-3) 0 var(--space-2);
+  background: linear-gradient(to bottom, transparent, var(--surface-sunken) 35%);
+}
+.book-nav .tool { gap: var(--space-2); }
+.where { flex: 1; text-align: center; font: var(--type-small); color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.tool:disabled { cursor: default; color: var(--fg-2); border-color: var(--border-hairline); background: var(--control-bg); }
+
+/* One page on a narrow screen: the slide, then its notes */
+.bpage-single { grid-template-rows: auto 1fr; overflow: hidden; }
+.bpage-single .book-frame .slide { font-size: clamp(11px, 3.6cqw, 16px); }
+.bpage-single .notes-page { padding: var(--space-5) var(--space-5) var(--space-4); }
+@media (max-width: 899px) {
+  .spread { grid-template-columns: minmax(0, 1fr); }
+  .bpage-contents { padding: var(--space-6) var(--space-5) var(--space-5); }
+  .book { padding-inline: var(--space-3); }
+}
+
+/* All pages on one scroll: one column to read down, the tools kept at the top, no turning */
+.book.is-flat .spread { display: block; max-width: 44rem; }
+.book.is-flat .bpage { min-height: 0; margin-bottom: var(--space-5); scroll-margin-top: 5rem; }
+.book.is-flat .book-nav { display: none; }
+.book.is-flat .book-tools { position: sticky; top: 0; z-index: 2; padding: var(--space-3) 0; margin-block: calc(-1 * var(--space-3)) var(--space-2); background: var(--surface-sunken); }
 
 /* The printed backup lives on the page but shows only on paper */
 .print-pages { display: none; }
@@ -81,7 +122,7 @@ body { margin: 0; min-height: 100vh; background: var(--surface-page); color: var
 @page { size: 13.333in 7.5in; margin: 0; }
 @media print {
   body { background: var(--surface-page); }
-  .review-head, .contents, .book { display: none !important; }
+  .review-head, .book { display: none !important; }
   .review { max-width: none; padding: 0; }
   .print-pages { display: block; }
   .page { margin: 0; height: 7.5in; break-after: page; display: grid; grid-template-rows: minmax(0, 1fr) auto; overflow: hidden; }

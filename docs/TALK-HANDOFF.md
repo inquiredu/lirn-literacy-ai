@@ -20,7 +20,7 @@ The decisions that shape this talk, with the reason for each. One line each in `
 | --- | --- | --- |
 | Present | `present.html` | The stage |
 | Speaker notes | `notes.html` | Opens from the stage with S; follows it and drives it |
-| Review | `review.html` | Every slide as a page, with notes on request; prints as the backup |
+| Review | `review.html` | Every slide as a book page with its notes facing it, a Contents spread and a one-scroll view; prints as the backup |
 
 Shared spaces and decks, all in `links` in `deck.js`:
 

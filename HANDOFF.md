@@ -2,6 +2,19 @@
 
 Updated November 19, 2026. The underlying presentation engine follows `STANDARD.md`.
 
+## The review turns like What We Talk About's book, November 19
+
+On branch `claude/hopeful-franklin-rmjmti`, **not merged to main** (Sean's call: no changes to main yet). The review (`review.html`) now reads and turns like What We Talk About's book. Sean picked this over What We Talk About's two slides to a spread, so each spread is still the slide on the left and its speaker notes on the right.
+
+- **The turn:** the new spread slides in 1.5rem from the side you're turning toward as it fades up, over .45s, the same values as What We Talk About's book. Under reduced motion it changes at once. Arrows, Page Up and Down, Space, Home, End, a swipe, or Previous and Next, which now stay pinned under the book.
+- **The look:** two pages joined at a shaded spine, lifted off a sunken ground, with folios. The spine and shadows come from the talk's tokens (`--scrim`, `--shadow-3`).
+- **Contents** is now the book's first spread (`review.html#contents`), the parts running across both pages, one turn back from slide 1. The Contents button above the book opens it. No address still opens slide 1, so the landing page's links behave as before.
+- **Show all pages on one scroll** lays out every page in one column. The address follows the page you're reading, so switching back opens the book there.
+- **Long notes:** pages grow with their notes and the window scrolls, instead of each page scrolling on its own. The slide stays at the top of the window beside long notes (`roles-now`, `moves`, `basics-thinking`).
+- `contents` is now a reserved slide id (a check in `present/core.js`, with a test), since the review uses `#contents`.
+- Verified: `node scripts/check-all.js` passes. Axe finds no violations on 40 pages and slides (now including `review.html#contents`) at 1280 and 375px, in the deck's theme and in Night; the one-scroll view and the longest notes spread are also clear at both widths in both themes. The turn was filmed frame by frame beside What We Talk About's running locally and matches. Keys, the Contents links (focus moves to the page that opens), the address, and the one-scroll round trip were driven in Chromium. The printed backup PDF renders identically page for page before and after.
+- Not verified: a screen reader, Safari or Firefox, a real swipe on a phone or tablet (the swipe code is unchanged), zoom to 200% and 400%.
+
 ## Introductions slide, November 19
 
 **Slide 2, `intro`** ("Andrew and Sean"): right after the title, on the same dark ground. Andrew Rummel, then Sean Beaverson, each with role and district, beside their coffee-shop photo framed small (`assets/andrew-and-sean.jpg`). The names and roles come from the landing page's bios (`landing.us.people`), so a change there changes the slide.
