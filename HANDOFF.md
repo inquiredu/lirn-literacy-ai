@@ -2,6 +2,13 @@
 
 Updated November 18, 2026. The underlying presentation engine follows `STANDARD.md`.
 
+## Zoom readability, November 19
+
+The question the room answers in the chat was the smallest text on every pause slide (about 13pt next to a 16:9 PowerPoint slide). It and the prompt under the cards on `roles-now` are now about 18pt, heavier, with a rule above (`present/slides.css`, "Room prompts"). No words changed.
+
+- Verified: all 16 participation slides measured at 1920x1080, 1440x900, 1366x768, 1280x720 and 1280x800, and none overflows; the printed backup PDF, the review and a 375px phone checked by picture; `node scripts/check-all.js` passes; axe finds no violations on 39 pages and slides in light and dark.
+- Not verified: a live Zoom share.
+
 ## Research library, November 19
 
 `library.html` is a reading list for anyone the session leaves curious: 70 sources, each filed as Foundations (39) or AI era (31), by kind of source (59 academic, 5 reports and guides, 3 reflections, 3 to listen to or watch), and by seven questions that follow the session's parts. Filters and a search live in the address, so a view can be shared. The landing page links to it, and `way-back` mentions it.

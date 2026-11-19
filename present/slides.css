@@ -199,6 +199,15 @@
 .star { display: none; }
 .timer { border-radius: var(--radius-xs); box-shadow: none; }
 .url-pill { border-radius: var(--radius-xs); font-size: 1.1em; overflow-wrap: anywhere; }
+
+/* Room prompts: the line that tells the room what to do now. On a pause slide that's the foot (the chat question);
+   on a cards slide it's the body under the cards. They were the smallest words on the slide, about 13pt next to a
+   16:9 PowerPoint slide; at 1.5em they read at about 18pt, sized for a screen shared small in a meeting
+   (STANDARD.md), and the rule above them sets them apart from the words people read or type. */
+.kind-pause .foot, .kind-cards .slide-main > .body {
+  max-width: 34ch; margin: .5em 0 0; padding-top: .55em; border-top: 2px solid var(--accent);
+  font: 600 1.5em/1.3 var(--heading); letter-spacing: -.01em; color: inherit; text-wrap: pretty;
+}
 @container slide (max-width: 760px) {
   .kind-title .title-words { max-width: 100%; }
   .kind-title .title { font-size: 3em; }
