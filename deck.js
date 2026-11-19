@@ -144,9 +144,9 @@ export default {
     },
     {
       id: "teaching-question", part: "open", kind: "pause",
-      title: "Ask a teaching question",
+      title: "Gemini and informational text",
       kicker: "Now ask about teaching · Pick one · {mins}",
-      heading: "Ask it a **teaching** question.",
+      heading: "Gemini and **informational** text",
       body: [
         "Decoding: “What should I do when a first grader guesses at a word?”",
         "Vocabulary: “What's the best way to teach new words to third graders?”",
