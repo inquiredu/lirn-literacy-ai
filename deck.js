@@ -229,46 +229,39 @@ export default {
       body: "Authorship, access, and the instructional choices that shape learning.",
       notes: "Andrew: section two, about {making.length}. All three cases are made up, but they'll sound familiar."
     },
+    // 2026-11-19: the three cases, one slide each so they come in turn (they shared one cards slide before).
     {
-      id: "cases", part: "making", kind: "cards",
-      heading: "Classroom cases for discussion",
-      cards: [
-        { kicker: "Case A · Grade 5 · A student writer", heading: "Is the draft **hers**?", body: "A fifth grader asks AI for ideas for her opinion piece. She gets five, picks one, and writes. Her draft is fluent and on topic." },
-        { kicker: "Case B · Grade 3 · A teacher adapting text", heading: "Is the easier version enough?", body: "A newcomer joins a third-grade class in October. Her teacher asks AI for an easier version of the science article. It's ready in seconds." },
-        { kicker: "Case C · Grade 1 · A reading tutor", heading: "Whose ear is **listening**?", body: "A first-grade teacher is offered an AI tutor. Children read aloud to it, and it marks errors and gives feedback. It promises twenty more minutes of practice a day." }
-      ],
-      notes: "Andrew reads Case A, Sean reads Case B, Andrew reads Case C. Don't comment yet. Case C picks up the K–2 signposts from Part 1."
+      id: "case-a", part: "making", kind: "statement",
+      title: "Case A: Is the draft hers?",
+      kicker: "Case A · Grade 5 · A student writer",
+      heading: "Is the draft **hers**?",
+      body: "A fifth grader asks AI for ideas for her opinion piece. She gets five, picks one, and writes. Her draft is fluent and on topic.",
+      notes: "Andrew reads Case A. Don't comment yet."
+    },
+    {
+      id: "case-b", part: "making", kind: "statement",
+      title: "Case B: Is the easier version enough?",
+      kicker: "Case B · Grade 3 · A teacher adapting text",
+      heading: "Is the easier version enough?",
+      body: "A newcomer joins a third-grade class in October. Her teacher asks AI for an easier version of the science article. It's ready in seconds.",
+      notes: "Sean reads Case B. Don't comment yet."
+    },
+    {
+      id: "case-c", part: "making", kind: "statement",
+      title: "Case C: Whose ear is listening?",
+      kicker: "Case C · Grade 1 · A reading tutor",
+      heading: "Whose ear is **listening**?",
+      body: "A first-grade teacher is offered an AI tutor. Children read aloud to it, and it marks errors and gives feedback. It promises twenty more minutes of practice a day.",
+      notes: "Andrew reads Case C. Don't comment yet. Case C picks up the K–2 signposts from Part 1."
     },
     {
       id: "hold-test", part: "making", kind: "pause",
       kicker: "Pause · {mins}",
       heading: "What must we preserve? What should we **test**?",
       body: "Take the case closest to the grades you support. Name one value that shouldn't bend, and one thing you'd try and watch.",
-      foot: "Post both in the chat, starting with A, B or C.",
+      foot: "A: Grade 5 writer · B: Grade 3 newcomer · C: Grade 1 tutor\nPost both in the chat, starting with A, B or C.",
       timer: 6,
-      notes: "Sean: {Mins:words}.\n\nBreakout rooms (9 or more): three rooms named Case A, Case B and Case C, with participants choosing their own room (turn on Allow participants to choose room). Allow a minute and a half to open and close.\n\nMain room (under 9): everyone takes the case closest to their grades and answers in the chat when the timer ends.\n\nListen for values (ownership of ideas, every student in the shared text, struggle that builds something) and for tests (what would you look at a month from now?)."
-    },
-    {
-      id: "noticing-a", part: "making", kind: "cards",
-      heading: "Case A: learning and authorship",
-      cards: [
-        { kicker: "Research signal · High school", heading: "Performance and learning", body: "In one high school math experiment, a plain chatbot raised practice scores, and exam scores fell once it was taken away. A version that gave hints instead of answers largely avoided that drop." },
-        { kicker: "Evidence gap · Grades 3–5", heading: "Young writers", body: "We found no study of intermediate-grade students drafting with AI, or of what happens to their writing and their sense of ownership." },
-        { kicker: "Questions for practice", heading: "Evidence to examine", body: "What would you look for in her next draft, written without AI? What would she say if you asked where the idea came from?", key: true }
-      ],
-      foot: "Bastani et al. (2025), PNAS 122(26): about 1,000 high school math students in Turkey. Math, not writing.",
-      notes: "Sean: present this as something we're noticing, not a finding about writing. The design point may carry over: a tool that answers can stand in for the work; a tool that asks can support it. Then turn it back: what's your evidence?\n\nIf the room wants a worked structure for this, Kit 05 (Curriculum Mapping) on What We Talk About is built to catch AI doing the thinking a standard names."
-    },
-    {
-      id: "noticing-b", part: "making", kind: "cards",
-      heading: "Case B: access and text complexity",
-      cards: [
-        { kicker: "Research signal · Grade 9", heading: "Most read the harder text", body: "293 ninth graders read easy or challenging versions of the same texts for 12 weeks, with support. Most understood both about equally well; a small group well below average, many of them English learners, did better with easier versions." },
-        { kicker: "Evidence gap · K–12", heading: "AI-leveled text", body: "No study we found tests AI-leveled texts with K-12 readers, or what an easier version takes away over time." },
-        { kicker: "Questions for practice", heading: "Evidence to examine", body: "Does she come back to the shared text and join the discussion? What would her EL teacher add? What would her family want?", key: true }
-      ],
-      foot: "Lupo, Tortorelli, Invernizzi, Ryoo & Strong (2019), Reading Research Quarterly 54(4). Texts leveled by people, not AI.",
-      notes: "Andrew: the students who did better with easier versions look a lot like the newcomer in Case B, which makes this the study closest to her. It still used texts leveled by people, so it can't tell us what an AI version does. One option to name: scaffold the original first (key words taught ahead, glosses, chunking, audio, partner talk), and treat a leveled version as a bridge you plan to leave.\n\nHer home language is a resource, not only a gap: an AI translation of the original beside the English can be a bridge back to the shared text, and her family may be using AI translation at home too. Ask the EL teachers in the group what they'd add; [ADD] an EL colleague's view, if we can get one before the day."
+      notes: "Sean: {Mins:words}.\n\nBreakout rooms (9 or more): three rooms named Case A, Case B and Case C, with participants choosing their own room (turn on Allow participants to choose room). Allow a minute and a half to open and close.\n\nMain room (under 9): everyone takes the case closest to their grades and answers in the chat when the timer ends.\n\nListen for values (ownership of ideas, every student in the shared text, struggle that builds something) and for tests (what would you look at a month from now?).\n\nCase B: the newcomer's home language is a resource, not only a gap. An AI translation of the original beside the English can be a bridge back to the shared text, and her family may be using AI translation at home too. Ask the EL teachers in the group what they'd add; [ADD] an EL colleague's view, if we can get one before the day."
     },
     {
       id: "middle", part: "making", kind: "statement",
@@ -338,44 +331,6 @@ export default {
       foot: "Dangol et al. (2025), IDC, arXiv 2505.16034 (US). Abdelghani et al. (2025), arXiv 2505.01106 (preprint, France). Brodsky et al. (2023), AERA Open (Canada).",
       notes: "Sean: two small studies, different ages and tasks. The younger children caught errors on puzzles they could solve themselves. The older students relied on the chatbot even on topics they said they knew, and the authors link better judgment to students' awareness of their own understanding. Treat that as a pattern worth testing, not a finding. If it holds, knowing the topic helps but isn't enough: students also need to notice when they don't actually understand.\n\nAccuracy note: the French paper reports 63 students in its abstract and 73 in its methods; its second version is titled The Illusion of Understanding. An earlier draft of this slide credited it to the wrong authors, and our own check caught it."
     },
-    {
-      id: "evidence-map", part: "navigating", kind: "custom",
-      kicker: "Where our evidence comes from",
-      heading: "Most of it is about **older students**.",
-      title: "Evidence map",
-      bands: [{ name: "K–2", cases: "Case C" }, { name: "3–5", cases: "Cases A and B" }, { name: "6–8" }, { name: "9–12" }],
-      rows: [
-        { topic: "Writing with AI", cells: [] },
-        { topic: "Learning with a chatbot", cells: [{ from: 3, span: 1, text: "Math · Bastani" }] },
-        { topic: "Easier or harder text", cells: [{ from: 3, span: 1, text: "Grade 9, leveled by people · Lupo" }] },
-        { topic: "Leveled by AI", cells: [] },
-        { topic: "Spotting chatbot errors", cells: [{ from: 0, span: 2, text: "Ages 6–11, puzzles · Dangol" }, { from: 3, span: 1, text: "Ages 14–15, science · Abdelghani" }] },
-        { topic: "Lateral reading", cells: [{ from: 2, span: 2, text: "Websites, Canada · Brodsky" }] }
-      ],
-      foot: "Blank means we didn't find a study in our search, not that none exists.",
-      render: ({ h, rich, mode, slide }) => {
-        const [H] = levels(mode);
-        const row = (r) => {
-          const out = [h("th", { scope: "row" }, rich(r.topic))];
-          for (let col = 0; col < slide.bands.length;) {
-            const cell = r.cells.find((c) => c.from === col);
-            if (cell) { out.push(h("td", { class: "fig-hit", colspan: String(cell.span) }, rich(cell.text))); col += cell.span; }
-            else { out.push(h("td", { class: "fig-none" }, h("span", { "aria-hidden": "true" }, "–"), h("span", { class: "sr-only" }, "None found"))); col += 1; }
-          }
-          return h("tr", {}, out);
-        };
-        return [
-          h("p", { class: "kicker" }, rich(slide.kicker)),
-          h(H, { class: "display heading" }, rich(slide.heading)),
-          h("table", { class: "fig-map" },
-            h("thead", {}, h("tr", {}, h("td", {}), slide.bands.map((b) =>
-              h("th", { scope: "col" }, rich(b.name), b.cases && h("span", { class: "fig-map-case" }, rich(b.cases)))))),
-            h("tbody", {}, slide.rows.map(row))),
-          h("p", { class: "foot" }, rich(slide.foot))
-        ];
-      },
-      notes: "Sean: one look, no more than a minute. Read the two left columns aloud: they're where Cases A, B and C live, and they're mostly empty. Most of what we know comes from older students and from math, science and puzzles, not reading. That's the honest state of things, and it's why every research card today ends with a question for you rather than an answer."
-    },
     // Draft (2026-11-15): two slides on elementary skills the reading research says matter more with AI. Few words on
     // the slide; the talking points are in the notes. Citations are from established research, not yet re-checked.
     {
@@ -402,7 +357,7 @@ export default {
         { kicker: "Discussion", heading: "Argue with the text", body: "Structured talk builds comprehension. Every text has an author to question." }
       ],
       foot: "Lupo et al. (2019), Reading Research Quarterly 54(4); Graham & Hebert (2010), Writing to Read, Alliance for Excellent Education; Slamecka & Graf (1978), Journal of Experimental Psychology: Human Learning and Memory 4(6); Murphy et al. (2009), Journal of Educational Psychology 101(3); Beck, McKeown, Hamilton & Kucan (1997), Questioning the Author.",
-      notes: "Sean: the second set is about the work AI can do for students, and the learning they lose if it does.\n\nComplex text: the Lupo study from Case B. With support, most readers understood the harder text about as well as the easier one. If AI simplifies every text, students get less practice with hard text, and stamina goes with it. Scaffold first; level as a bridge you plan to leave.\n\nWriting: Graham and Hebert's meta-analysis found that writing about what students read improves their comprehension. Memory research calls it the generation effect: people remember what they produce better than what they only read. Explicit teaching of planning, drafting and revising (Graham and Harris's self-regulated strategy development) has strong evidence too. If AI does the generating, students skip the part that does the learning. That's Case A again: students write first; AI, if at all, gives feedback.\n\nDiscussion: Murphy and colleagues' meta-analysis found structured discussion about texts improves comprehension. Questioning the Author teaches students that every text is someone's choices, which applies to AI as much as any book.\n\nOne caution to say out loud: decoding and fluency are still the foundation. AI text is still text, and a student working hard to read the words has little attention left to question them."
+      notes: "Sean: the second set is about the work AI can do for students, and the learning they lose if it does.\n\nComplex text: the Lupo study, the one closest to Case B. With support, most readers understood the harder text about as well as the easier one. If AI simplifies every text, students get less practice with hard text, and stamina goes with it. Scaffold first; level as a bridge you plan to leave.\n\nWriting: Graham and Hebert's meta-analysis found that writing about what students read improves their comprehension. Memory research calls it the generation effect: people remember what they produce better than what they only read. Explicit teaching of planning, drafting and revising (Graham and Harris's self-regulated strategy development) has strong evidence too. If AI does the generating, students skip the part that does the learning. That's Case A again: students write first; AI, if at all, gives feedback.\n\nDiscussion: Murphy and colleagues' meta-analysis found structured discussion about texts improves comprehension. Questioning the Author teaches students that every text is someone's choices, which applies to AI as much as any book.\n\nOne caution to say out loud: decoding and fluency are still the foundation. AI text is still text, and a student working hard to read the words has little attention left to question them."
     },
     {
       id: "moves", part: "navigating", kind: "list",
