@@ -8,6 +8,9 @@
 // what the room learns afterward are shared through What We Talk About When We Talk About AI.
 // Authorship: a joint session by Andrew Rummel and Sean Beaverson. Public copy remains a draft for their review.
 
+// The research library (library.html) is part of the deck, kept in its own file because it's long.
+import library from "./library.js";
+
 // Heading levels for custom slides follow the kinds: h1 on the stage, h2 in the review.
 const levels = (mode) => (mode === "stage" ? ["h1", "h2"] : ["h2", "h3"]);
 
@@ -20,8 +23,10 @@ export default {
   links: {
     site: "./",
     gemini: "https://gemini.google.com/",            // the opening activity: participants can try the prompts themselves
-    wwta: "https://inquiredu.org/what-we-talk-about/" // where resources and the room's learning are shared afterward
+    wwta: "https://inquiredu.org/what-we-talk-about/", // where resources and the room's learning are shared afterward
+    library: "library.html"                           // this session's research library, read from library.js
   },
+  library,
   theme: "light",
   // Minnesota in late fall and winter, for each slide's bare side (core.js artFor): birches on the dark slides,
   // and each part's line drawing on its light statement, list and steps slides. art: false on a slide leaves it out.
@@ -34,7 +39,7 @@ export default {
   landing: {
     identity: "LiRN",
     context: "Literacy & artificial intelligence",
-    nav: { overview: "Overview", agenda: "Agenda", review: "Read the session" },
+    nav: { overview: "Overview", agenda: "Agenda", library: "Research library", review: "Read the session" },
     overviewLabel: "A working session for literacy leaders",
     reviewLabel: "Read slides & notes",
     presentLabel: "Open presentation",
@@ -91,8 +96,9 @@ export default {
     },
     resources: {
       heading: "Continue the inquiry",
-      body: "Explore the research library and leadership resources at What We Talk About When We Talk About AI.",
-      label: "Explore the resources"
+      body: "This session's research library gathers the studies behind it and where to read next, sorted by what was known before generative AI and what is being learned now. Leadership resources are at What We Talk About When We Talk About AI.",
+      library: "Open the research library",
+      label: "Leadership resources"
     },
     made: "Developed by Andrew Rummel and Sean Beaverson with AI assistance from Gemini and Claude. The presenters retain responsibility for the content and its interpretation."
   },
@@ -511,7 +517,7 @@ export default {
     {
       id: "way-back", part: "revisit", kind: "link",
       heading: "Today's slides and notes",
-      body: "This deck, with speaker notes and sources, to read again or share.",
+      body: "This deck, with speaker notes and sources, to read again or share, and a research library for reading further.",
       notes: "Andrew: paste {url} in the chat and leave this up. The QR code only helps people watching on a second device."
     },
     {

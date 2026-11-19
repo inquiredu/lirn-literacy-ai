@@ -205,7 +205,112 @@ export function deckProblems(deck, { fileExists } = {}) {
       if (t.token && resolveToken(t, { model, slide: null }) === null) say(`The deck's ${key} has {${t.token}}, which nothing fills in.`);
     });
   });
+  if (deck.library) libraryProblems(deck.library, model).forEach(say);
   return problems;
+}
+
+// ---------- The research library ----------
+// A reading list that goes with the talk (deck.library, kept in library.js): every entry is a real, checked
+// source, sorted by when the question was asked (before generative AI, or about it), by what kind of source it
+// is, and by the thread of the talk it follows. The page (present/library.js) only draws what these rules return.
+
+export const LIBRARY_ERAS = ["foundations", "ai"];
+// research: scholarly work. report: an agency's or organization's report or guide. reflection: a book or essay
+// for a wide audience. media: something to listen to or watch.
+export const LIBRARY_FORMS = ["research", "report", "reflection", "media"];
+
+/** Everything wrong with a library, in plain words. An entry that can't say where it was checked doesn't go in. */
+export function libraryProblems(library, model) {
+  const problems = [];
+  const say = (m) => problems.push(m);
+  const kebab = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+  const topics = new Set((library.topics || []).map((t) => t.id));
+  (library.topics || []).forEach((t) => {
+    if (!t.id || !kebab.test(t.id) || !t.name) say(`A library topic needs a kebab-case id and a name: ${JSON.stringify(t.id)}`);
+    if (t.part && model && !model.parts.some((p) => p.id === t.part)) say(`The library topic "${t.id}" names a part the deck doesn't have: ${t.part}`);
+  });
+  const ids = new Set(), urls = new Set();
+  (library.entries || []).forEach((e, i) => {
+    const where = `Library entry ${i + 1} (${e.id || "no id"})`;
+    if (!e.id || !kebab.test(e.id)) say(`${where} needs an id in kebab-case.`);
+    if (ids.has(e.id)) say(`Two library entries share the id "${e.id}".`);
+    ids.add(e.id);
+    ["authors", "title", "venue", "adds", "kind"].forEach((key) => {
+      if (typeof e[key] !== "string" || !e[key].trim()) say(`${where} needs ${key}.`);
+    });
+    if (!Number.isInteger(e.year) || e.year < 1900 || e.year > 2100) say(`${where} needs the year it was published: ${JSON.stringify(e.year)}`);
+    if (!/^https:\/\/\S+$/.test(e.url || "")) say(`${where} needs an https address a reader can follow: ${JSON.stringify(e.url)}`);
+    if (e.url && urls.has(e.url)) say(`${where} repeats an address another entry uses: ${e.url}`);
+    urls.add(e.url);
+    if (e.freeUrl !== undefined && !/^https:\/\/\S+$/.test(e.freeUrl)) say(`${where} has a freeUrl that isn't an https address: ${JSON.stringify(e.freeUrl)}`);
+    if (!LIBRARY_ERAS.includes(e.era)) say(`${where} has an era that isn't one of ${LIBRARY_ERAS.join(", ")}: ${JSON.stringify(e.era)}`);
+    if (!LIBRARY_FORMS.includes(e.form)) say(`${where} has a form that isn't one of ${LIBRARY_FORMS.join(", ")}: ${JSON.stringify(e.form)}`);
+    if (typeof e.free !== "boolean") say(`${where} needs free: true or false (can anyone read or play it without paying?).`);
+    if (e.form === "research" && typeof e.peer !== "boolean") say(`${where} is research, so it says whether it was peer reviewed: peer: true or false.`);
+    if (e.form !== "research" && e.peer) say(`${where} is marked peer reviewed but isn't filed as research.`);
+    if (!Array.isArray(e.topics) || !e.topics.length) say(`${where} needs at least one topic.`);
+    (e.topics || []).forEach((t) => { if (!topics.has(t)) say(`${where} names a topic the library doesn't have: ${t}`); });
+    (e.slides || []).forEach((id) => { if (model && !model.slideById.has(id)) say(`${where} says it's cited on a slide the deck doesn't have: ${id}`); });
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(e.checked || "")) say(`${where} needs the day its source was checked (checked: "YYYY-MM-DD").`);
+    if (!["record", "listing"].includes(e.seen)) say(`${where} says how its source was seen: "record" (its record was opened) or "listing" (found in a search listing only).`);
+  });
+  return problems;
+}
+
+/** The filters a library address carries: ?era=ai&form=research&topic=writing&free=1&q=word. Unknown values fall away. */
+export function libraryFilters(search, library) {
+  const params = new URLSearchParams(search || "");
+  const pick = (name, allowed) => (allowed.includes(params.get(name)) ? params.get(name) : "");
+  return {
+    era: pick("era", LIBRARY_ERAS),
+    form: pick("form", LIBRARY_FORMS),
+    topic: pick("topic", (library?.topics || []).map((t) => t.id)),
+    free: params.get("free") === "1",
+    q: (params.get("q") || "").trim().slice(0, 80)
+  };
+}
+
+/** The address for a set of filters; none at all is an empty string. */
+export function libraryQuery(filters = {}) {
+  const params = new URLSearchParams();
+  ["era", "form", "topic"].forEach((name) => { if (filters[name]) params.set(name, filters[name]); });
+  if (filters.free) params.set("free", "1");
+  if (filters.q) params.set("q", filters.q);
+  const text = params.toString();
+  return text ? "?" + text : "";
+}
+
+const fold = (s) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+/** The entries that pass every filter that's set. A search matches each of its words somewhere in the entry. */
+export function filterLibrary(entries, { era = "", form = "", topic = "", free = false, q = "" } = {}) {
+  const wanted = fold(q).split(/\s+/).filter(Boolean);
+  return (entries || []).filter((e) => {
+    if (era && e.era !== era) return false;
+    if (form && e.form !== form) return false;
+    if (topic && !e.topics.includes(topic)) return false;
+    if (free && !e.free) return false;
+    if (!wanted.length) return true;
+    const hay = fold([e.authors, e.year, e.title, e.venue, e.adds, e.who, e.caution, e.kind].join(" "));
+    return wanted.every((w) => hay.includes(w));
+  });
+}
+
+/**
+ * The shelves the page draws: one per topic that has something on it, in the library's order. Within a shelf,
+ * the foundations come before the AI era, each oldest first, so a reader meets the question before its newest answers.
+ * An entry with several topics sits on its first one, unless a topic filter asks for another.
+ */
+export function libraryShelves(library, filters = {}) {
+  const found = filterLibrary(library.entries, filters);
+  const home = (e) => (filters.topic && e.topics.includes(filters.topic) ? filters.topic : e.topics[0]);
+  const shelves = (library.topics || []).map((topic) => {
+    const mine = found.filter((e) => home(e) === topic.id);
+    const groups = LIBRARY_ERAS.map((era) => ({ era, entries: mine.filter((e) => e.era === era).sort((a, b) => a.year - b.year || a.authors.localeCompare(b.authors)) }))
+      .filter((g) => g.entries.length);
+    return { topic, groups, count: mine.length };
+  }).filter((s) => s.count);
+  return { shelves, count: found.length, total: (library.entries || []).length };
 }
 
 // ---------- Drawings ----------
