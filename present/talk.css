@@ -183,8 +183,10 @@
 .fig-check { display: grid; grid-template-columns: auto 1fr; gap: .7em; align-items: start; border-top: 2px solid var(--line); padding-top: .9em; }
 .fig-check.key { border-top-color: var(--accent); }
 .fig-check .fig-n { margin: .15em 0 0; font-size: .95em; vertical-align: 0; }
-.fig-check-k { margin: 0 0 .25em; font: 600 1.05em/1.25 var(--heading); }
-.fig-check-b { margin: 0; font: 400 1.05em/1.45 var(--reading); color: var(--soft); }
+.fig-check-k { margin: 0 0 .25em; font: 600 1.3em/1.25 var(--heading); }
+.fig-check-b { margin: 0; font: 400 1.3em/1.45 var(--reading); color: var(--soft); }
+/* The room talks through this figure right after checking the answer, so it reads at meeting size (DECISIONS.md) */
+.fig-answer p { font-size: 1.4em; line-height: 1.6; }
 
 /* Evidence map: grade bands against what was studied; the blanks are the point */
 .fig-map { width: 100%; border-collapse: collapse; table-layout: fixed; font-family: var(--heading); }
