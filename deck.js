@@ -104,13 +104,14 @@ export default {
   },
 
   parts: [
-    // Minutes rebalanced 2026-11-18 for the Gemini opening (draft): open +7, lens -3, making -2, social -1, revisit -1.
-    { id: "open", title: "Opening inquiry", minutes: 15, art: "assets/seasons/november.svg" },
-    { id: "lens", title: "A shared literacy lens", minutes: 8, art: "assets/seasons/first-snow.svg" },
+    // Minutes rebalanced 2026-11-19 after the four roles moved out of the lens part: open 16, lens 4, making 14,
+    // navigating 11, social 7, revisit 8 (sixty in all).
+    { id: "open", title: "Opening inquiry", minutes: 16, art: "assets/seasons/november.svg" },
+    { id: "lens", title: "A shared literacy lens", minutes: 4, art: "assets/seasons/first-snow.svg" },
     { id: "making", title: "Creating text with AI", minutes: 14, art: "assets/seasons/january.svg" },
-    { id: "navigating", title: "Evaluating AI text", minutes: 10, art: "assets/seasons/november.svg" },
+    { id: "navigating", title: "Evaluating AI text", minutes: 11, art: "assets/seasons/november.svg" },
     { id: "social", title: "Literacy as social practice", minutes: 7, art: "assets/seasons/october.svg" },
-    { id: "revisit", title: "Implications for practice", minutes: 6, art: "assets/seasons/first-snow.svg" }
+    { id: "revisit", title: "Implications for practice", minutes: 8, art: "assets/seasons/first-snow.svg" }
   ],
 
   slides: [
@@ -466,13 +467,6 @@ export default {
       timer: 3,
       notes: "Both: {Mins:words}. Then read three or four pairs aloud, version 1 from the saved chat, then version 2. Notice together what stayed the same; that's where the values are."
     },
-    {
-      id: "signpost", part: "revisit", kind: "statement",
-      kicker: "Implications for practice",
-      heading: "A next step and the **evidence to examine**",
-      body: "Identify one instructional change, the learning it should support, and the evidence you will examine. Name a condition that would lead you to revise or stop the approach.",
-      notes: "Sean: the underpinning why, said once. When the next tool arrives, the social nature of learning and the values the room just named are how to evaluate it, not the tool's promises."
-    },
     // Draft (2026-11-19): a four-part model for reading AI text, from a critical literacies perspective. Andrew and
     // Sean's proposal, not a published model. It sits on foundational reading skills and relates most to comprehension
     // and content knowledge. The id stays roles-now so links and notes keep working.
@@ -489,6 +483,13 @@ export default {
       ],
       body: "What would you add for the students you teach? Post it in the chat.",
       notes: "Andrew: bring back the chat from the opening. Read a few answers aloud and sort them into these four as you go, then ask the room where the rest belong.\n\nThis is our proposal for what matters most when the text comes from AI, from a critical literacy perspective: every text is made by someone, from a position, in someone's interest. AI text hides that, because it reads as if nobody wrote it. Set it beside what the chat said in the opening.\n\nSay the note at the top out loud: none of this replaces decoding and fluency. These four sit on that foundation, and they lean hardest on comprehension and on what students already know about the topic.\n\nOrigin: an AI answer has no byline, but it still has authors: the writing it learned from, the company that built it, and the person who wrote the prompt. How this session was made is our own example.\n\nRepresentation: AI gives the most common version of a story. Defaults carry assumptions about gender, place, class, race, language and family. This is what the girl and boy stories showed, and what changed when we added the suburbs or the city.\n\nAuthority: AI sounds right whether or not it is. Separate confidence from accuracy, check against what you know and a second source, and ask whose view of good teaching becomes the answer. The teaching questions in the opening, and Part 3, were about this.\n\nAgency: readers decide whether to use a tool, rewrite what it gives them, push back, or not use it. Adding a detail to the prompt was a small act of redesign. Case A in Part 2 was about this.\n\nThe child's question for each is the small line above it on the slide. Janks argues critical literacy needs power, access, diversity and design held together; Lewison, Flint and Van Sluys name disrupting the commonplace, interrogating multiple viewpoints, attending to sociopolitical issues, and taking action. Ask: what would you add?\n\nSources, if asked: our proposal, not a validated model, drawing on Janks (2010), Literacy and Power, and Lewison, Flint & Van Sluys (2002), Language Arts 79(5)."
+    },
+    {
+      id: "signpost", part: "revisit", kind: "statement",
+      kicker: "Implications for practice",
+      heading: "A next step and the **evidence to examine**",
+      body: "Identify one instructional change, the learning it should support, and the evidence you will examine. Name a condition that would lead you to revise or stop the approach.",
+      notes: "Sean: the underpinning why, said once. When the next tool arrives, the social nature of learning and the values the room just named are how to evaluate it, not the tool's promises."
     },
     {
       id: "keep-learning", part: "revisit", kind: "statement", art: "assets/seasons/january.svg",
