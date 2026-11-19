@@ -201,7 +201,7 @@ export default {
       },
       items: [
         { name: "Code breaker", why: "How do I crack this text?" },
-        { name: "Text participant", why: "What does it mean, to me?" },
+        { name: "Text participant", why: "What does this text mean? What is the author saying?" },
         { name: "Text user", why: "What do I do with it, here, for this purpose?" },
         { name: "Text analyst", why: "What is this text doing, and to whom?" }
       ],
