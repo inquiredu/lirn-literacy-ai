@@ -138,9 +138,9 @@ export default {
         "“…about a girl who lives in the suburbs.”",
         "“…about a boy who lives in the middle of a big city.”"
       ],
-      foot: "In the chat: what changed? What would a student need now?",
+      foot: "In the chat: what do you notice now? What skills/strategies would a student need to have in order to interpret/understand this text?",
       timer: 4,
-      notes: "Andrew: {Mins:words}. Model one on screen; invite people to try either example or a detail of their own.\n\nAsk what changed: the plot, the names, the setting, the problems the character faces. Which details did the tool fill in that nobody asked for? What is the story assuming about who lives where?\n\nThen the same question as before: what would a student need now? Listen for the analyst's question, and for the author's: a student who writes the prompt is making choices too."
+      notes: "Andrew: {Mins:words}. Model one on screen; invite people to try either example or a detail of their own.\n\nAsk what they notice now. Prompt if needed: what changed in the plot, the names, the setting, the problems the character faces. Which details did the tool fill in that nobody asked for? What is the story assuming about who lives where?\n\nThen: what skills or strategies would a student need to have in order to interpret or understand this text? Listen for the analyst's question, and for the author's: a student who writes the prompt is making choices too."
     },
     {
       id: "teaching-question", part: "open", kind: "pause",
