@@ -124,3 +124,8 @@ A slide with `timer` shows a countdown beside it. T starts or pauses it, + and â
 `length` minutes (or the parts' minutes). It waits on the first slide for the call to order (T, or the button), then lives in the rail's corner; C or a click shows it large on glass, with wait-time countdowns (1, 2, 3, 5 minutes) for think time. P pauses it, and a pause doesn't count. With `day`, `start` and `timeZone` set, it counts from the advertised start on that day without a button, and waits on any other day, so a rehearsal starts clean. Rehearse at any point with `present.html?at=25`, which is 25 minutes in; nothing about a rehearsal is saved.
 
 Pace: with minutes on every part, the plan spreads each part's minutes over its slides. A small mark on the progress bar shows where the plan says the room should be. The speaker notes say "4 min behind the plan" or "On plan", and N jumps there.
+
+## The research library
+
+`deck.library` is the reading list at `library.html`, kept in `library.js` and imported at the top of `deck.js`. `links.library` is its address. Its fields, and the rule for adding a source, are in `docs/LIBRARY.md`.
+

@@ -291,3 +291,75 @@ test("drawings: dark slides take the deck's, light slides their part's, and only
   assert.ok(deckProblems({ ...deck, slides: [{ ...deck.slides[1], art: 3 }] }).some((p) => /art that isn't a file path/.test(p)));
   assert.ok(deckProblems(deck, { fileExists: () => false }).some((p) => /drawing that isn't there: a\.svg/.test(p)));
 });
+
+// ---------- The research library ----------
+
+import { libraryProblems, libraryFilters, libraryQuery, filterLibrary, libraryShelves } from "../present/core.js";
+
+const LIBRARY = {
+  topics: [{ id: "writing", name: "Writing", part: "work" }, { id: "checking", name: "Checking" }],
+  entries: [
+    { id: "old-study", era: "foundations", form: "research", peer: true, kind: "Study", topics: ["writing"], authors: "Álvarez, B.", year: 1988,
+      title: "An older study", venue: "A Journal, 1(1), 1–2", url: "https://example.org/a", free: false, adds: "It found a thing.", slides: ["pairs"], seen: "record", checked: "2026-11-19" },
+    { id: "new-preprint", era: "ai", form: "research", peer: false, kind: "Preprint", topics: ["writing", "checking"], authors: "Cho, D.", year: 2025,
+      title: "A newer preprint", venue: "arXiv", url: "https://example.org/b", free: true, adds: "It reports chatbots.", seen: "record", checked: "2026-11-19" },
+    { id: "a-podcast", era: "ai", form: "media", kind: "Podcast", topics: ["checking"], authors: "Host, E.", year: 2024,
+      title: "An episode", venue: "A Show", url: "https://example.org/c", free: true, adds: "A conversation.", seen: "listing", checked: "2026-11-19" },
+    { id: "older-still", era: "foundations", form: "research", peer: true, kind: "Study", topics: ["writing"], authors: "Zed, A.", year: 1979,
+      title: "The oldest", venue: "A Journal", url: "https://example.org/d", free: true, adds: "First.", seen: "record", checked: "2026-11-19" }
+  ]
+};
+
+test("library: a sound library has no problems, and each missing or wrong field is named", () => {
+  const model = buildDeck(DECK);
+  assert.deepEqual(libraryProblems(LIBRARY, model), []);
+  assert.deepEqual(deckProblems({ ...DECK, library: LIBRARY }).filter((p) => /[Ll]ibrary/.test(p)), []);
+  const broken = (change) => libraryProblems({ ...LIBRARY, entries: [{ ...LIBRARY.entries[0], ...change }] }, model).join("\n");
+  assert.match(broken({ url: "http://example.org/a" }), /https address/);
+  assert.match(broken({ url: "" }), /https address/);
+  assert.match(broken({ era: "legacy" }), /era/);
+  assert.match(broken({ form: "blog" }), /form/);
+  assert.match(broken({ peer: undefined }), /peer reviewed/);
+  assert.match(broken({ form: "media", peer: true }), /isn't filed as research/);
+  assert.match(broken({ topics: ["nowhere"] }), /topic the library doesn't have/);
+  assert.match(broken({ slides: ["gone"] }), /slide the deck doesn't have/);
+  assert.match(broken({ checked: "last week" }), /day its source was checked/);
+  assert.match(broken({ seen: "trust me" }), /how its source was seen/);
+  assert.match(broken({ adds: " " }), /needs adds/);
+  assert.match(broken({ free: "yes" }), /free: true or false/);
+  assert.match(broken({ year: "1988" }), /year/);
+  const twice = libraryProblems({ ...LIBRARY, entries: [LIBRARY.entries[0], { ...LIBRARY.entries[1], id: "old-study", url: LIBRARY.entries[0].url }] }, model).join("\n");
+  assert.match(twice, /share the id/);
+  assert.match(twice, /repeats an address/);
+  assert.match(libraryProblems({ ...LIBRARY, topics: [{ id: "writing", name: "Writing", part: "nope" }, LIBRARY.topics[1]] }, model).join("\n"), /part the deck doesn't have/);
+});
+
+test("library: filters narrow by era, form, topic, free and words, and combine", () => {
+  const ids = (f) => filterLibrary(LIBRARY.entries, f).map((e) => e.id);
+  assert.equal(ids({}).length, 4);
+  assert.deepEqual(ids({ era: "foundations" }), ["old-study", "older-still"]);
+  assert.deepEqual(ids({ era: "ai", form: "research" }), ["new-preprint"]);
+  assert.deepEqual(ids({ topic: "checking" }), ["new-preprint", "a-podcast"]);
+  assert.deepEqual(ids({ free: true, era: "foundations" }), ["older-still"]);
+  assert.deepEqual(ids({ q: "alvarez" }), ["old-study"]);            // accents and case fold
+  assert.deepEqual(ids({ q: "chatbots preprint" }), ["new-preprint"]); // every word, anywhere
+  assert.deepEqual(ids({ q: "chatbots podcast" }), []);
+});
+
+test("library: the address carries the filters both ways and drops what it doesn't know", () => {
+  assert.equal(libraryQuery({}), "");
+  assert.equal(libraryQuery({ era: "ai", form: "", topic: "writing", free: true, q: "main idea" }), "?era=ai&topic=writing&free=1&q=main+idea");
+  assert.deepEqual(libraryFilters("?era=ai&topic=writing&free=1&q=main+idea", LIBRARY), { era: "ai", form: "", topic: "writing", free: true, q: "main idea" });
+  assert.deepEqual(libraryFilters("?era=future&form=blog&topic=nowhere&free=yes", LIBRARY), { era: "", form: "", topic: "", free: false, q: "" });
+});
+
+test("library: shelves follow the topics' order, foundations first and oldest first, and an entry sits on one shelf", () => {
+  const all = libraryShelves(LIBRARY);
+  assert.deepEqual([all.count, all.total], [4, 4]);
+  assert.deepEqual(all.shelves.map((s) => s.topic.id), ["writing", "checking"]);
+  assert.deepEqual(all.shelves[0].groups.map((g) => [g.era, g.entries.map((e) => e.id)]), [["foundations", ["older-still", "old-study"]], ["ai", ["new-preprint"]]]);
+  assert.deepEqual(all.shelves[1].groups.map((g) => g.entries.map((e) => e.id)), [["a-podcast"]]);
+  const checking = libraryShelves(LIBRARY, { topic: "checking" });
+  assert.deepEqual(checking.shelves.map((s) => [s.topic.id, s.count]), [["checking", 2]]);   // the preprint moves to the shelf that was asked for
+  assert.deepEqual(libraryShelves(LIBRARY, { q: "nothing matches this" }), { shelves: [], count: 0, total: 4 });
+});

@@ -1,0 +1,100 @@
+/* The research library. Loaded after index.css, whose masthead, eyebrow, headings and footer it shares.
+   Colors and type come from the shared tokens, in pairs scripts/contrast.js checks. */
+.lib-hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); padding: 64px 0 56px; align-items: start; }
+.lib-hero-words { display: grid; gap: var(--space-5); justify-items: start; }
+.lib-hero .lead { max-width: 36ch; }
+.lib-key { margin: 0; padding: var(--space-5) var(--space-6); background: var(--surface-raised); border-top: 3px solid var(--surface-accent); }
+.lib-key-row { padding: var(--space-4) 0; }
+.lib-key-row + .lib-key-row { border-top: 1px solid var(--border-hairline); }
+.lib-key dt { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.lib-key-n { font: 400 12px/1.4 var(--font-mono); color: var(--fg-2); }
+.lib-key dd { margin: var(--space-3) 0 0; font: 400 17px/1.5 var(--font-serif); color: var(--fg-2); }
+
+/* The two eras wear a word and a ground each; the word carries the meaning, the ground only helps the eye. */
+.lib-era { display: inline-block; padding: 5px 10px; border-radius: var(--radius-xs); font: 600 11px/1.2 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.lib-era-foundations { background: var(--surface-accent-soft); color: var(--fg-warm); }
+.lib-era-ai { background: var(--status-info-bg); color: var(--status-info); }
+
+.lib-filters { display: grid; gap: var(--space-4); padding: var(--space-5) 0; border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-hairline); }
+.lib-choice { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); align-items: start; gap: var(--space-3); margin: 0; padding: 0; border: 0; min-width: 0; }
+.lib-choice legend { float: left; width: 9.5rem; padding: 12px 0 0; font: var(--type-eyebrow); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-2); }
+.lib-options { display: flex; flex-wrap: wrap; gap: var(--space-2); grid-column: 2; }
+.lib-option { position: relative; display: inline-flex; }
+.lib-option input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.lib-option span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 var(--space-4); border: 1px solid var(--control-border); border-radius: var(--radius-pill); background: var(--control-bg); color: var(--fg-1); font: var(--type-small); }
+.lib-option input:hover + span { border-color: var(--border-strong); }
+.lib-option input:checked + span { background: var(--action-primary); border-color: var(--action-primary); color: var(--on-action-primary); font-weight: 600; }
+.lib-option input:focus-visible + span { box-shadow: var(--focus-ring); }
+.lib-more { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); padding-left: calc(9.5rem + var(--space-3)); }
+.lib-search { display: flex; align-items: center; gap: var(--space-3); flex: 1 1 18rem; max-width: 30rem; }
+.lib-search label, .lib-check { font: var(--type-small); color: var(--fg-1); }
+.lib-search input { flex: 1; min-width: 0; min-height: 40px; padding: 0 var(--space-3); border: 1px solid var(--control-border); border-radius: var(--radius-sm); background: var(--control-bg); color: var(--fg-1); font: var(--type-small); }
+.lib-search input:focus-visible, .lib-check input:focus-visible, .lib-clear:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.lib-check { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 40px; cursor: pointer; }
+.lib-check input { width: 18px; height: 18px; margin: 0; accent-color: var(--action-primary); }
+.lib-clear { min-height: 40px; padding: 0 var(--space-2); border: 0; background: none; color: var(--fg-1); font: var(--type-small); text-decoration: underline; text-underline-offset: .3em; cursor: pointer; }
+.lib-clear[hidden] { display: none; }
+.lib-status { margin: 0; padding: var(--space-4) 0 0; font: 400 13px/1.5 var(--font-mono); color: var(--fg-2); }
+.lib-none { margin: 0; padding: 64px 0; font: 400 21px/1.5 var(--font-serif); color: var(--fg-2); }
+
+.lib-shelf { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: clamp(2rem, 5vw, 4.5rem); padding: 56px 0; border-bottom: 1px solid var(--border-hairline); }
+.lib-shelf-head { display: grid; gap: var(--space-4); align-content: start; position: sticky; top: var(--space-5); align-self: start; }
+.lib-shelf-head h2 { font-size: 30px; }
+.lib-shelf-head .intro { font-size: 19px; }
+.lib-shelf-meta { margin: 0; font: 400 12px/1.6 var(--font-mono); color: var(--fg-2); }
+.lib-shelf-meta a, .lib-cited a, .lib-access a { color: var(--fg-1); text-underline-offset: .3em; }
+.lib-groups { display: grid; gap: var(--space-7); min-width: 0; }
+.lib-group-h { display: flex; align-items: center; gap: var(--space-3); margin: 0 0 var(--space-2); }
+.lib-group-about { font: var(--type-small); font-weight: 400; color: var(--fg-2); }
+
+.lib-entry { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: var(--space-5); padding: var(--space-5) 0; border-top: 1px solid var(--border-hairline); scroll-margin-top: var(--space-5); }
+.lib-meta { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.lib-meta .lib-era { display: none; }                       /* the group's heading already says it */
+.lib-year { font: 400 15px/1.5 var(--font-mono); color: var(--fg-accent); }
+.lib-kind { font: 500 12px/1.4 var(--font-sans); color: var(--fg-2); }
+/* Not academic research: a filled label, so it can't be mistaken for a study at a glance */
+.lib-kind-other { padding: 5px 8px; border-radius: var(--radius-xs); background: var(--surface-inverse); color: var(--fg-on-inverse); font-weight: 600; }
+.lib-body { display: grid; gap: var(--space-3); min-width: 0; }
+.lib-title { font: 500 23px/1.3 var(--font-serif); letter-spacing: 0; text-wrap: pretty; }
+.lib-title a { color: var(--fg-1); text-decoration-thickness: 1px; text-underline-offset: .22em; text-decoration-color: var(--control-border); }
+.lib-title a:hover { text-decoration-color: currentColor; }
+.lib-body p { margin: 0; }
+.lib-cite { font: var(--type-small); color: var(--fg-2); overflow-wrap: anywhere; }
+.lib-venue { font-style: italic; }
+.lib-adds { font: 400 19px/1.5 var(--font-serif); color: var(--fg-1); max-width: 44em; }
+.lib-who, .lib-caution { font: 400 15px/1.55 var(--font-sans); color: var(--fg-2); max-width: 52em; }
+.lib-k { font-weight: 600; color: var(--fg-1); }
+.lib-caution .lib-k { color: var(--fg-accent); }
+.lib-access, .lib-cited { font: 400 12px/1.6 var(--font-mono); color: var(--fg-2); }
+.lib-access a, .lib-cited a { display: inline-block; padding-block: 4px; }
+.lib-url { display: none; }
+
+.lib-method { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: clamp(2rem, 5vw, 4.5rem); padding: 60px 0; }
+.lib-method-body { display: grid; gap: var(--space-4); }
+.lib-method-body p { margin: 0; font: 400 19px/1.55 var(--font-serif); color: var(--fg-2); max-width: 44em; }
+
+@media (max-width: 900px) {
+  .lib-hero { grid-template-columns: 1fr; padding: 44px 0; gap: 32px; }
+  .lib-choice { grid-template-columns: 1fr; gap: var(--space-2); }
+  .lib-choice legend { float: none; width: auto; padding: 0 0 var(--space-2); }
+  .lib-options { grid-column: 1; }
+  .lib-more { padding-left: 0; }
+  .lib-shelf, .lib-method { grid-template-columns: 1fr; gap: 28px; padding: 44px 0; }
+  .lib-shelf-head { position: static; }
+}
+@media (max-width: 520px) {
+  .lib-key { padding: var(--space-4) var(--space-5); }
+  .lib-entry { grid-template-columns: 1fr; gap: var(--space-3); }
+  .lib-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+  .lib-title { font-size: 21px; }
+  .lib-adds { font-size: 18px; }
+  .lib-search { flex-basis: 100%; max-width: none; flex-wrap: wrap; }
+}
+@media print {
+  .masthead .nav-links, .lib-filters, .lib-status, .lib-key { display: none; }
+  .lib-hero { display: block; padding: 0 0 24px; }
+  .lib-shelf, .lib-method { display: block; padding: 24px 0; }
+  .lib-shelf-head { position: static; margin-bottom: 16px; }
+  .lib-entry { break-inside: avoid; }
+  .lib-url { display: inline; overflow-wrap: anywhere; }
+}
