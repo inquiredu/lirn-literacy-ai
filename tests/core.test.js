@@ -300,13 +300,13 @@ const LIBRARY = {
   topics: [{ id: "writing", name: "Writing", part: "work" }, { id: "checking", name: "Checking" }],
   entries: [
     { id: "old-study", era: "foundations", form: "research", peer: true, kind: "Study", topics: ["writing"], authors: "Álvarez, B.", year: 1988,
-      title: "An older study", venue: "A Journal, 1(1), 1–2", url: "https://example.org/a", free: false, adds: "It found a thing.", slides: ["pairs"], checked: "2026-11-19" },
+      title: "An older study", venue: "A Journal, 1(1), 1–2", url: "https://example.org/a", free: false, adds: "It found a thing.", slides: ["pairs"], seen: "record", checked: "2026-11-19" },
     { id: "new-preprint", era: "ai", form: "research", peer: false, kind: "Preprint", topics: ["writing", "checking"], authors: "Cho, D.", year: 2025,
-      title: "A newer preprint", venue: "arXiv", url: "https://example.org/b", free: true, adds: "It reports chatbots.", checked: "2026-11-19" },
+      title: "A newer preprint", venue: "arXiv", url: "https://example.org/b", free: true, adds: "It reports chatbots.", seen: "record", checked: "2026-11-19" },
     { id: "a-podcast", era: "ai", form: "media", kind: "Podcast", topics: ["checking"], authors: "Host, E.", year: 2024,
-      title: "An episode", venue: "A Show", url: "https://example.org/c", free: true, adds: "A conversation.", checked: "2026-11-19" },
+      title: "An episode", venue: "A Show", url: "https://example.org/c", free: true, adds: "A conversation.", seen: "listing", checked: "2026-11-19" },
     { id: "older-still", era: "foundations", form: "research", peer: true, kind: "Study", topics: ["writing"], authors: "Zed, A.", year: 1979,
-      title: "The oldest", venue: "A Journal", url: "https://example.org/d", free: true, adds: "First.", checked: "2026-11-19" }
+      title: "The oldest", venue: "A Journal", url: "https://example.org/d", free: true, adds: "First.", seen: "record", checked: "2026-11-19" }
   ]
 };
 
@@ -324,6 +324,7 @@ test("library: a sound library has no problems, and each missing or wrong field 
   assert.match(broken({ topics: ["nowhere"] }), /topic the library doesn't have/);
   assert.match(broken({ slides: ["gone"] }), /slide the deck doesn't have/);
   assert.match(broken({ checked: "last week" }), /day its source was checked/);
+  assert.match(broken({ seen: "trust me" }), /how its source was seen/);
   assert.match(broken({ adds: " " }), /needs adds/);
   assert.match(broken({ free: "yes" }), /free: true or false/);
   assert.match(broken({ year: "1988" }), /year/);

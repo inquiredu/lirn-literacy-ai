@@ -2,7 +2,7 @@
 // (deck.library, kept in library.js); the rules for filtering, shelving and the address are in core.js.
 // This page only draws what they return, and keeps the filters in the address so a view can be shared.
 import { h, loadDeck, rich, say } from "./dom.js";
-import { libraryFilters, libraryQuery, libraryShelves, slideTitle, fill, LIBRARY_ERAS, LIBRARY_FORMS } from "./core.js";
+import { libraryFilters, libraryQuery, libraryShelves, slideTitle, fill, capitalize, words as numberWord, LIBRARY_ERAS, LIBRARY_FORMS } from "./core.js";
 
 const { deck, model } = await loadDeck({ theme: false });
 const lib = deck.library;
@@ -20,6 +20,7 @@ const masthead = h("nav", { class: "masthead", "aria-label": "Session navigation
   h("div", { class: "nav-links" },
     h("a", { href: "./#overview" }, land.nav?.overview),
     h("a", { href: "./#agenda" }, land.nav?.agenda),
+    h("a", { href: deck.links.library, "aria-current": "page" }, land.nav?.library),
     h("a", { href: "review.html" }, land.nav?.review)));
 
 const counts = (key, value) => lib.entries.filter((e) => e[key] === value).length;
@@ -129,7 +130,8 @@ function reset() {
 
 const method = h("section", { class: "lib-method", "aria-labelledby": "lib-m" },
   h("div", { class: "section-intro" }, h("p", { class: "eyebrow" }, words(w.method.label)), h("h2", { id: "lib-m" }, words(w.method.heading))),
-  h("div", { class: "lib-method-body" }, w.method.body.map((p) => h("p", {}, words(p)))));
+  h("div", { class: "lib-method-body" }, w.method.body.map((p) => h("p", {},
+    words(plain(p, { total: lib.entries.length, listing: capitalize(numberWord(lib.entries.filter((e) => e.seen === "listing").length)) }))))));
 
 const footer = land.made && h("footer", { class: "made" }, h("p", {}, words(land.made)));
 document.querySelector("main").replaceChildren(masthead, intro, controls, status, results, method, ...(footer ? [footer] : []));

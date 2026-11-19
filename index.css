@@ -9,6 +9,7 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .nav-links { display: flex; gap: var(--space-5); font: var(--type-small); }
 .nav-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--fg-1); text-underline-offset: .35em; text-decoration: none; }
 .nav-links a:hover { text-decoration: underline; }
+.nav-links a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
 .hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); padding: 80px 0 76px; align-items: center; }
 .hero-words { display: grid; gap: var(--space-5); justify-items: start; }
 .eyebrow { margin: 0; font: var(--type-eyebrow); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-accent); }

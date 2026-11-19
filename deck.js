@@ -517,7 +517,7 @@ export default {
     {
       id: "way-back", part: "revisit", kind: "link",
       heading: "Today's slides and notes",
-      body: "This deck, with speaker notes and sources, to read again or share.",
+      body: "This deck, with speaker notes and sources, to read again or share, and a research library for reading further.",
       notes: "Andrew: paste {url} in the chat and leave this up. The QR code only helps people watching on a second device."
     },
     {

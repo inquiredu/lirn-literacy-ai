@@ -252,6 +252,7 @@ export function libraryProblems(library, model) {
     (e.topics || []).forEach((t) => { if (!topics.has(t)) say(`${where} names a topic the library doesn't have: ${t}`); });
     (e.slides || []).forEach((id) => { if (model && !model.slideById.has(id)) say(`${where} says it's cited on a slide the deck doesn't have: ${id}`); });
     if (!/^\d{4}-\d{2}-\d{2}$/.test(e.checked || "")) say(`${where} needs the day its source was checked (checked: "YYYY-MM-DD").`);
+    if (!["record", "listing"].includes(e.seen)) say(`${where} says how its source was seen: "record" (its record was opened) or "listing" (found in a search listing only).`);
   });
   return problems;
 }
