@@ -1,6 +1,18 @@
 # Literacy in an AI Era: handoff
 
-Updated November 15, 2026. The underlying presentation engine follows `STANDARD.md`.
+Updated November 18, 2026. The underlying presentation engine follows `STANDARD.md`.
+
+## Draft opening activity, November 18
+
+Andrew's design: the room watches Gemini make text, names what a student would need to work with it, and then meets the four roles, with the AI-era version as the room's next step. One model runs on the presenter's screen, and anyone can try the same prompts alongside (`links.gemini`).
+
+- **Slide 2, `story-model`** (4 min): "Write a three paragraph story about a girl," then "…about a boy." What would a student need to know or do to work with this text?
+- **Slide 3, `story-detail`** (4 min): add a detail ("…a girl who lives in the suburbs," "…a boy who lives in the middle of a big city"). What changed? What would a student need now?
+- **Slide 4, `teaching-question`** (3 min): "What should I do when a first grader guesses at a word?" What did you need this time that the story didn't ask of you? The question is a draft: confirm it and run it several times beforehand.
+- Removed: `read-this` (the session description read closely) and `roles-grid` (the roles pause). `how-made` is now "How this session was made." `four-roles` notes sort the opening's chat answers into the roles, and `roles-now` asks "What would you add?"
+- Minutes rebalanced to keep 60: open 8→15, lens 11→8, making 16→14, social 8→7, revisit 7→6. A proposal; move them if another part needs the time.
+- **Slide 9, `roles-now`** (November 19) is now "Reading AI text, critically": Origin, Representation, Authority, Agency, a proposal from a critical literacies perspective (drawing on Janks 2010 and Lewison, Flint & Van Sluys 2002; not yet checked against the sources). A note on top says it sits on a foundation of reading skills and relates most to comprehension and content knowledge. It replaces the Freebody-and-Luke-derived roles; slide 8 still shows the originals.
+- Still to do: screenshots of a Gemini run as a backup, and who drives Gemini on screen (the notes say Andrew).
 
 ## Draft additions, November 15
 
@@ -29,11 +41,12 @@ The review page's **Download .pptx to edit** builds a PowerPoint file from `deck
 
 Made at the call to order by headcount (participants, not presenters), and sent to the co-host in a private chat. The title slide's notes repeat it.
 
-| Participants | Roles pause (`roles-grid`) | Cases pause (`hold-test`) |
-| --- | --- | --- |
-| 12 or more | Four rooms, one per role, assigned automatically | Three rooms (Case A, B, C), participants choose |
-| 9 to 11 | Main room; roles by first name, chat waterfall | Three rooms, participants choose |
-| Under 9 | Main room | Main room; take the case closest to your grades, chat waterfall |
+| Participants | Cases pause (`hold-test`) |
+| --- | --- |
+| 9 or more | Three rooms (Case A, B, C), participants choose |
+| Under 9 | Main room; take the case closest to your grades, chat waterfall |
+
+The opening Gemini activity is whole group, with no breakout rooms.
 
 Before the day: turn on breakout rooms and "Allow participants to choose room" on the meeting, and name a co-host to run them. Allow about a minute and a half to open and close each round.
 

@@ -19,6 +19,7 @@ export default {
   url: "https://inquiredu.org/lirn-literacy-ai/",   // live once the repo is public and Pages is on
   links: {
     site: "./",
+    gemini: "https://gemini.google.com/",            // the opening activity: participants can try the prompts themselves
     wwta: "https://inquiredu.org/what-we-talk-about/" // where resources and the room's learning are shared afterward
   },
   theme: "light",
@@ -97,36 +98,70 @@ export default {
   },
 
   parts: [
-    { id: "open", title: "Opening inquiry", minutes: 8, art: "assets/seasons/november.svg" },
-    { id: "lens", title: "A shared literacy lens", minutes: 11, art: "assets/seasons/first-snow.svg" },
-    { id: "making", title: "Creating text with AI", minutes: 16, art: "assets/seasons/january.svg" },
+    // Minutes rebalanced 2026-11-18 for the Gemini opening (draft): open +7, lens -3, making -2, social -1, revisit -1.
+    { id: "open", title: "Opening inquiry", minutes: 15, art: "assets/seasons/november.svg" },
+    { id: "lens", title: "A shared literacy lens", minutes: 8, art: "assets/seasons/first-snow.svg" },
+    { id: "making", title: "Creating text with AI", minutes: 14, art: "assets/seasons/january.svg" },
     { id: "navigating", title: "Evaluating AI text", minutes: 10, art: "assets/seasons/november.svg" },
-    { id: "social", title: "Literacy as social practice", minutes: 8, art: "assets/seasons/october.svg" },
-    { id: "revisit", title: "Implications for practice", minutes: 7, art: "assets/seasons/first-snow.svg" }
+    { id: "social", title: "Literacy as social practice", minutes: 7, art: "assets/seasons/october.svg" },
+    { id: "revisit", title: "Implications for practice", minutes: 6, art: "assets/seasons/first-snow.svg" }
   ],
 
   slides: [
-    // ── Opening: read a text, learn how it was made, write a first definition ───────────────────────────
+    // ── Opening: ask Gemini for text, name what students need, learn how the session was made, write a first definition
     {
       id: "title", part: "open", kind: "title",
       kicker: "LiRN leadership session", heading: "{title}", sub: "{subtitle}", by: "{by}", sun: false,
-      notes: "Both: as people join, ask in the chat for their role, the grades they support, and one word for how AI feels in their building right now. Press T (or Call to order) when you begin; the clock counts {length} from then.\n\nDay-of call on groups, made here and sent to the co-host in a private chat. Count participants, not presenters. 12 or more: breakout rooms for both group pauses (four role rooms, three case rooms). 9 to 11: main room for the roles, breakout rooms for the cases. Under 9: main room throughout. Each group pause has both plans in its notes.\n\nSean: set the frame in two sentences. This is a working session, not a talk, and nothing we show today is a conclusion. Most of the hour belongs to you."
+      notes: "Both: as people join, ask in the chat for their role, the grades they support, and one word for how AI feels in their building right now. Press T (or Call to order) when you begin; the clock counts {length} from then.\n\nDay-of call on groups, made here and sent to the co-host in a private chat. Count participants, not presenters. 9 or more: breakout rooms for the cases pause (three case rooms). Under 9: main room throughout. The pause has both plans in its notes. The opening Gemini activity is whole group: one model on screen, and anyone can try it alongside.\n\nSean: set the frame in two sentences. This is a working session, not a talk, and nothing we show today is a conclusion. Most of the hour belongs to you."
+    },
+    // Draft (2026-11-18): the opening activity, replacing "read this" and the roles table pause. Story prompts are Andrew's;
+    // the teaching question is a draft to test. Each round asks the same thing: what would a student need?
+    {
+      id: "story-model", part: "open", kind: "pause",
+      title: "Ask Gemini for a story",
+      kicker: "Watch, or try it yourself · {mins}",
+      heading: "Ask Gemini for a **story**.",
+      body: [
+        "“Write a three paragraph story about a girl.”",
+        "“Write a three paragraph story about a boy.”"
+      ],
+      foot: "In the chat: what do you notice about this text from a literacy teaching perspective?",
+      timer: 4,
+      notes: "Andrew: {Mins:words}. Share your screen with Gemini open. Type the girl prompt, then the boy prompt in a new chat, so the first story doesn't shape the second. A co-host pastes {links.gemini} in the chat; anyone who wants to can try the same prompts there or in their district's approved tool; their stories will differ from ours, and that's worth a comment. No student names or details in any prompt.\n\nAsk: what do you notice about this text from a literacy teaching perspective? Answers wait for the timer, then go in the chat together.\n\nPut the two stories side by side: names, traits, settings, who has the adventure, who is kind, who solves the problem. Don't name a pattern for the room; ask what they notice. Listen for reading it, judging whether it's any good, noticing a tool made it, and comparing the two.\n\n[ADD] screenshots of a run made beforehand, in case Gemini is slow or down."
     },
     {
-      id: "read-this", part: "open", kind: "pause",
-      kicker: "Read it · {mins}",
-      heading: "Read this the way a **text analyst** would.",
-      body: "“This session explores the intersection of artificial intelligence and literacy instruction, focusing on AI's role as a dynamic text-creation tool and a complex source of texts and content. Rather than viewing AI in isolation, we will examine how these emerging technologies influence and reshape the essential social aspects of learning, literacy instruction, interpersonal connection, and critical inquiry.”",
-      foot: "Who made this? How would you know? What is it doing?",
+      id: "story-detail", part: "open", kind: "pause",
+      title: "Add a detail to the prompt",
+      kicker: "Now add a detail · {mins}",
+      heading: "Say **more** about the girl or the boy.",
+      body: [
+        "“…about a girl who lives in the suburbs.”",
+        "“…about a boy who lives in the middle of a big city.”"
+      ],
+      foot: "In the chat: what do you notice now? What skills/strategies would a student need to have in order to interpret/understand this text?",
+      timer: 4,
+      notes: "Andrew: {Mins:words}. Model one on screen; invite people to try either example or a detail of their own.\n\nAsk what they notice now. Prompt if needed: what changed in the plot, the names, the setting, the problems the character faces. Which details did the tool fill in that nobody asked for? What is the story assuming about who lives where?\n\nThen: what skills or strategies would a student need to have in order to interpret or understand this text? Listen for the analyst's question, and for the author's: a student who writes the prompt is making choices too."
+    },
+    {
+      id: "teaching-question", part: "open", kind: "pause",
+      title: "Ask a teaching question",
+      kicker: "Now ask about teaching · Pick one · {mins}",
+      heading: "Ask it a **teaching** question.",
+      body: [
+        "Decoding: “What should I do when a first grader guesses at a word?”",
+        "Vocabulary: “What's the best way to teach new words to third graders?”",
+        "Comprehension: “How do I teach my fourth graders to find the main idea?”"
+      ],
+      foot: "In the chat: what did you notice about this type of text? What skills/strategies would readers need in order to comprehend and use this type of text?",
       timer: 3,
-      notes: "Andrew: don't say what it is yet. {Mins:words}, alone, then one word in the chat for what the text is doing. Listen for people noticing the stacked abstractions, the confident tone, and the absence of a single concrete example.\n\nIt's the first two sentences of our own session description."
+      notes: "Andrew: {Mins:words}. Ask one question on screen; people can try any of the three alongside. [ADD] pick the one to model, confirm the wording, and run each several times beforehand: answers vary.\n\nThis room knows enough to judge the answers, which is the point. Watch for an answer with no sources, and for advice that's contested or thin:\n\nDecoding: cueing a child to the picture or to what would make sense instead of to the letters.\n\nVocabulary: word lists, looking words up in the dictionary, or copying definitions, rather than student-friendly explanations, many encounters with each word, and chances to use it (Beck, McKeown and Kucan's Bringing Words to Life is the usual reference).\n\nComprehension: main idea practiced as a skill on short passages, apart from what the text is about. Knowing the topic matters as much as the strategy, which Part 3 comes back to with Recht and Leslie.\n\nAsk: what did you notice about this type of text? Then: what skills or strategies would readers need in order to comprehend and use this type of text? Listen for knowing the topic, checking against a source, and asking who would give this advice.\n\nA co-host saves the chat now: section one sorts these answers into the four roles."
     },
     {
       id: "how-made", part: "open", kind: "steps",
-      kicker: "Authorship and process", heading: "How this text was made",
+      kicker: "Authorship and process", heading: "How this session was made",
       steps: [
         "Andrew and Sean talked for twenty minutes.",
-        "Gemini took notes, and we asked it for a paragraph.",
+        "Gemini took notes, and we asked it for the session description.",
         "We read it, kept some of it, and changed some of it.",
         "The research behind today came from deep-research prompts. Then we checked the studies we use.",
         "This deck was first drafted by Claude from our notes. We've been revising it since."
@@ -148,7 +183,6 @@ export default {
     {
       id: "lens", part: "lens", kind: "section",
       heading: "A shared literacy lens",
-      body: "Before AI: what has reading and writing always asked of us?",
       notes: "Andrew: section one, about {lens.length}. We borrow a lens most of this room already knows, and use it on text AI made."
     },
     {
@@ -162,20 +196,45 @@ export default {
           h(H, { class: "display heading" }, rich(slide.heading)),
           h("div", { class: "fig-roles" },
             h("ul", { class: "fig-roles-grid" }, slide.items.map((item) =>
-              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), h("p", { class: "fig-role-q" }, rich(item.why))))),
-            h("p", { class: "fig-roles-hub" }, rich("All four, every time"))),
-          h("p", { class: "foot" }, rich(slide.foot))
+              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), item.why && h("p", { class: "fig-role-q" }, rich(item.why))))))
         ];
       },
       items: [
-        { name: "Code breaker", why: "How do I crack this text?" },
-        { name: "Text participant", why: "What does it mean, to me?" },
+        { name: "Code breaker" },
+        { name: "Text participant", why: "What does this text mean? What is the author saying?" },
         { name: "Text user", why: "What do I do with it, here, for this purpose?" },
         { name: "Text analyst", why: "What is this text doing, and to whom?" }
       ],
-      foot: "Not a ladder or tiers: readers draw on all four at once. Later adapted for making texts across modes.",
-      notes: "Andrew: the Four Resources model. The roles aren't a sequence, and we aren't ranking them. Luke and Freebody's 1999 update, and later work, adapted it for creating texts in different modes, which matters when AI is the one making text.\n\nCode breaker leads into the next slide: what an early reading platform asks of leaders."
+      notes: "Andrew: bring back the chat from the opening. Read a few answers aloud and sort them into the four roles as you go: reading the words is code breaking, making sense of the story is participating, choosing a prompt for a purpose is using, and noticing who has the adventure is analysis. Ask the room where the rest belong.\n\nThe Four Resources model. The roles aren't a sequence, and we aren't ranking them. Luke and Freebody's 1999 update, and later work, adapted it for creating texts in different modes, which matters when AI is the one making text."
     },
+    // Draft (2026-11-19): a four-part model for reading AI text, from a critical literacies perspective. Andrew and
+    // Sean's proposal, not a published model. It sits on foundational reading skills and relates most to comprehension
+    // and content knowledge. The id stays roles-now so links and notes keep working.
+    {
+      id: "roles-now", part: "lens", kind: "cards",
+      title: "Reading AI text critically",
+      kicker: "On a foundation of reading skills · closest to comprehension and content knowledge",
+      heading: "Reading AI text, **critically**",
+      cards: [
+        { kicker: "Who made this?", heading: "Origin", body: "Who and what made this, and in whose interest?" },
+        { kicker: "Who's in it, and who isn't?", heading: "Representation", body: "Whose world does this assume? Who is centered, and who is missing?", key: true },
+        { kicker: "How do I know it's true?", heading: "Authority", body: "What makes this sound true, and who decides whether it is?" },
+        { kicker: "What would I change?", heading: "Agency", body: "What will I do with this, and what part is mine?" }
+      ],
+      body: "What would you add for the students you teach? Post it in the chat.",
+      notes: "Andrew: the four roles describe reading any text. This is our proposal for what matters most when the text comes from AI, from a critical literacy perspective: every text is made by someone, from a position, in someone's interest. AI text hides that, because it reads as if nobody wrote it. Set it beside what the chat said in the opening.\n\nSay the note at the top out loud: none of this replaces decoding and fluency. These four sit on that foundation, and they lean hardest on comprehension and on what students already know about the topic.\n\nOrigin: an AI answer has no byline, but it still has authors: the writing it learned from, the company that built it, and the person who wrote the prompt. How this session was made is our own example.\n\nRepresentation: AI gives the most common version of a story. Defaults carry assumptions about gender, place, class, race, language and family. This is what the girl and boy stories showed, and what changed when we added the suburbs or the city.\n\nAuthority: AI sounds right whether or not it is. Separate confidence from accuracy, check against what you know and a second source, and ask whose view of good teaching becomes the answer. The teaching questions in the opening, and Part 3, come back to this.\n\nAgency: readers decide whether to use a tool, rewrite what it gives them, push back, or not use it. Adding a detail to the prompt was a small act of redesign. Case A in Part 2 is about this.\n\nThe child's question for each is the small line above it on the slide. Janks argues critical literacy needs power, access, diversity and design held together; Lewison, Flint and Van Sluys name disrupting the commonplace, interrogating multiple viewpoints, attending to sociopolitical issues, and taking action. Ask: what would you add?\n\nSources, if asked: our proposal, not a validated model, drawing on Janks (2010), Literacy and Power, and Lewison, Flint & Van Sluys (2002), Language Arts 79(5)."
+    },
+    {
+      id: "framings", part: "lens", kind: "cards",
+      heading: "Creating and evaluating texts",
+      cards: [
+        { kicker: "Part 2", heading: "**Making** text with AI", body: "AI as a thought partner for writing, and as a tool for creating and adapting texts." },
+        { kicker: "Part 3", heading: "**Navigating** AI text", body: "AI as a source students read, question and decide whether to trust." }
+      ],
+      foot: "The social side of learning runs under both. We pull it together in Part 4.",
+      notes: "Andrew: this two-way framing isn't ours. [ADD] credit the author from Andrew's earlier session.\n\nThe next slide goes back to the foundation underneath all of this: what an early reading platform asks of leaders."
+    },
+
     {
       id: "early-signposts", part: "lens", kind: "list",
       kicker: "Early reading · K–2", heading: "Signposts for an AI reading platform",
@@ -189,41 +248,6 @@ export default {
       title: "K–2 signposts",
       notes: "Andrew: we said in planning that we won't claim anything about AI and teaching decoding; it isn't our expertise. These are the questions a leader can ask of any platform that promises to help early reading. Sean's signpost question sits under all four: what would tell us it's trading away something the process needs?\n\nMany in this group work under the READ Act's structured-literacy expectations, so the first question will land. Case C comes back to this in Part 2."
     },
-    {
-      id: "roles-grid", part: "lens", kind: "pause",
-      kicker: "In your group · {mins}",
-      heading: "When the text came from **AI**, what does each role look like?",
-      body: "Take the role you're given. Name one way it changes, and one way it stays the same.",
-      foot: "Post it in the chat, starting with your role.",
-      timer: 4,
-      notes: "Andrew: {Mins:words}.\n\nBreakout rooms (12 or more): the co-host opens four rooms named for the roles and assigns them automatically; spread media specialists across rooms, since they pull toward text analyst. Allow a minute and a half to open and close.\n\nMain room (under 12): give roles by first name. A to F code breaker, G to L text participant, M to R text user, S to Z text analyst. Answers wait for the timer, then go in the chat together.\n\nHear one answer per role out loud before moving on. This is the room's lens for the rest of the hour."
-    },
-    // Draft (2026-11-15): a proposed AI-era version of the four roles, for Andrew and Sean to test. Not a published model.
-    {
-      id: "roles-now", part: "lens", kind: "cards",
-      title: "The four roles, for AI-era text",
-      kicker: "A proposal to test",
-      heading: "The four roles, for **AI-era** text",
-      cards: [
-        { kicker: "Code breaker · Navigator", heading: "Code breaker and maker", body: "How was this made? How do I direct a tool?" },
-        { kicker: "Participant · Interpreter", heading: "Sense maker", body: "Does this fit what I know?" },
-        { kicker: "User · Designer", heading: "Author", body: "What's my purpose? What part is mine?", key: true },
-        { kicker: "Analyst · Interrogator", heading: "Verifier", body: "Who says so? Who else? Who's missing?" }
-      ],
-      foot: "Adapted from Freebody & Luke (1990), Prospect 5(3), and Serafini (2012), Pedagogies 7(2). Our proposal, not a validated model.",
-      notes: "Andrew: here's where our own thinking landed; set it beside what the tables just said. Each card shows the role's lineage: Freebody and Luke's original, then Serafini's 2012 version for visual and multimodal texts, then what we propose for text AI makes. Every role now covers reading and making.\n\nCode breaker and maker: decoding is still the foundation. New: working out how a text was made, and writing a clear request is a kind of composing.\n\nSense maker: meaning still comes from what you know, and now that knowledge is also how you catch errors.\n\nAuthor: the biggest change. Freebody and Luke asked what you do with a text; Serafini made the reader a designer. With AI the question is ownership: when to use the tool, and whether the thinking stays yours. Case A in the next section is this role.\n\nVerifier: the analyst's question still holds, plus checking across sources, because AI text usually has no visible author. Ask whose voices the tool learned from, and whose it leaves out.\n\nThe social side runs under all four; we come back to it in Part 4. Ask: what would you change on this slide?"
-    },
-    {
-      id: "framings", part: "lens", kind: "cards",
-      heading: "Creating and evaluating texts",
-      cards: [
-        { kicker: "Part 2", heading: "**Making** text with AI", body: "AI as a thought partner for writing, and as a tool for creating and adapting texts." },
-        { kicker: "Part 3", heading: "**Navigating** AI text", body: "AI as a source students read, question and decide whether to trust." }
-      ],
-      foot: "The social side of learning runs under both. We pull it together in Part 4.",
-      notes: "Andrew: this two-way framing isn't ours. [ADD] credit the author from Andrew's earlier session."
-    },
-
     // ── 2 · Making text with AI ───────────────────────────────────────────────────────────────────────────
     {
       id: "making", part: "making", kind: "section",
