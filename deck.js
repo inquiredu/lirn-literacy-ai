@@ -137,9 +137,9 @@ export default {
     },
     {
       id: "story-detail", part: "open", kind: "pause",
-      title: "Add a detail to the prompt",
+      title: "Write a second story",
       kicker: "Now add a detail · {mins}",
-      heading: "Say **more** about the girl or the boy.",
+      heading: "Use Gemini to write a **second** story.",
       body: [
         "“…about a girl who lives in the suburbs.”",
         "“…about a boy who lives in the middle of a big city.”"
@@ -150,9 +150,9 @@ export default {
     },
     {
       id: "teaching-question", part: "open", kind: "pause",
-      title: "Ask a teaching question",
+      title: "Gemini and informational text",
       kicker: "Now ask about teaching · Pick one · {mins}",
-      heading: "Ask it a **teaching** question.",
+      heading: "Gemini and **informational** text",
       body: [
         "Decoding: “What should I do when a first grader guesses at a word?”",
         "Vocabulary: “What's the best way to teach new words to third graders?”",
@@ -161,6 +161,12 @@ export default {
       foot: "In the chat: what did you notice about this type of text? What skills/strategies would readers need in order to comprehend and use this type of text?",
       timer: 3,
       notes: "Andrew: {Mins:words}. Ask one question on screen; people can try any of the three alongside. [ADD] pick the one to model, confirm the wording, and run each several times beforehand: answers vary.\n\nThis room knows enough to judge the answers, which is the point. Watch for an answer with no sources, and for advice that's contested or thin:\n\nDecoding: cueing a child to the picture or to what would make sense instead of to the letters.\n\nVocabulary: word lists, looking words up in the dictionary, or copying definitions, rather than student-friendly explanations, many encounters with each word, and chances to use it (Beck, McKeown and Kucan's Bringing Words to Life is the usual reference).\n\nComprehension: main idea practiced as a skill on short passages, apart from what the text is about. Knowing the topic matters as much as the strategy, which Part 3 comes back to with Recht and Leslie.\n\nAsk: what did you notice about this type of text? Then: what skills or strategies would readers need in order to comprehend and use this type of text? Listen for knowing the topic, checking against a source, and asking who would give this advice.\n\nA co-host saves the chat now: section one sorts these answers into the four roles."
+    },
+    {
+      id: "back-and-forth", part: "open", kind: "statement", art: false,
+      title: "It's all about the back and forth",
+      heading: "Ignore what we just did. It is actually all about the back and forth.",
+      notes: "[ADD] who says this, and what to say: the turn from one-shot prompts to a conversation with the tool, and what that asks of a reader."
     },
     {
       id: "how-made", part: "open", kind: "steps",
