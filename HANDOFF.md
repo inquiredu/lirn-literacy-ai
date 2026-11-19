@@ -4,10 +4,11 @@ Updated November 18, 2026. The underlying presentation engine follows `STANDARD.
 
 ## Research library, November 19
 
-`library.html` is a reading list for anyone the session leaves curious: 70 sources, each filed as Foundations (39) or AI era (31), by kind of source (59 academic, 5 reports and guides, 3 reflections, 3 to listen to or watch), and by seven questions that follow the session's parts. Filters and a search live in the address, so a view can be shared. The landing page links to it, and `way-back` mentions it.
+`library.html` is a reading list for anyone the session leaves curious: 94 sources, each filed as Foundations (55) or AI era (39), by kind of source (82 academic, 6 reports and guides, 3 reflections, 3 to listen to or watch), and by seven questions that follow the session's parts. Filters and a search live in the address, so a view can be shared. The landing page links to it, and `way-back` mentions it.
 
 - Entries and the page's words are in `library.js` (imported by `deck.js` as `deck.library`); the rules are in `present/core.js` with tests; `docs/LIBRARY.md` has the fields, the rule for adding a source, what was left out and why.
-- Checked November 19: 61 of the 70 against their own registry record (Crossref, OpenAlex, ERIC, arXiv, Open Library), all 55 DOIs tested at doi.org. **Nine still need a person to open them once**; they're listed in `docs/LIBRARY.md`.
+- Checked November 19: 85 of the 94 against their own registry record (Crossref, OpenAlex, ERIC, arXiv, Open Library), all 78 DOIs tested at doi.org. **Nine still need a person to open them once**; they're listed in `docs/LIBRARY.md`.
+- Reviewed the same day for whose research it draws on, at Sean's request, and widened by 24 sources: culturally relevant and sustaining pedagogy, Black language and literacies, Indigenous education and data sovereignty, multilingual learners, and how AI treats their language. `docs/LIBRARY.md`, "Whose voices," says what was added and what is still thin (Dakota scholarship, disability, families, and anything to listen to or watch by Black or Indigenous scholars).
 - The check also turned up ten small things about the deck's own citations, in the same file under "What the check found about the deck." None was changed in `deck.js`.
 - Draft wording for Andrew and Sean: the library's lead and shelf descriptions, the landing page's "Continue the inquiry" block, and the added clause on `way-back`.
 - `node scripts/check-all.js` passes; axe finds no violations on 39 pages and slides in light and dark at 1280 and 375px; filters work by keyboard; printing gives a plain reading list with addresses. Not checked: a screen reader, Safari or Firefox.

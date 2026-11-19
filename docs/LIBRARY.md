@@ -33,12 +33,42 @@ Every entry is a real source that a reader can open and confirm. Nothing goes in
 | `seen` | `record` (its registry record was opened) or `listing` (found in a search listing of the publisher's or producer's page, which couldn't be opened) |
 | `checked` | The day it was checked |
 
-## How the first 70 were checked (November 19, 2026)
+## Whose voices
+
+The first 70 sources were checked for being real, and not for whose research they were. Sean asked for that second review the same day. Authors were not sorted by race from their names, which would be guessing about real people. The review asked instead which research traditions, and which communities' experience, the library drew on.
+
+What it found: the library leaned on cognitive reading science and on experiments with technology. It had the studies of bias in AI-written stories (Shieh, Vassel, Sugimoto and Monroe-White), a paper co-authored by Timnit Gebru, Ruíz on home language, and Janks writing from South Africa. It had nothing from culturally relevant and sustaining pedagogy, Black language and literacies, Indigenous education or data sovereignty, raciolinguistics and translanguaging, or funds of knowledge; no equity critique of the science of reading; and none of the research on how AI treats African American English and multilingual writers.
+
+Twenty-four sources were added, each checked the same way as the rest, and each filed on the shelf it speaks to rather than on a shelf of its own:
+
+| Tradition or question | Added |
+| --- | --- |
+| Culturally relevant and sustaining pedagogy | Ladson-Billings (1995); Paris (2012); Gutiérrez (2008) |
+| Black language and literacies | Delpit (1988); Lee (1995); Baker-Bell (2020); Thomas (2016) |
+| Learning to read, and race | Milner (2020); Washington & Seidenberg (2021); Washington, Lee-James & Stanford (2023) |
+| Indigenous education and sovereignty | Brayboy (2005); Hermes, Bang & Marin (2012, on Ojibwe); McCarty & Lee (2014) |
+| Multilingual learners and families | Moll, Amanti, Neff & Gonzalez (1992); Flores & Rosa (2015); García & Kleifgen (2020) |
+| AI, race and language | Dixon-Román, Nichols & Nyame-Mensah (2020); Tanksley (2024); Hofmann, Kalluri, Jurafsky & King (2024); Fleisig et al. (2024); Warr, Oster & Isaac (2025); Liang et al. (2023) |
+| Indigenous perspectives on AI and data | Carroll et al. (2020, the CARE Principles); Lewis, Whaanga & Yolgörmez (2025) |
+
+Still thin, and worth a person's attention:
+
+- **Dakota scholarship.** Hermes, Bang and Marin is about Ojibwe. Nothing here is by or about Dakota educators. District American Indian education staff, and the Minnesota Indian Education Association, would know what belongs.
+- **Disability.** The one source is a meta-analysis of text-to-speech. Nothing is written from disabled readers' and writers' own experience of these tools.
+- **Students and families.** Tanksley, and Higgs and Stornaiuolo, carry students' voices. No source carries families'.
+- **Outside the United States.** Most of the AI-era studies are American or European.
+- **Podcasts and video.** The three to listen to or watch are all by white presenters. Candidates by Black and Indigenous scholars couldn't be confirmed, because producers' pages can't be opened from here.
+- **Rudine Sims Bishop (1990), "Mirrors, windows, and sliding glass doors,"** has no registry record or stable address. Thomas (2016) stands in for that line of work. Gholdy Muhammad's *Cultivating Genius* (2020) has no record in the registries reached; it belongs here once its publisher's page is opened.
+- **The Indigenous Protocol and Artificial Intelligence Position Paper (2020)** is real (https://doi.org/10.11573/spectrum.library.concordia.ca.00986506) and has 31 contributors; its editor and full citation need confirming from the document before it goes in.
+
+When adding to the library, ask the first five questions above, and then a sixth: whose experience does this shelf still leave out?
+
+## How the sources were checked (November 19, 2026)
 
 A first pass by search confirmed that every candidate existed but could not open any publisher or registry page, so nothing was accepted on it. A second pass opened the records directly:
 
-- **55 DOIs** looked up in Crossref and OpenAlex (authors, title, journal, volume, issue, pages, corrections, retractions, abstract), and each tested at doi.org. All 55 resolve. None is retracted.
-- **ERIC** for the two What Works Clearinghouse guides, the National Reading Panel report, *Bringing Words to Life*, *Leveled Reading, Leveled Lives*, and the abstracts of older articles (Lewison, Cheatham and Allor, Mostow, Ruíz, Graham and Hebert).
+- **78 DOIs** (55 in the first 70, 23 in the second review) looked up in Crossref and OpenAlex (authors, title, journal, volume, issue, pages, corrections, retractions, abstract), and each tested at doi.org. All resolve. None is retracted.
+- **ERIC** for Washington and Seidenberg's article and the abstracts of Lee, Moll and Brayboy, and for the two What Works Clearinghouse guides, the National Reading Panel report, *Bringing Words to Life*, *Leveled Reading, Leveled Lives*, and the abstracts of older articles (Lewison, Cheatham and Allor, Mostow, Ruíz, Graham and Hebert).
 - **arXiv** for the two preprints and for the comment on one of them.
 - **Open Library** for three books.
 
