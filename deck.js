@@ -98,7 +98,7 @@ export default {
     },
     resources: {
       heading: "Continue the inquiry",
-      body: "Explore the research library and leadership resources at What We Talk About When We Talk About AI.",
+      body: "Explore research and leadership resources at What We Talk About When We Talk About AI.",
       library: "Open the research library",           // this session's library button, shown when the library isn't hidden
       label: "Explore the resources"
     },
@@ -452,7 +452,7 @@ export default {
       id: "keep-learning", part: "revisit", kind: "statement", art: "assets/seasons/january.svg",
       kicker: "Resources and continued inquiry",
       heading: "Research and leadership resources",
-      body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. When you try something, email us what you notice.",
+      body: "What We Talk About When We Talk About AI gathers research, leadership kits, and now this session's resources. When you try something, email us what you notice.",
       foot: "inquiredu.org/what-we-talk-about",
       notes: "Sean: this is where the room's learning lives after today. Observations come back by email: paste both our school addresses in the chat now, before it closes with the meeting. They're kept off the deck because the review page is public. [ADD] when we'll add the session's resources there. Link for the chat: {links.wwta}"
     },
