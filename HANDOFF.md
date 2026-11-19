@@ -70,8 +70,6 @@ Decided with Sean on November 15, 2026, step by step after the content review (`
 | --- | --- |
 | `how-made` | Exactly what you changed in Gemini's session description, and what you didn't check |
 | `framings` | The author of the "AI as thought partner / AI as source of content" framing from Andrew's earlier session |
-| `noticing-a` (notes) | Confirm "Kit 05 (Curriculum Mapping)" on What We Talk About; the site couldn't be reached to check |
-| `noticing-b` | An EL colleague's view on Case B, if one can be had before the day |
 | `check-this` | Keep the prepared Charlotte's Web answer, or generate one live with planted errors |
 | `moves` | Vet the Dakota and Ojibwe example with district American Indian education staff, or drop it |
 | `t-chart` | The University of Minnesota study on AI and interpersonal connection; it should be checked against its source before it goes on a slide |
