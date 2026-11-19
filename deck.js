@@ -183,7 +183,6 @@ export default {
     {
       id: "lens", part: "lens", kind: "section",
       heading: "A shared literacy lens",
-      body: "Before AI: what has reading and writing always asked of us?",
       notes: "Andrew: section one, about {lens.length}. We borrow a lens most of this room already knows, and use it on text AI made."
     },
     {
