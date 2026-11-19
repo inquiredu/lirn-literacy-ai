@@ -206,6 +206,27 @@
   .fig-map td, .fig-map th { padding: .5em .4em; }
 }
 
+/* ---------- Who's presenting (the intro slide in deck.js) ----------
+   The photo framed small and square, with a gold line offset behind it; the names keep
+   the right side. Lines carry the frame, as they carry the rest of the deck: no tape, tilt or shadow. */
+.intro { width: 100%; max-width: 58em; justify-self: center; display: grid; grid-template-columns: minmax(0, 20em) minmax(0, 1fr); gap: 4.5em; align-items: center; }
+.intro-frame { position: relative; margin: 0 1em 1em 0; }
+.intro-frame::before { content: ""; position: absolute; inset: 1em -1em -1em 1em; border: 1.5px solid var(--accent); border-radius: var(--radius-xs); }
+.slide .intro-photo { position: relative; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-xs); }
+.intro-words { display: grid; gap: 1.1em; min-width: 0; }
+.intro-people { list-style: none; margin: 0; padding: 0; display: grid; }
+.intro-people li { display: grid; gap: .45em; padding: 1.1em 0 1.2em; border-top: 1px solid var(--line); }
+.intro-people li:last-child { border-bottom: 1px solid var(--line); }
+.intro-name { font-size: 2.5em; }
+.intro-role { margin: 0; font: 400 1.3em/1.4 var(--reading); color: var(--soft); }
+
+@container slide (max-width: 760px) {
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 2.2em; }
+  .intro-frame { width: min(62%, 16em); }
+  .intro-name { font-size: 2em; }
+  .intro-role { font-size: 1.15em; }
+}
+
 /* ---------- Drawings: Minnesota in late fall and winter, in a slide's bare side (deck.art, parts[].art) ----------
    Decoration only, behind the words. Birches stand at the right edge of the dark slides and fade toward the
    words; on light slides, the part's line drawing sits in the bare right side and the words keep the left. */

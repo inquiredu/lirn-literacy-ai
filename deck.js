@@ -123,6 +123,28 @@ export default {
       kicker: "LiRN leadership session", heading: "{title}", sub: "{subtitle}", by: "{by}", sun: false,
       notes: "Both: as people join, ask in the chat for their role, the grades they support, and one word for how AI feels in their building right now. Press T (or Call to order) when you begin; the clock counts {length} from then.\n\nDay-of call on groups, made here and sent to the co-host in a private chat. Count participants, not presenters. 9 or more: breakout rooms for the cases pause (three case rooms). Under 9: main room throughout. The pause has both plans in its notes. The opening Gemini activity is whole group: one model on screen, and anyone can try it alongside.\n\nSean: set the frame in two sentences. This is a working session, not a talk, and nothing we show today is a conclusion. Most of the hour belongs to you."
     },
+    // Added 2026-11-19 at Sean's request: who's presenting, Andrew then Sean, with their coffee-shop photo, framed
+    // small on the title's night ground with a gold line offset behind it (.intro in talk.css).
+    // Names, roles and districts are read from landing.us.people below, so they're typed once. In the photo, Sean is
+    // on the left and Andrew on the right. The kicker is a draft.
+    {
+      id: "intro", part: "open", kind: "custom", tone: "night",
+      title: "Andrew and Sean",
+      kicker: "Presenting today",
+      image: { src: "assets/andrew-and-sean.jpg", alt: "Sean Beaverson, left, and Andrew Rummel, right, lean in for a selfie in a coffee shop. Sean wears a knit cap and has a gray beard; Andrew wears a cap and a red jacket, his chin resting on his hand." },
+      render: ({ h, rich, mode, model, slide }) => {
+        const [H, H2] = levels(mode);
+        return [h("div", { class: "intro" },
+          h("div", { class: "intro-frame" }, h("img", { class: "intro-photo", src: slide.image.src, alt: slide.image.alt, decoding: "async" })),
+          h("div", { class: "intro-words" },
+            h(H, { class: "kicker" }, rich(slide.kicker)),
+            h("ul", { class: "intro-people" }, model.landing.us.people.map((p) =>
+              h("li", {},
+                h(H2, { class: "display intro-name" }, p.name),
+                h("p", { class: "intro-role" }, p.role, h("br"), p.organization))))))];
+      },
+      notes: "Andrew, then Sean: a sentence or two each on your role and what brings you to this question. [ADD] what each of you will say.\n\nFrom your bios, if useful. Andrew: over 25 years in education, as an English/Language Arts teacher, reading and writing interventionist and literacy coach, and as K–12 Literacy Coordinator for the Minneapolis Public Schools. Sean: over two decades, as a high school English and language arts teacher, instructional technology specialist and personalized learning specialist; at Orono he leads human-centered AI strategy.\n\nIn the photo, Sean is on the left and Andrew on the right."
+    },
     // Draft (2026-11-18): the opening activity, replacing "read this" and the roles table pause. Story prompts are Andrew's;
     // the teaching question is a draft to test. Each round asks the same thing: what would a student need?
     {
