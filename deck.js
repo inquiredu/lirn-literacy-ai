@@ -62,7 +62,7 @@ export default {
       intro: "Use familiar literacy principles to examine emerging practices and identify what deserves closer study.",
       items: [
         "A working definition of literacy that accounts for AI and multiple modes of meaning.",
-        "The Four Resources model as a lens for creating and evaluating texts.",
+        "A critical literacies lens for reading and creating text with AI.",
         "A focused instructional trial, with evidence to examine and a condition for reconsidering it."
       ],
       close: "The aim is a considered next step, grounded in what students need to learn."
