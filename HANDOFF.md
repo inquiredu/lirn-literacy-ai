@@ -4,9 +4,9 @@ Updated November 18, 2026. The underlying presentation engine follows `STANDARD.
 
 ## Zoom readability, November 19
 
-The question the room answers in the chat was the smallest text on every pause slide (about 13pt next to a 16:9 PowerPoint slide). It and the prompt under the cards on `roles-now` are now about 18pt, heavier, with a rule above (`present/slides.css`, "Room prompts"). No words changed. The pause slides' label line ("Pick one") is larger, and so is the Charlotte's Web debrief (`what-was-in-it`, in `present/talk.css`).
+The question the room answers in the chat was the smallest text on every pause slide (about 13pt next to a 16:9 PowerPoint slide). It and the prompt under the cards on `roles-now` are now about 18pt, heavier, with a rule above (`present/slides.css`, "Room prompts"). The pause slides' label line ("Pick one") is larger, and so is the Charlotte's Web debrief (`what-was-in-it`, in `present/talk.css`). The one change to `deck.js`: `hold-test`'s case reminder sets each case on its own line, since at prompt size the single line broke mid-case. Same words.
 
-- Verified: all 16 participation slides measured at 1920x1080, 1440x900, 1366x768, 1280x720 and 1280x800, and none overflows; the printed backup PDF, the review and a 375px phone checked by picture; `node scripts/check-all.js` passes; axe finds no violations on 39 pages and slides in light and dark.
+- Verified, on the deck after the case slides were split out (33 slides): all 18 participation slides measured at 1920x1080, 1440x900, 1366x768, 1280x720 and 1280x800, and none overflows; the printed backup PDF, the review and a 375px phone checked by picture; `node scripts/check-all.js` passes; axe finds no violations on 39 pages and slides in light and dark.
 - Not verified: a live Zoom share.
 
 After the session (decided November 19: sizes only before it; these wait):
@@ -14,8 +14,8 @@ After the session (decided November 19: sizes only before it; these wait):
 - [ ] A room-prompt field on any kind, drawn as the prompt on the slide and shown with a Copy button in the speaker notes, so a co-host can paste it into the Zoom chat or a breakout broadcast. Today the prompt lives in `foot`, which on list and cards slides is often a caveat instead.
 - [ ] `moves`: its question to the room ("Which would you test first?") is still about 13pt, in a list foot that can't be styled alone until that field exists.
 - [ ] Wording, for Andrew and Sean: instructions out of the label line and into the prompt ("Pick one," "Watch, or try it yourself"); the slash-heavy questions on `story-detail` and `teaching-question` shortened; `check-this` says "mark one claim," where the notes say to post it in the chat.
-- [ ] `hold-test` and `build-chart` ask the room to work from cases and an answer that are no longer on screen: a one-line reminder of each on the slide.
-- [ ] Smaller text the room reads: case and research-card bodies (about 14pt), the child's questions on `roles-now` (about 8pt labels).
+- [ ] `build-chart` asks the room to work from Case A, Case B and the checked answer, none of them on screen: a one-line reminder of each on the slide, as `hold-test` now has.
+- [ ] Smaller text the room reads: research-card bodies (about 14pt), the child's questions on `roles-now` (about 8pt labels). The cases are now on their own slides at about 18pt.
 - [ ] The as-you-join chat question is only in the title slide's notes; put it on screen while people arrive.
 - [ ] The presenter's corner controls and timer buttons show on the shared screen; a clean-share mode would revisit the October 10 decision to keep them readable at rest.
 
@@ -87,8 +87,7 @@ Decided with Sean on November 15, 2026, step by step after the content review (`
 | --- | --- |
 | `how-made` | Exactly what you changed in Gemini's session description, and what you didn't check |
 | `framings` | The author of the "AI as thought partner / AI as source of content" framing from Andrew's earlier session |
-| `noticing-a` (notes) | Confirm "Kit 05 (Curriculum Mapping)" on What We Talk About; the site couldn't be reached to check |
-| `noticing-b` | An EL colleague's view on Case B, if one can be had before the day |
+| `hold-test` (notes) | An EL colleague's view on Case B, if one can be had before the day |
 | `check-this` | Keep the prepared Charlotte's Web answer, or generate one live with planted errors |
 | `moves` | Vet the Dakota and Ojibwe example with district American Indian education staff, or drop it |
 | `t-chart` | The University of Minnesota study on AI and interpersonal connection; it should be checked against its source before it goes on a slide |
