@@ -131,9 +131,9 @@ export default {
     },
     {
       id: "story-detail", part: "open", kind: "pause",
-      title: "Add a detail to the prompt",
+      title: "Write a second story",
       kicker: "Now add a detail · {mins}",
-      heading: "Say **more** about the girl or the boy.",
+      heading: "Use Gemini to write a **second** story.",
       body: [
         "“…about a girl who lives in the suburbs.”",
         "“…about a boy who lives in the middle of a big city.”"
