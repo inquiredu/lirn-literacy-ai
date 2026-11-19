@@ -53,6 +53,7 @@ const pairs = [
   ["fg-warm", "surface-accent-soft", TEXT, "the warm tone"],
   ["fg-on-toast", "surface-toast", TEXT, "the key hint, notices"],
   ["status-info", "status-info-bg", TEXT, "the notes window, alone"], ["status-warning", "status-warning-bg", TEXT, "the Alpha badge"],
+  ["control-border", "surface-page", GRAPHIC, "the library's filter outlines"],
   ["border-focus", "surface-page", GRAPHIC, "the focus ring"], ["indicator-selected", "surface-raised", GRAPHIC, "the current slide on the bar"]
 ];
 
@@ -72,7 +73,7 @@ checked++;
 if (qr < 7) failures.push(`the QR code's ink on its ground is ${qr.toFixed(2)}:1; keep it dark on light`);
 
 // Every var(--name) the kit's CSS uses has to be defined somewhere: the brand, theme.css, or the rule itself
-const kitCss = ["present/talk.css", "present/theme.css", "present/slides.css", "present/stage.css", "present/notes.css", "present/review.css", "index.css"];
+const kitCss = ["present/talk.css", "present/theme.css", "present/slides.css", "present/stage.css", "present/notes.css", "present/review.css", "index.css", "library.css"];
 const defined = new Set([...Object.keys(themes.Night), ...Object.keys(light)]);
 for (const f of kitCss) for (const m of read(f).matchAll(/(--[\w-]+)\s*:/g)) defined.add(m[1].slice(2));
 ["i", "n", "elapsed", "clock-room", "tilt", "tape"].forEach((n) => defined.add(n));   // set from the stage's or the review's script, or with a fallback

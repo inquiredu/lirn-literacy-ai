@@ -51,7 +51,9 @@ h2 { font: 500 34px/1.2 var(--font-sans); letter-spacing: -.03em; }
 .resources { display: flex; justify-content: space-between; align-items: center; gap: var(--space-6); background: var(--surface-water-soft); padding: var(--space-6); }
 .resources h2 { font-size: 26px; }
 .resources p { margin: var(--space-3) 0 0; max-width: 40em; font: 400 19px/1.5 var(--font-serif); color: var(--fg-2); }
-.resources a { flex-shrink: 0; color: var(--fg-1); font: var(--type-ui); text-underline-offset: .35em; }
+.resource-links { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); flex-shrink: 0; }
+.resource-links a:not(.primary-link) { display: inline-flex; align-items: center; min-height: 44px; color: var(--fg-1); font: var(--type-ui); text-underline-offset: .35em; }
+.resource-links .primary-link { font: var(--type-ui); }
 .made { padding: 28px 0 36px; }
 .made p { margin: 0; max-width: 70em; font: 400 12px/1.7 var(--font-sans); color: var(--fg-2); }
 @media (max-width: 900px) {
