@@ -2,6 +2,8 @@
 
 `library.html` is where someone the session leaves curious goes next: the studies the talk cites, the older research each slide leans on, and what has been learned since generative AI arrived. Its words and entries are in `library.js`, which `deck.js` imports as `deck.library`. The rules for checking, filtering and shelving it are in `present/core.js`, with tests; `present/library.js` only draws.
 
+Hidden for now (November 19), while Sean revises it: no page or slide links to it. `HANDOFF.md` says how to bring it back.
+
 ## The rule
 
 Every entry is a real source that a reader can open and confirm. Nothing goes in from memory, and nothing goes in because it sounds right. Before adding one:

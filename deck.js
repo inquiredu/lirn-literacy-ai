@@ -26,7 +26,9 @@ export default {
     wwta: "https://inquiredu.org/what-we-talk-about/", // where resources and the room's learning are shared afterward
     library: "library.html"                           // this session's research library, read from library.js
   },
-  library,
+  // Hidden for now (2026-11-19), while Sean revises it: no page or slide links to it, though library.html still opens
+  // at its address. Delete hidden to put the links back (HANDOFF has the words to restore).
+  library: { ...library, hidden: true },
   theme: "light",
   // Minnesota in late fall and winter, for each slide's bare side (core.js artFor): birches on the dark slides,
   // and each part's line drawing on its light statement, list and steps slides. art: false on a slide leaves it out.
@@ -96,9 +98,9 @@ export default {
     },
     resources: {
       heading: "Continue the inquiry",
-      body: "This session's research library gathers the studies behind it and where to read next, sorted by what was known before generative AI and what is being learned now. Leadership resources are at What We Talk About When We Talk About AI.",
-      library: "Open the research library",
-      label: "Leadership resources"
+      body: "Explore research and leadership resources at What We Talk About When We Talk About AI.",
+      library: "Open the research library",           // this session's library button, shown when the library isn't hidden
+      label: "Explore the resources"
     },
     made: "Developed by Andrew Rummel and Sean Beaverson with AI assistance from Gemini and Claude. The presenters retain responsibility for the content and its interpretation."
   },
@@ -450,14 +452,14 @@ export default {
       id: "keep-learning", part: "revisit", kind: "statement", art: "assets/seasons/january.svg",
       kicker: "Resources and continued inquiry",
       heading: "Research and leadership resources",
-      body: "What We Talk About When We Talk About AI gathers the research library, the leadership kits, and now this session's resources. When you try something, email us what you notice.",
+      body: "What We Talk About When We Talk About AI gathers research, leadership kits, and now this session's resources. When you try something, email us what you notice.",
       foot: "inquiredu.org/what-we-talk-about",
       notes: "Sean: this is where the room's learning lives after today. Observations come back by email: paste both our school addresses in the chat now, before it closes with the meeting. They're kept off the deck because the review page is public. [ADD] when we'll add the session's resources there. Link for the chat: {links.wwta}"
     },
     {
       id: "way-back", part: "revisit", kind: "link",
       heading: "Today's slides and notes",
-      body: "This deck, with speaker notes and sources, to read again or share, and a research library for reading further.",
+      body: "This deck, with speaker notes and sources, to read again or share.",
       notes: "Andrew: paste {url} in the chat and leave this up. The QR code only helps people watching on a second device."
     },
     {
