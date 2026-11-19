@@ -157,6 +157,12 @@ export default {
       notes: "Andrew: {Mins:words}. Ask one question on screen; people can try any of the three alongside. [ADD] pick the one to model, confirm the wording, and run each several times beforehand: answers vary.\n\nThis room knows enough to judge the answers, which is the point. Watch for an answer with no sources, and for advice that's contested or thin:\n\nDecoding: cueing a child to the picture or to what would make sense instead of to the letters.\n\nVocabulary: word lists, looking words up in the dictionary, or copying definitions, rather than student-friendly explanations, many encounters with each word, and chances to use it (Beck, McKeown and Kucan's Bringing Words to Life is the usual reference).\n\nComprehension: main idea practiced as a skill on short passages, apart from what the text is about. Knowing the topic matters as much as the strategy, which Part 3 comes back to with Recht and Leslie.\n\nAsk: what did you notice about this type of text? Then: what skills or strategies would readers need in order to comprehend and use this type of text? Listen for knowing the topic, checking against a source, and asking who would give this advice.\n\nA co-host saves the chat now: section one sorts these answers into the four roles."
     },
     {
+      id: "back-and-forth", part: "open", kind: "statement", art: false,
+      title: "It's all about the back and forth",
+      heading: "Ignore what we just did. It is actually all about the back and forth.",
+      notes: "[ADD] who says this, and what to say: the turn from one-shot prompts to a conversation with the tool, and what that asks of a reader."
+    },
+    {
       id: "how-made", part: "open", kind: "steps",
       kicker: "Authorship and process", heading: "How this session was made",
       steps: [
