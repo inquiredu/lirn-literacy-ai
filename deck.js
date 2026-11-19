@@ -196,8 +196,7 @@ export default {
           h(H, { class: "display heading" }, rich(slide.heading)),
           h("div", { class: "fig-roles" },
             h("ul", { class: "fig-roles-grid" }, slide.items.map((item) =>
-              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), h("p", { class: "fig-role-q" }, rich(item.why)))))),
-          h("p", { class: "foot" }, rich(slide.foot))
+              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), h("p", { class: "fig-role-q" }, rich(item.why))))))
         ];
       },
       items: [
@@ -206,7 +205,6 @@ export default {
         { name: "Text user", why: "What do I do with it, here, for this purpose?" },
         { name: "Text analyst", why: "What is this text doing, and to whom?" }
       ],
-      foot: "Not a ladder or tiers: readers draw on all four at once. Later adapted for making texts across modes.",
       notes: "Andrew: bring back the chat from the opening. Read a few answers aloud and sort them into the four roles as you go: reading the words is code breaking, making sense of the story is participating, choosing a prompt for a purpose is using, and noticing who has the adventure is analysis. Ask the room where the rest belong.\n\nThe Four Resources model. The roles aren't a sequence, and we aren't ranking them. Luke and Freebody's 1999 update, and later work, adapted it for creating texts in different modes, which matters when AI is the one making text.\n\nCode breaker leads into the next slide: what an early reading platform asks of leaders."
     },
     {
