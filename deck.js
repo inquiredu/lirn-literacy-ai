@@ -107,7 +107,7 @@ export default {
     // Minutes rebalanced 2026-11-19 after the four roles moved out of the lens part: open 16, lens 4, making 14,
     // navigating 11, social 7, revisit 8 (sixty in all).
     { id: "open", title: "Opening inquiry", minutes: 16, art: "assets/seasons/november.svg" },
-    { id: "lens", title: "A shared literacy lens", minutes: 4, art: "assets/seasons/first-snow.svg" },
+    { id: "lens", title: "AI and Literacy", minutes: 4, art: "assets/seasons/first-snow.svg" },
     { id: "making", title: "Creating text with AI", minutes: 14, art: "assets/seasons/january.svg" },
     { id: "navigating", title: "Evaluating AI text", minutes: 11, art: "assets/seasons/november.svg" },
     { id: "social", title: "Literacy as social practice", minutes: 7, art: "assets/seasons/october.svg" },
@@ -195,8 +195,8 @@ export default {
     // ── 1 · A shared lens ─────────────────────────────────────────────────────────────────────────────────
     {
       id: "lens", part: "lens", kind: "section",
-      heading: "A shared literacy lens",
-      notes: "Andrew: section one, about {lens.length}. We borrow a lens most of this room already knows, and use it on text AI made."
+      heading: "AI and Literacy",
+      notes: "Andrew: section one, about {lens.length}. A quick map of where AI meets literacy in the rest of the hour: making text with it, reading what it makes, and the early reading foundation underneath both."
     },
     {
       id: "framings", part: "lens", kind: "cards",
