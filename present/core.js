@@ -224,6 +224,7 @@ export function libraryProblems(library, model) {
   const problems = [];
   const say = (m) => problems.push(m);
   const kebab = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+  if (library.hidden !== undefined && typeof library.hidden !== "boolean") say(`The library's hidden is true or false, not ${JSON.stringify(library.hidden)}.`);
   const topics = new Set((library.topics || []).map((t) => t.id));
   (library.topics || []).forEach((t) => {
     if (!t.id || !kebab.test(t.id) || !t.name) say(`A library topic needs a kebab-case id and a name: ${JSON.stringify(t.id)}`);

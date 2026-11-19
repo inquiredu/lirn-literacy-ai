@@ -26,7 +26,9 @@ export default {
     wwta: "https://inquiredu.org/what-we-talk-about/", // where resources and the room's learning are shared afterward
     library: "library.html"                           // this session's research library, read from library.js
   },
-  library,
+  // Hidden for now (2026-11-19): the nav, "Continue the inquiry" and the slides don't link to it, and the ✦ at the
+  // end of the landing page's credits is the one way in. Delete hidden to put the links back (HANDOFF has the words).
+  library: { ...library, hidden: true },
   theme: "light",
   // Minnesota in late fall and winter, for each slide's bare side (core.js artFor): birches on the dark slides,
   // and each part's line drawing on its light statement, list and steps slides. art: false on a slide leaves it out.
@@ -96,9 +98,9 @@ export default {
     },
     resources: {
       heading: "Continue the inquiry",
-      body: "This session's research library gathers the studies behind it and where to read next, sorted by what was known before generative AI and what is being learned now. Leadership resources are at What We Talk About When We Talk About AI.",
-      library: "Open the research library",
-      label: "Leadership resources"
+      body: "Explore the research library and leadership resources at What We Talk About When We Talk About AI.",
+      library: "Open the research library",           // this session's library button, shown when the library isn't hidden
+      label: "Explore the resources"
     },
     made: "Developed by Andrew Rummel and Sean Beaverson with AI assistance from Gemini and Claude. The presenters retain responsibility for the content and its interpretation."
   },
@@ -502,7 +504,7 @@ export default {
     {
       id: "way-back", part: "revisit", kind: "link",
       heading: "Today's slides and notes",
-      body: "This deck, with speaker notes and sources, to read again or share, and a research library for reading further.",
+      body: "This deck, with speaker notes and sources, to read again or share.",
       notes: "Andrew: paste {url} in the chat and leave this up. The QR code only helps people watching on a second device."
     },
     {

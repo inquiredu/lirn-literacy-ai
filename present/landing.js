@@ -8,13 +8,15 @@ const land = deck.landing || {};
 document.title = model.title;
 const words = (text) => rich(text, ctx);
 const list = (items, cls) => items?.length && h("ol", { class: cls }, items.map((t) => h("li", {}, words(t))));
+// The research library is linked in the nav and under "Continue the inquiry", unless the deck hides it for now
+const showLibrary = deck.library && !deck.library.hidden;
 
 const masthead = h("nav", { class: "masthead", "aria-label": "Session navigation" },
   h("a", { class: "identity", href: "./" }, land.identity, h("span", {}, land.context)),
   h("div", { class: "nav-links" },
     h("a", { href: "#overview" }, land.nav?.overview),
     h("a", { href: "#agenda" }, land.nav?.agenda),
-    deck.library && h("a", { href: deck.links.library }, land.nav?.library),
+    showLibrary && h("a", { href: deck.links.library }, land.nav?.library),
     h("a", { href: "review.html" }, land.nav?.review)));
 
 const agenda = h("aside", { class: "agenda", id: "agenda", "aria-labelledby": "agenda-head" },
@@ -67,8 +69,11 @@ const us = land.us && h("section", { class: "facilitators", "aria-labelledby": "
 const resources = land.resources && h("section", { class: "resources", "aria-labelledby": "r-head" },
   h("div", {}, h("h2", { id: "r-head" }, words(land.resources.heading)), h("p", {}, words(land.resources.body))),
   h("div", { class: "resource-links" },
-    deck.library && h("a", { class: "primary-link", href: deck.links.library }, words(land.resources.library), h("span", { "aria-hidden": "true" }, "→")),
+    showLibrary && h("a", { class: "primary-link", href: deck.links.library }, words(land.resources.library), h("span", { "aria-hidden": "true" }, "→")),
     h("a", { href: deck.links.wwta }, words(land.resources.label), h("span", { "aria-hidden": "true" }, " ↗"))));
 
-const footer = land.made && h("footer", { class: "made" }, h("p", {}, words(land.made)));
+// While the library is hidden, a ✦ at the end of the credits is the way in, for the curious: it reads as a
+// flourish, and says "Research library" on hover and to a screen reader.
+const egg = deck.library?.hidden && h("a", { class: "egg", href: deck.links.library, "aria-label": land.nav?.library, title: land.nav?.library }, "✦");
+const footer = land.made && h("footer", { class: "made" }, h("p", {}, words(land.made), egg && [" ", egg]));
 document.querySelector("main").replaceChildren(...[masthead, hero, questions, aim, us, resources, footer].filter(Boolean));

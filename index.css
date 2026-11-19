@@ -57,6 +57,8 @@ h2 { font: 500 34px/1.2 var(--font-sans); letter-spacing: -.03em; }
 .resource-links .primary-link { font: var(--type-ui); }
 .made { padding: 28px 0 36px; }
 .made p { margin: 0; max-width: 70em; font: 400 12px/1.7 var(--font-sans); color: var(--fg-2); }
+.made .egg { display: inline-block; min-width: 24px; min-height: 24px; margin: -2px 0; line-height: 24px; vertical-align: middle; text-align: center; font-size: 13px; color: var(--fg-accent); text-decoration: none; }
+.made .egg:hover { color: var(--fg-1); }
 @media (max-width: 900px) {
   .masthead { min-height: 84px; }
   .nav-links a:not(:last-child) { display: none; }

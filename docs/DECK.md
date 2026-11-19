@@ -129,3 +129,5 @@ Pace: with minutes on every part, the plan spreads each part's minutes over its 
 
 `deck.library` is the reading list at `library.html`, kept in `library.js` and imported at the top of `deck.js`. `links.library` is its address. Its fields, and the rule for adding a source, are in `docs/LIBRARY.md`.
 
+`hidden: true` on the library (`library: { ...library, hidden: true }`) keeps the page but takes its links off the landing page; a ✦ at the end of the landing page's credits leads to it instead. The slides' words don't change with it, so check any slide that mentions the library.
+

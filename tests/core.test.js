@@ -332,6 +332,8 @@ test("library: a sound library has no problems, and each missing or wrong field 
   assert.match(twice, /share the id/);
   assert.match(twice, /repeats an address/);
   assert.match(libraryProblems({ ...LIBRARY, topics: [{ id: "writing", name: "Writing", part: "nope" }, LIBRARY.topics[1]] }, model).join("\n"), /part the deck doesn't have/);
+  assert.deepEqual(libraryProblems({ ...LIBRARY, hidden: true }, model), []);
+  assert.match(libraryProblems({ ...LIBRARY, hidden: "yes" }, model).join("\n"), /hidden is true or false/);
 });
 
 test("library: filters narrow by era, form, topic, free and words, and combine", () => {
