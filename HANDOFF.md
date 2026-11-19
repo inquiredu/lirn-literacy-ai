@@ -11,6 +11,7 @@ Andrew's design: the room watches Gemini make text, names what a student would n
 - **Slide 4, `teaching-question`** (3 min): "What should I do when a first grader guesses at a word?" What did you need this time that the story didn't ask of you? The question is a draft: confirm it and run it several times beforehand.
 - Removed: `read-this` (the session description read closely) and `roles-grid` (the roles pause). `how-made` is now "How this session was made." `four-roles` notes sort the opening's chat answers into the roles, and `roles-now` asks "What would you add?"
 - Minutes rebalanced to keep 60: open 8→15, lens 11→8, making 16→14, social 8→7, revisit 7→6. A proposal; move them if another part needs the time.
+- **Slide 9, `roles-now`** (November 19) is now "Reading AI text, critically": Origin, Representation, Authority, Agency, a proposal from a critical literacies perspective (drawing on Janks 2010 and Lewison, Flint & Van Sluys 2002; not yet checked against the sources). A note on top says it sits on a foundation of reading skills and relates most to comprehension and content knowledge. It replaces the Freebody-and-Luke-derived roles; slide 8 still shows the originals.
 - Still to do: screenshots of a Gemini run as a backup, and who drives Gemini on screen (the notes say Andrew).
 
 ## Draft additions, November 15

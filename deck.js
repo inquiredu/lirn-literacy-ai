@@ -207,21 +207,23 @@ export default {
       ],
       notes: "Andrew: bring back the chat from the opening. Read a few answers aloud and sort them into the four roles as you go: reading the words is code breaking, making sense of the story is participating, choosing a prompt for a purpose is using, and noticing who has the adventure is analysis. Ask the room where the rest belong.\n\nThe Four Resources model. The roles aren't a sequence, and we aren't ranking them. Luke and Freebody's 1999 update, and later work, adapted it for creating texts in different modes, which matters when AI is the one making text."
     },
-    // Draft (2026-11-15): a proposed AI-era version of the four roles, for Andrew and Sean to test. Not a published model.
+    // Draft (2026-11-19): a four-part model for reading AI text, from a critical literacies perspective. Andrew and
+    // Sean's proposal, not a published model. It sits on foundational reading skills and relates most to comprehension
+    // and content knowledge. The id stays roles-now so links and notes keep working.
     {
       id: "roles-now", part: "lens", kind: "cards",
-      title: "The four roles, for AI-era text",
-      kicker: "A proposal to test",
-      heading: "The four roles, for **AI-era** text",
+      title: "Reading AI text critically",
+      kicker: "On a foundation of reading skills · closest to comprehension and content knowledge",
+      heading: "Reading AI text, **critically**",
       cards: [
-        { kicker: "Code breaker · Navigator", heading: "Code breaker and maker", body: "How was this made? How do I direct a tool?" },
-        { kicker: "Participant · Interpreter", heading: "Sense maker", body: "Does this fit what I know?" },
-        { kicker: "User · Designer", heading: "Author", body: "What's my purpose? What part is mine?", key: true },
-        { kicker: "Analyst · Interrogator", heading: "Verifier", body: "Who says so? Who else? Who's missing?" }
+        { kicker: "Who made this?", heading: "Origin", body: "Who and what made this, and in whose interest?" },
+        { kicker: "Who's in it, and who isn't?", heading: "Representation", body: "Whose world does this assume? Who is centered, and who is missing?", key: true },
+        { kicker: "How do I know it's true?", heading: "Authority", body: "What makes this sound true, and who decides whether it is?" },
+        { kicker: "What would I change?", heading: "Agency", body: "What will I do with this, and what part is mine?" }
       ],
       body: "What would you add for the students you teach? Post it in the chat.",
-      foot: "Adapted from Freebody & Luke (1990), Prospect 5(3), and Serafini (2012), Pedagogies 7(2). Our proposal, not a validated model.",
-      notes: "Andrew: here's where our own thinking landed; set it beside what the chat said in the opening. Each card shows the role's lineage: Freebody and Luke's original, then Serafini's 2012 version for visual and multimodal texts, then what we propose for text AI makes. Every role now covers reading and making.\n\nCode breaker and maker: decoding is still the foundation. New: working out how a text was made, and writing a clear request is a kind of composing.\n\nSense maker: meaning still comes from what you know, and now that knowledge is also how you catch errors.\n\nAuthor: the biggest change. Freebody and Luke asked what you do with a text; Serafini made the reader a designer. With AI the question is ownership: when to use the tool, and whether the thinking stays yours. Case A in the next section is this role.\n\nVerifier: the analyst's question still holds, plus checking across sources, because AI text usually has no visible author. Ask whose voices the tool learned from, and whose it leaves out.\n\nThe social side runs under all four; we come back to it in Part 4. Ask: what would you change on this slide?\n\nCode breaker and maker leads into the next slide: what an early reading platform asks of leaders."
+      foot: "Our proposal, drawing on Janks (2010), Literacy and Power, and Lewison, Flint & Van Sluys (2002), Language Arts 79(5). Not a validated model.",
+      notes: "Andrew: the four roles describe reading any text. This is our proposal for what matters most when the text comes from AI, from a critical literacy perspective: every text is made by someone, from a position, in someone's interest. AI text hides that, because it reads as if nobody wrote it. Set it beside what the chat said in the opening.\n\nSay the note at the top out loud: none of this replaces decoding and fluency. These four sit on that foundation, and they lean hardest on comprehension and on what students already know about the topic.\n\nOrigin: an AI answer has no byline, but it still has authors: the writing it learned from, the company that built it, and the person who wrote the prompt. How this session was made is our own example.\n\nRepresentation: AI gives the most common version of a story. Defaults carry assumptions about gender, place, class, race, language and family. This is what the girl and boy stories showed, and what changed when we added the suburbs or the city.\n\nAuthority: AI sounds right whether or not it is. Separate confidence from accuracy, check against what you know and a second source, and ask whose view of good teaching becomes the answer. The teaching questions in the opening, and Part 3, come back to this.\n\nAgency: readers decide whether to use a tool, rewrite what it gives them, push back, or not use it. Adding a detail to the prompt was a small act of redesign. Case A in Part 2 is about this.\n\nThe child's question for each is the small line above it on the slide. Janks argues critical literacy needs power, access, diversity and design held together; Lewison, Flint and Van Sluys name disrupting the commonplace, interrogating multiple viewpoints, attending to sociopolitical issues, and taking action. Ask: what would you add?\n\nThe next slide goes back to the foundation underneath all four: what an early reading platform asks of leaders."
     },
     {
       id: "early-signposts", part: "lens", kind: "list",
