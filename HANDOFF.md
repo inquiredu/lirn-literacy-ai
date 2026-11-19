@@ -9,7 +9,7 @@ Updated November 19, 2026. The underlying presentation engine follows `STANDARD.
 - The kicker ("Presenting today") and the speaker notes are drafts; the notes have an `[ADD]` for what each of you will say, with lines from your bios to draw on.
 - The opening part's 16 minutes now include introductions; no minutes were changed.
 - In the photo, Sean is on the left and Andrew on the right (from the earlier sketch's alt text). The photo, not a sketch, is now on the public site.
-- `node scripts/check-all.js` passes, and the PowerPoint export comes back with no changes. Looked at on the stage, in the review, on a phone and in the printed backup. Not checked: a screen reader, Safari or Firefox.
+- `node scripts/check-all.js` passes; axe finds no violations on 39 pages and slides at 1280 and 375px in either theme; the PowerPoint export comes back with no changes. Looked at on the stage, in the review, on a phone and in the printed backup. Not checked: a screen reader, Safari or Firefox.
 
 ## Research library, November 19
 
