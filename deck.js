@@ -145,12 +145,16 @@ export default {
     {
       id: "teaching-question", part: "open", kind: "pause",
       title: "Ask a teaching question",
-      kicker: "Now ask about teaching · {mins}",
+      kicker: "Now ask about teaching · Pick one · {mins}",
       heading: "Ask it a **teaching** question.",
-      body: "“What should I do when a first grader guesses at a word?”",
+      body: [
+        "Decoding: “What should I do when a first grader guesses at a word?”",
+        "Vocabulary: “What's the best way to teach new words to third graders?”",
+        "Comprehension: “How do I teach my fourth graders to find the main idea?”"
+      ],
       foot: "In the chat: what did you need this time that the story didn't ask of you?",
       timer: 3,
-      notes: "Andrew: {Mins:words}. Ask Gemini on screen; people can try it alongside. [ADD] confirm or replace the question, and run it several times beforehand: answers vary.\n\nThis room knows enough to judge the answer, which is the point. Watch for advice that's contested in reading research, such as cueing a child to the picture or to what would make sense instead of to the letters, and for an answer with no sources.\n\nAsk: what did you need this time that the story didn't ask of you? Listen for knowing the topic, checking against a source, and asking who would give this advice.\n\nA co-host saves the chat now: section one sorts these answers into the four roles."
+      notes: "Andrew: {Mins:words}. Ask one question on screen; people can try any of the three alongside. [ADD] pick the one to model, confirm the wording, and run each several times beforehand: answers vary.\n\nThis room knows enough to judge the answers, which is the point. Watch for an answer with no sources, and for advice that's contested or thin:\n\nDecoding: cueing a child to the picture or to what would make sense instead of to the letters.\n\nVocabulary: word lists, looking words up in the dictionary, or copying definitions, rather than student-friendly explanations, many encounters with each word, and chances to use it (Beck, McKeown and Kucan's Bringing Words to Life is the usual reference).\n\nComprehension: main idea practiced as a skill on short passages, apart from what the text is about. Knowing the topic matters as much as the strategy, which Part 3 comes back to with Recht and Leslie.\n\nAsk: what did you need this time that the story didn't ask of you? Listen for knowing the topic, checking against a source, and asking who would give this advice.\n\nA co-host saves the chat now: section one sorts these answers into the four roles."
     },
     {
       id: "how-made", part: "open", kind: "steps",
