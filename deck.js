@@ -259,7 +259,7 @@ export default {
       kicker: "Pause · {mins}",
       heading: "What must we preserve? What should we **test**?",
       body: "Take the case closest to the grades you support. Name one value that shouldn't bend, and one thing you'd try and watch.",
-      foot: "A: Grade 5 writer · B: Grade 3 newcomer · C: Grade 1 tutor\nPost both in the chat, starting with A, B or C.",
+      foot: "A: Grade 5 writer\nB: Grade 3 newcomer\nC: Grade 1 tutor\nPost both in the chat, starting with A, B or C.",
       timer: 6,
       notes: "Sean: {Mins:words}.\n\nBreakout rooms (9 or more): three rooms named Case A, Case B and Case C, with participants choosing their own room (turn on Allow participants to choose room). Allow a minute and a half to open and close.\n\nMain room (under 9): everyone takes the case closest to their grades and answers in the chat when the timer ends.\n\nListen for values (ownership of ideas, every student in the shared text, struggle that builds something) and for tests (what would you look at a month from now?).\n\nCase B: the newcomer's home language is a resource, not only a gap. An AI translation of the original beside the English can be a bridge back to the shared text, and her family may be using AI translation at home too. Ask the EL teachers in the group what they'd add; [ADD] an EL colleague's view, if we can get one before the day."
     },
