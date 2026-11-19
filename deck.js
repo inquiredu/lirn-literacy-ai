@@ -205,20 +205,7 @@ export default {
         { name: "Text user", why: "What do I do with it, here, for this purpose?" },
         { name: "Text analyst", why: "What is this text doing, and to whom?" }
       ],
-      notes: "Andrew: bring back the chat from the opening. Read a few answers aloud and sort them into the four roles as you go: reading the words is code breaking, making sense of the story is participating, choosing a prompt for a purpose is using, and noticing who has the adventure is analysis. Ask the room where the rest belong.\n\nThe Four Resources model. The roles aren't a sequence, and we aren't ranking them. Luke and Freebody's 1999 update, and later work, adapted it for creating texts in different modes, which matters when AI is the one making text.\n\nCode breaker leads into the next slide: what an early reading platform asks of leaders."
-    },
-    {
-      id: "early-signposts", part: "lens", kind: "list",
-      kicker: "Early reading · K–2", heading: "Signposts for an AI reading platform",
-      items: [
-        { name: "Does practice text stay decodable?", why: "Matched to the sounds and patterns children have been taught, as structured literacy expects." },
-        { name: "Does a teacher still hear the child read?", why: "Or does the platform's report stand in for listening?", key: true },
-        { name: "Does practice end in talk with a person?", why: "A conversation about the story, not only a score." },
-        { name: "What does it record, and where does it go?", why: "A young child's voice and errors are student data." }
-      ],
-      foot: "Questions a leader asks before adopting, not claims about how to teach decoding.",
-      title: "K–2 signposts",
-      notes: "Andrew: we said in planning that we won't claim anything about AI and teaching decoding; it isn't our expertise. These are the questions a leader can ask of any platform that promises to help early reading. Sean's signpost question sits under all four: what would tell us it's trading away something the process needs?\n\nMany in this group work under the READ Act's structured-literacy expectations, so the first question will land. Case C comes back to this in Part 2."
+      notes: "Andrew: bring back the chat from the opening. Read a few answers aloud and sort them into the four roles as you go: reading the words is code breaking, making sense of the story is participating, choosing a prompt for a purpose is using, and noticing who has the adventure is analysis. Ask the room where the rest belong.\n\nThe Four Resources model. The roles aren't a sequence, and we aren't ranking them. Luke and Freebody's 1999 update, and later work, adapted it for creating texts in different modes, which matters when AI is the one making text."
     },
     // Draft (2026-11-15): a proposed AI-era version of the four roles, for Andrew and Sean to test. Not a published model.
     {
@@ -234,7 +221,20 @@ export default {
       ],
       body: "What would you add for the students you teach? Post it in the chat.",
       foot: "Adapted from Freebody & Luke (1990), Prospect 5(3), and Serafini (2012), Pedagogies 7(2). Our proposal, not a validated model.",
-      notes: "Andrew: here's where our own thinking landed; set it beside what the chat said in the opening. Each card shows the role's lineage: Freebody and Luke's original, then Serafini's 2012 version for visual and multimodal texts, then what we propose for text AI makes. Every role now covers reading and making.\n\nCode breaker and maker: decoding is still the foundation. New: working out how a text was made, and writing a clear request is a kind of composing.\n\nSense maker: meaning still comes from what you know, and now that knowledge is also how you catch errors.\n\nAuthor: the biggest change. Freebody and Luke asked what you do with a text; Serafini made the reader a designer. With AI the question is ownership: when to use the tool, and whether the thinking stays yours. Case A in the next section is this role.\n\nVerifier: the analyst's question still holds, plus checking across sources, because AI text usually has no visible author. Ask whose voices the tool learned from, and whose it leaves out.\n\nThe social side runs under all four; we come back to it in Part 4. Ask: what would you change on this slide?"
+      notes: "Andrew: here's where our own thinking landed; set it beside what the chat said in the opening. Each card shows the role's lineage: Freebody and Luke's original, then Serafini's 2012 version for visual and multimodal texts, then what we propose for text AI makes. Every role now covers reading and making.\n\nCode breaker and maker: decoding is still the foundation. New: working out how a text was made, and writing a clear request is a kind of composing.\n\nSense maker: meaning still comes from what you know, and now that knowledge is also how you catch errors.\n\nAuthor: the biggest change. Freebody and Luke asked what you do with a text; Serafini made the reader a designer. With AI the question is ownership: when to use the tool, and whether the thinking stays yours. Case A in the next section is this role.\n\nVerifier: the analyst's question still holds, plus checking across sources, because AI text usually has no visible author. Ask whose voices the tool learned from, and whose it leaves out.\n\nThe social side runs under all four; we come back to it in Part 4. Ask: what would you change on this slide?\n\nCode breaker and maker leads into the next slide: what an early reading platform asks of leaders."
+    },
+    {
+      id: "early-signposts", part: "lens", kind: "list",
+      kicker: "Early reading · K–2", heading: "Signposts for an AI reading platform",
+      items: [
+        { name: "Does practice text stay decodable?", why: "Matched to the sounds and patterns children have been taught, as structured literacy expects." },
+        { name: "Does a teacher still hear the child read?", why: "Or does the platform's report stand in for listening?", key: true },
+        { name: "Does practice end in talk with a person?", why: "A conversation about the story, not only a score." },
+        { name: "What does it record, and where does it go?", why: "A young child's voice and errors are student data." }
+      ],
+      foot: "Questions a leader asks before adopting, not claims about how to teach decoding.",
+      title: "K–2 signposts",
+      notes: "Andrew: we said in planning that we won't claim anything about AI and teaching decoding; it isn't our expertise. These are the questions a leader can ask of any platform that promises to help early reading. Sean's signpost question sits under all four: what would tell us it's trading away something the process needs?\n\nMany in this group work under the READ Act's structured-literacy expectations, so the first question will land. Case C comes back to this in Part 2."
     },
     {
       id: "framings", part: "lens", kind: "cards",
