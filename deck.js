@@ -196,11 +196,11 @@ export default {
           h(H, { class: "display heading" }, rich(slide.heading)),
           h("div", { class: "fig-roles" },
             h("ul", { class: "fig-roles-grid" }, slide.items.map((item) =>
-              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), h("p", { class: "fig-role-q" }, rich(item.why))))))
+              h("li", { class: "fig-role" }, h(H2, { class: "fig-role-t" }, rich(item.name)), item.why && h("p", { class: "fig-role-q" }, rich(item.why))))))
         ];
       },
       items: [
-        { name: "Code breaker", why: "How do I crack this text?" },
+        { name: "Code breaker" },
         { name: "Text participant", why: "What does this text mean? What is the author saying?" },
         { name: "Text user", why: "What do I do with it, here, for this purpose?" },
         { name: "Text analyst", why: "What is this text doing, and to whom?" }
