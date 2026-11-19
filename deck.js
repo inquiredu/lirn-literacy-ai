@@ -222,8 +222,19 @@ export default {
         { kicker: "What would I change?", heading: "Agency", body: "What will I do with this, and what part is mine?" }
       ],
       body: "What would you add for the students you teach? Post it in the chat.",
-      notes: "Andrew: the four roles describe reading any text. This is our proposal for what matters most when the text comes from AI, from a critical literacy perspective: every text is made by someone, from a position, in someone's interest. AI text hides that, because it reads as if nobody wrote it. Set it beside what the chat said in the opening.\n\nSay the note at the top out loud: none of this replaces decoding and fluency. These four sit on that foundation, and they lean hardest on comprehension and on what students already know about the topic.\n\nOrigin: an AI answer has no byline, but it still has authors: the writing it learned from, the company that built it, and the person who wrote the prompt. How this session was made is our own example.\n\nRepresentation: AI gives the most common version of a story. Defaults carry assumptions about gender, place, class, race, language and family. This is what the girl and boy stories showed, and what changed when we added the suburbs or the city.\n\nAuthority: AI sounds right whether or not it is. Separate confidence from accuracy, check against what you know and a second source, and ask whose view of good teaching becomes the answer. The teaching questions in the opening, and Part 3, come back to this.\n\nAgency: readers decide whether to use a tool, rewrite what it gives them, push back, or not use it. Adding a detail to the prompt was a small act of redesign. Case A in Part 2 is about this.\n\nThe child's question for each is the small line above it on the slide. Janks argues critical literacy needs power, access, diversity and design held together; Lewison, Flint and Van Sluys name disrupting the commonplace, interrogating multiple viewpoints, attending to sociopolitical issues, and taking action. Ask: what would you add?\n\nThe next slide goes back to the foundation underneath all four: what an early reading platform asks of leaders.\n\nSources, if asked: our proposal, not a validated model, drawing on Janks (2010), Literacy and Power, and Lewison, Flint & Van Sluys (2002), Language Arts 79(5)."
+      notes: "Andrew: the four roles describe reading any text. This is our proposal for what matters most when the text comes from AI, from a critical literacy perspective: every text is made by someone, from a position, in someone's interest. AI text hides that, because it reads as if nobody wrote it. Set it beside what the chat said in the opening.\n\nSay the note at the top out loud: none of this replaces decoding and fluency. These four sit on that foundation, and they lean hardest on comprehension and on what students already know about the topic.\n\nOrigin: an AI answer has no byline, but it still has authors: the writing it learned from, the company that built it, and the person who wrote the prompt. How this session was made is our own example.\n\nRepresentation: AI gives the most common version of a story. Defaults carry assumptions about gender, place, class, race, language and family. This is what the girl and boy stories showed, and what changed when we added the suburbs or the city.\n\nAuthority: AI sounds right whether or not it is. Separate confidence from accuracy, check against what you know and a second source, and ask whose view of good teaching becomes the answer. The teaching questions in the opening, and Part 3, come back to this.\n\nAgency: readers decide whether to use a tool, rewrite what it gives them, push back, or not use it. Adding a detail to the prompt was a small act of redesign. Case A in Part 2 is about this.\n\nThe child's question for each is the small line above it on the slide. Janks argues critical literacy needs power, access, diversity and design held together; Lewison, Flint and Van Sluys name disrupting the commonplace, interrogating multiple viewpoints, attending to sociopolitical issues, and taking action. Ask: what would you add?\n\nSources, if asked: our proposal, not a validated model, drawing on Janks (2010), Literacy and Power, and Lewison, Flint & Van Sluys (2002), Language Arts 79(5)."
     },
+    {
+      id: "framings", part: "lens", kind: "cards",
+      heading: "Creating and evaluating texts",
+      cards: [
+        { kicker: "Part 2", heading: "**Making** text with AI", body: "AI as a thought partner for writing, and as a tool for creating and adapting texts." },
+        { kicker: "Part 3", heading: "**Navigating** AI text", body: "AI as a source students read, question and decide whether to trust." }
+      ],
+      foot: "The social side of learning runs under both. We pull it together in Part 4.",
+      notes: "Andrew: this two-way framing isn't ours. [ADD] credit the author from Andrew's earlier session.\n\nThe next slide goes back to the foundation underneath all of this: what an early reading platform asks of leaders."
+    },
+
     {
       id: "early-signposts", part: "lens", kind: "list",
       kicker: "Early reading · K–2", heading: "Signposts for an AI reading platform",
@@ -237,17 +248,6 @@ export default {
       title: "K–2 signposts",
       notes: "Andrew: we said in planning that we won't claim anything about AI and teaching decoding; it isn't our expertise. These are the questions a leader can ask of any platform that promises to help early reading. Sean's signpost question sits under all four: what would tell us it's trading away something the process needs?\n\nMany in this group work under the READ Act's structured-literacy expectations, so the first question will land. Case C comes back to this in Part 2."
     },
-    {
-      id: "framings", part: "lens", kind: "cards",
-      heading: "Creating and evaluating texts",
-      cards: [
-        { kicker: "Part 2", heading: "**Making** text with AI", body: "AI as a thought partner for writing, and as a tool for creating and adapting texts." },
-        { kicker: "Part 3", heading: "**Navigating** AI text", body: "AI as a source students read, question and decide whether to trust." }
-      ],
-      foot: "The social side of learning runs under both. We pull it together in Part 4.",
-      notes: "Andrew: this two-way framing isn't ours. [ADD] credit the author from Andrew's earlier session."
-    },
-
     // ── 2 · Making text with AI ───────────────────────────────────────────────────────────────────────────
     {
       id: "making", part: "making", kind: "section",
