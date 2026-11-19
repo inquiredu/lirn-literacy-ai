@@ -1,6 +1,15 @@
 # Literacy in an AI Era: handoff
 
-Updated November 18, 2026. The underlying presentation engine follows `STANDARD.md`.
+Updated November 19, 2026. The underlying presentation engine follows `STANDARD.md`.
+
+## Introductions slide, November 19
+
+**Slide 2, `intro`** ("Andrew and Sean"): right after the title, on the same dark ground. Andrew Rummel, then Sean Beaverson, each with role and district, beside their coffee-shop photo framed small (`assets/andrew-and-sean.jpg`). The names and roles come from the landing page's bios (`landing.us.people`), so a change there changes the slide.
+
+- The kicker ("Presenting today") and the speaker notes are drafts; the notes have an `[ADD]` for what each of you will say, with lines from your bios to draw on.
+- The opening part's 16 minutes now include introductions; no minutes were changed.
+- In the photo, Sean is on the left and Andrew on the right (from the earlier sketch's alt text). The photo, not a sketch, is now on the public site.
+- `node scripts/check-all.js` passes, and the PowerPoint export comes back with no changes. Looked at on the stage, in the review, on a phone and in the printed backup. Not checked: a screen reader, Safari or Firefox.
 
 ## Research library, November 19
 
