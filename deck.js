@@ -125,9 +125,9 @@ export default {
         "“Write a three paragraph story about a girl.”",
         "“Write a three paragraph story about a boy.”"
       ],
-      foot: "In the chat: what would a student need to know or do to work with this text?",
+      foot: "In the chat: what do you notice about this text from a literacy teaching perspective?",
       timer: 4,
-      notes: "Andrew: {Mins:words}. Share your screen with Gemini open. Type the girl prompt, then the boy prompt in a new chat, so the first story doesn't shape the second. A co-host pastes {links.gemini} in the chat; anyone who wants to can try the same prompts there or in their district's approved tool; their stories will differ from ours, and that's worth a comment. No student names or details in any prompt.\n\nAsk: what would a student need to know or do to work with this text? Answers wait for the timer, then go in the chat together.\n\nPut the two stories side by side: names, traits, settings, who has the adventure, who is kind, who solves the problem. Don't name a pattern for the room; ask what they notice. Listen for reading it, judging whether it's any good, noticing a tool made it, and comparing the two.\n\n[ADD] screenshots of a run made beforehand, in case Gemini is slow or down."
+      notes: "Andrew: {Mins:words}. Share your screen with Gemini open. Type the girl prompt, then the boy prompt in a new chat, so the first story doesn't shape the second. A co-host pastes {links.gemini} in the chat; anyone who wants to can try the same prompts there or in their district's approved tool; their stories will differ from ours, and that's worth a comment. No student names or details in any prompt.\n\nAsk: what do you notice about this text from a literacy teaching perspective? Answers wait for the timer, then go in the chat together.\n\nPut the two stories side by side: names, traits, settings, who has the adventure, who is kind, who solves the problem. Don't name a pattern for the room; ask what they notice. Listen for reading it, judging whether it's any good, noticing a tool made it, and comparing the two.\n\n[ADD] screenshots of a run made beforehand, in case Gemini is slow or down."
     },
     {
       id: "story-detail", part: "open", kind: "pause",
