@@ -4,7 +4,7 @@ Updated November 18, 2026. The underlying presentation engine follows `STANDARD.
 
 ## Zoom readability, November 19
 
-The question the room answers in the chat was the smallest text on every pause slide (about 13pt next to a 16:9 PowerPoint slide). It and the prompt under the cards on `roles-now` are now about 18pt, heavier, with a rule above (`present/slides.css`, "Room prompts"). No words changed.
+The question the room answers in the chat was the smallest text on every pause slide (about 13pt next to a 16:9 PowerPoint slide). It and the prompt under the cards on `roles-now` are now about 18pt, heavier, with a rule above (`present/slides.css`, "Room prompts"). No words changed. The pause slides' label line ("Pick one") is larger, and so is the Charlotte's Web debrief (`what-was-in-it`, in `present/talk.css`).
 
 - Verified: all 16 participation slides measured at 1920x1080, 1440x900, 1366x768, 1280x720 and 1280x800, and none overflows; the printed backup PDF, the review and a 375px phone checked by picture; `node scripts/check-all.js` passes; axe finds no violations on 39 pages and slides in light and dark.
 - Not verified: a live Zoom share.
