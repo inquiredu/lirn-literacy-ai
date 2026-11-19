@@ -26,8 +26,8 @@ export default {
     wwta: "https://inquiredu.org/what-we-talk-about/", // where resources and the room's learning are shared afterward
     library: "library.html"                           // this session's research library, read from library.js
   },
-  // Hidden for now (2026-11-19): the nav, "Continue the inquiry" and the slides don't link to it, and the ✦ at the
-  // end of the landing page's credits is the one way in. Delete hidden to put the links back (HANDOFF has the words).
+  // Hidden for now (2026-11-19), while Sean revises it: no page or slide links to it, though library.html still opens
+  // at its address. Delete hidden to put the links back (HANDOFF has the words to restore).
   library: { ...library, hidden: true },
   theme: "light",
   // Minnesota in late fall and winter, for each slide's bare side (core.js artFor): birches on the dark slides,

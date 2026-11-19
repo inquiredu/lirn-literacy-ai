@@ -8,7 +8,7 @@ const land = deck.landing || {};
 document.title = model.title;
 const words = (text) => rich(text, ctx);
 const list = (items, cls) => items?.length && h("ol", { class: cls }, items.map((t) => h("li", {}, words(t))));
-// The research library is linked in the nav and under "Continue the inquiry", unless the deck hides it for now
+// The research library is linked in the nav and under "Continue the inquiry", unless the deck hides it; hidden, nothing links to it
 const showLibrary = deck.library && !deck.library.hidden;
 
 const masthead = h("nav", { class: "masthead", "aria-label": "Session navigation" },
@@ -72,8 +72,5 @@ const resources = land.resources && h("section", { class: "resources", "aria-lab
     showLibrary && h("a", { class: "primary-link", href: deck.links.library }, words(land.resources.library), h("span", { "aria-hidden": "true" }, "→")),
     h("a", { href: deck.links.wwta }, words(land.resources.label), h("span", { "aria-hidden": "true" }, " ↗"))));
 
-// While the library is hidden, a ✦ at the end of the credits is the way in, for the curious: it reads as a
-// flourish, and says "Research library" on hover and to a screen reader.
-const egg = deck.library?.hidden && h("a", { class: "egg", href: deck.links.library, "aria-label": land.nav?.library, title: land.nav?.library }, "✦");
-const footer = land.made && h("footer", { class: "made" }, h("p", {}, words(land.made), egg && [" ", egg]));
+const footer = land.made && h("footer", { class: "made" }, h("p", {}, words(land.made)));
 document.querySelector("main").replaceChildren(...[masthead, hero, questions, aim, us, resources, footer].filter(Boolean));

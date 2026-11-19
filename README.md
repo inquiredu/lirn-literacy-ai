@@ -45,7 +45,7 @@ The session clock waits for the call to order. On the deck's own `day` (with `st
 | --- | --- |
 | `deck.js` | The deck: every word, link, length, note and timer. The one file you edit for a new talk |
 | `present.html`, `notes.html`, `review.html` | The stage, the speaker notes, the review. Each names its deck with `data-deck="deck.js"` |
-| `library.html`, `library.js` | This talk's research library and its entries, imported by `deck.js`. `docs/LIBRARY.md` has the rule for adding a source. Hidden for now: the ✦ at the end of the landing page's credits leads to it |
+| `library.html`, `library.js` | This talk's research library and its entries, imported by `deck.js`. `docs/LIBRARY.md` has the rule for adding a source. Hidden for now: nothing links to it (`hidden: true` in `deck.js`) |
 | `present/core.js` | The rules, with no page: the deck's shape, timers, the clock, pace, braces, keys, saved state, and the checks |
 | `present/qr.js` | The QR code, drawn from the deck's address in the page (checked module for module against the `qrcode` package) |
 | `present/kinds.js`, `present/dom.js` | The kinds of slide, and building elements without HTML strings |
