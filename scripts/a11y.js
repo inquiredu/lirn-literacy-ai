@@ -23,7 +23,7 @@ const server = createServer();
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const base = `http://127.0.0.1:${server.address().port}/`;
 const browser = await chromium.launch(process.env.PREVIEW_BROWSER ? { executablePath: process.env.PREVIEW_BROWSER } : {});
-const routes = [...model.slides.map((s) => `present.html#${s.id}`), "notes.html", "review.html", "index.html", "library.html", "library.html?era=ai&form=research"];
+const routes = [...model.slides.map((s) => `present.html#${s.id}`), "notes.html", "review.html", `review.html#${model.slides[0].id}`, "index.html", "library.html", "library.html?era=ai&form=research"];
 const seen = new Map();
 try {
   for (const width of [1280, 375]) {

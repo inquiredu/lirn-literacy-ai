@@ -4,7 +4,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  buildDeck, deckProblems, slideFromHash, slideTitle, timerView, toggleRun, adjustRun, secondsLeft, clampMinutes,
+  buildDeck, deckProblems, slideFromHash, spreadFromHash, slideTitle, timerView, toggleRun, adjustRun, secondsLeft, clampMinutes,
   sessionClock, togglePause, clockStart, zonedTime, dayIn, plannedAt, plannedPosition, slideForNow, paceWords,
   tokens, fill, inline, lengthLabel, clockFace, words, actionFor, KEYS, createStore, cleanLengths, cleanRuns, channelName
 } from "../present/core.js";
@@ -54,6 +54,16 @@ test("the address names a slide by id, or by number from an older link", () => {
   assert.equal(slideTitle(m.slides[2]), "Talk");
 });
 
+test("the review book opens the spread its address names", () => {
+  const m = buildDeck(DECK);
+  assert.equal(spreadFromHash(m, ""), 0, "no address opens the contents, like a book");
+  assert.equal(spreadFromHash(m, "#contents"), 0);
+  assert.equal(spreadFromHash(m, "#pairs"), 3, "a slide's spread is its index plus one, after the contents");
+  assert.equal(spreadFromHash(m, "#3"), 3);
+  assert.equal(spreadFromHash(m, "#99"), m.slides.length, "past the end opens the last slide");
+  assert.equal(spreadFromHash(m, "#print-pairs"), -1, "an address the book doesn't know leaves it where it is");
+});
+
 test("a sound deck has no problems", () => {
   assert.deepEqual(deckProblems(DECK), []);
 });
@@ -67,13 +77,14 @@ test("the checks name what's wrong, in words", () => {
       { id: "c", part: "nowhere", kind: "split", image: { src: "pic.png" }, notes: "x", heading: "{nothing}" },
       { id: "d", part: "work", kind: "statement", heading: "Odd timer", notes: "x", timer: 2.5 },
       { id: "e", part: "work", kind: "statement", heading: "Shared", notes: "x", timer: { minutes: 3, key: "k" } },
-      { id: "f", part: "work", kind: "statement", heading: "Shared", notes: "x", timer: { minutes: 5, key: "k" } }
+      { id: "f", part: "work", kind: "statement", heading: "Shared", notes: "x", timer: { minutes: 5, key: "k" } },
+      { id: "contents", part: "work", kind: "statement", heading: "Taken", notes: "x" }
     ]
   };
   const problems = deckProblems(broken, { fileExists: () => false }).join("\n");
   for (const words of ["kebab-case", "https address", "add up to 30 minutes", "Two slides share the id \"a\"", "unknown kind \"wobble\"",
     "no speaker notes", "names a part the deck doesn't have", "after a later part", "picture that isn't there", "without alt text",
-    "{nothing}", "whole number of minutes", "different length"]) {
+    "{nothing}", "whole number of minutes", "different length", "the review uses #contents"]) {
     assert.ok(problems.includes(words), `expected a problem mentioning ${words}\n${problems}`);
   }
   assert.match(deckProblems({ ...DECK, parts: [...DECK.parts, { id: "spare", title: "Spare", minutes: 5 }] }).join("\n"), /The part "spare" has no slides/);

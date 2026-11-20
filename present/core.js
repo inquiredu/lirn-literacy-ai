@@ -110,6 +110,21 @@ export function slideTitle(s, model) {
   return inline(words).map((r) => r.text ?? r.strong ?? r.em ?? " ").join("").replace(/\s+/g, " ").trim();
 }
 
+/** Addresses the review keeps for pages of its own, so no slide may take them as an id. */
+export const REVIEW_ADDRESSES = ["contents"];
+
+/**
+ * Which spread of the review book an address opens: 0 is the Contents, 1 + a slide's index is that slide with
+ * its notes. No address opens the Contents, as a book opens at its front; one the book doesn't know is -1, so a
+ * stray #link leaves the book alone.
+ */
+export function spreadFromHash(model, hash) {
+  const h = decodeURIComponent(String(hash || "").replace(/^#\/?/, ""));
+  if (!h || h === "contents") return 0;
+  if (model.slideById.has(h) || /^\d+$/.test(h)) return slideFromHash(model, h) + 1;
+  return -1;
+}
+
 /** The address names the slide: #parable, or #12 from an older link. Unknown addresses open the first slide. */
 export function slideFromHash(model, hash) {
   const h = decodeURIComponent(String(hash || "").replace(/^#\/?/, ""));
@@ -160,6 +175,7 @@ export function deckProblems(deck, { fileExists } = {}) {
     const where = `Slide ${s.n} (${s.id})`;
     if (!s.id || !kebab.test(s.id)) say(`Slide ${s.n} needs an id in kebab-case: ${JSON.stringify(s.id)}`);
     if (ids.has(s.id)) say(`Two slides share the id "${s.id}".`);
+    if (REVIEW_ADDRESSES.includes(s.id)) say(`${where} can't be called "${s.id}": the review uses #${s.id} for its own page. Give the slide another id.`);
     ids.add(s.id);
     if (!KINDS.includes(s.kind)) say(`${where} has an unknown kind "${s.kind}". Known: ${KINDS.join(", ")}.`);
     (REQUIRED[s.kind] || []).forEach((field) => { if (s[field] === undefined || s[field] === "") say(`${where} is a ${s.kind} and needs ${field}.`); });
