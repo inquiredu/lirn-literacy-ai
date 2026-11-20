@@ -56,7 +56,7 @@ test("the address names a slide by id, or by number from an older link", () => {
 
 test("the review book opens the spread its address names", () => {
   const m = buildDeck(DECK);
-  assert.equal(spreadFromHash(m, ""), 1, "no address opens slide 1, not the contents");
+  assert.equal(spreadFromHash(m, ""), 0, "no address opens the contents, like a book");
   assert.equal(spreadFromHash(m, "#contents"), 0);
   assert.equal(spreadFromHash(m, "#pairs"), 3, "a slide's spread is its index plus one, after the contents");
   assert.equal(spreadFromHash(m, "#3"), 3);

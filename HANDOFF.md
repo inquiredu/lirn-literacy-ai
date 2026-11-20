@@ -8,7 +8,7 @@ On branch `claude/hopeful-franklin-rmjmti`, **not merged to main** (Sean's call:
 
 - **The turn:** the new spread slides in 1.5rem from the side you're turning toward as it fades up, over .45s, the same values as What We Talk About's book. Under reduced motion it changes at once. Arrows, Page Up and Down, Space, Home, End, a swipe, or Previous and Next, which now stay pinned under the book.
 - **The look:** two pages joined at a shaded spine, lifted off a sunken ground, with folios. The spine and shadows come from the talk's tokens (`--scrim`, `--shadow-3`).
-- **Contents** is now the book's first spread (`review.html#contents`), the parts running across both pages, one turn back from slide 1. The Contents button above the book opens it. No address still opens slide 1, so the landing page's links behave as before.
+- **Contents** is now the book's first spread (`review.html#contents`), the parts running across both pages, one turn back from slide 1. The review opens on it (Sean's call, November 20): the landing page's "Read the session" and "Read slides & notes" now land on the Contents, while its links to a part (`review.html#<slide>`) still open that slide. The Contents button above the book comes back to it.
 - **Show all pages on one scroll** lays out every page in one column. The address follows the page you're reading, so switching back opens the book there.
 - **Long notes:** pages grow with their notes and the window scrolls, instead of each page scrolling on its own. The slide stays at the top of the window beside long notes (`roles-now`, `moves`, `basics-thinking`).
 - `contents` is now a reserved slide id (a check in `present/core.js`, with a test), since the review uses `#contents`.

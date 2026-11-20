@@ -115,12 +115,12 @@ export const REVIEW_ADDRESSES = ["contents"];
 
 /**
  * Which spread of the review book an address opens: 0 is the Contents, 1 + a slide's index is that slide with
- * its notes. No address opens slide 1; one the book doesn't know is -1, so a stray #link leaves the book alone.
+ * its notes. No address opens the Contents, as a book opens at its front; one the book doesn't know is -1, so a
+ * stray #link leaves the book alone.
  */
 export function spreadFromHash(model, hash) {
   const h = decodeURIComponent(String(hash || "").replace(/^#\/?/, ""));
-  if (!h) return 1;
-  if (h === "contents") return 0;
+  if (!h || h === "contents") return 0;
   if (model.slideById.has(h) || /^\d+$/.test(h)) return slideFromHash(model, h) + 1;
   return -1;
 }
